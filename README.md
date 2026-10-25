@@ -8,10 +8,11 @@ Branded marketing tools for iMath Group agents and loan officers: social posts, 
 
 | | GitHub-hosted site | Inside Claude |
 |---|---|---|
-| Where | `https://edelacruz9.github.io/iMathGroup/` | The Studio artifact on claude.ai |
-| AI | Your Anthropic API key | Your Claude plan |
-| MLS | Your own Cloudflare Worker proxy with your Spark key | Your own Flexmls connector in Claude |
-| Setup | [docs/SETUP.md](docs/SETUP.md) | Connect Flexmls under Claude, Customize, Connectors |
+| Where | `https://edelacruz9.github.io/iMathGroup/` | The Studio artifact on claude.ai or the Claude desktop app (invite only) |
+| AI | Your Anthropic API key | Your Claude plan, no API key |
+| MLS | Your own Cloudflare Worker proxy with your Spark key | The RealMLS connector in Claude, with your Flexmls login |
+| Setup | [docs/SETUP.md](docs/SETUP.md), option B | [docs/SETUP.md](docs/SETUP.md), option A |
+| Built with | `npm run build` | `npm run build:claude`, then publish `dist-claude/studio.html` (see [docs/ADMIN.md](docs/ADMIN.md)) |
 
 Tabs that need no MLS or AI (cards, signs, signatures, flyers, social posts, avatars) work right away in either mode.
 

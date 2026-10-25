@@ -1,8 +1,28 @@
 # Set up your Studio
 
-About 15 minutes, once. You need your Flexmls login, a credit card for Anthropic, and a free Cloudflare account.
+There are two ways to use the Studio. Pick one.
 
-Just want cards, signs, flyers and signatures? Skip all of this and open the Studio. Setup is only for the AI tools and the MLS tools (CMA report, Listing Video).
+| | Inside Claude (easiest) | On the website |
+|---|---|---|
+| You need | A Claude account (Pro or higher) and an invitation from Elliot | An Anthropic API key, a Spark token and a free Cloudflare proxy |
+| AI is paid by | Your Claude plan | Your Anthropic account, per use |
+| MLS comes from | The RealMLS connector in Claude, with your Flexmls login | Your own proxy and Spark token |
+| Works in | claude.ai and the Claude desktop app | Any browser |
+
+Just want cards, signs, flyers and signatures? Either way works with no setup. Setup is only for the AI tools and the MLS tools (CMA report, Listing Video).
+
+## Option A: inside Claude
+
+1. Ask Elliot to invite the email you use for Claude to the Marketing Studio.
+2. Open the invitation link while signed in to claude.ai or the Claude desktop app.
+3. On the **CMA and Investor Report** tab, click **Open the setup guide** and follow it: turn on AI Settings in Flexmls, add the RealMLS connector in Claude, connect it with your Flexmls login, then click **Allow** when the Studio asks.
+4. Fill in your profile (step 6 below). The team roster is already built in.
+
+No API key, proxy or roster file is needed. Stop here.
+
+## Option B: on the website
+
+About 15 minutes, once. You need your Flexmls login, a credit card for Anthropic, and a free Cloudflare account.
 
 ## 1. Get your AI key (for Create Anything, captions, CMA write-ups)
 

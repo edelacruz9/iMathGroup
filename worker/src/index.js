@@ -54,11 +54,18 @@ async function runTool(tool, args, env) {
     for (const k of ["_select", "_limit", "_page", "_orderby", "_expand", "_pagination"]) {
       if (args[k] != null) q.set(k, String(args[k]));
     }
+    if (!q.has("_pagination")) q.set("_pagination", "1");
     const d = await spark(`/listings?${q}`, env);
+    // Same shape as the Flexmls (RealMLS) connector: listings keep Id, ResourceUri and nested
+    // StandardFields, which the Studio's CMA engine reads.
+    const page = d.Pagination?.CurrentPage ?? 1;
+    const pages = d.Pagination?.TotalPages ?? null;
     return {
-      results: (d.Results || []).map(flatten),
-      total_pages: d.Pagination?.TotalPages ?? null,
       total_entries: d.Pagination?.TotalRows ?? null,
+      total_pages: pages,
+      previous_page: page > 1 ? page - 1 : null,
+      next_page: pages != null && page < pages ? page + 1 : null,
+      results: (d.Results || []).map(listing),
     };
   }
   if (tool === "ListingsListPhotos") {
@@ -100,9 +107,14 @@ async function spark(path, env) {
   return d;
 }
 
-// Spark nests listing fields under StandardFields; the Studio reads them at the top level.
-function flatten(r) {
-  return { Id: r.Id, ResourceUri: r.ResourceUri, ...(r.StandardFields || {}) };
+function listing(r) {
+  const id = r.StandardFields?.ListingId;
+  return {
+    Id: r.Id,
+    ResourceUri: r.ResourceUri,
+    StandardFields: r.StandardFields || {},
+    ...(id ? { FlexmlsLink: `https://members.flexmls.com/start/listing/number/index.html?list=${encodeURIComponent(id)}` } : {}),
+  };
 }
 
 function inList(field, values) {

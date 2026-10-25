@@ -1,6 +1,6 @@
 // Connections dialog: where each agent saves their own Anthropic key and MLS proxy.
 // Styled with the Studio's own CSS variables so it matches the rest of the page.
-import { SETUP_GUIDE_URL } from "../config.js";
+import { CLAUDE_STUDIO_URL, SETUP_GUIDE_URL } from "../config.js";
 import { importRoster } from "./roster.js";
 
 const CSS = `
@@ -42,6 +42,7 @@ export function mountConnections(runtime) {
   dlg.innerHTML = `
     <form class="cx-body" method="dialog">
       <h2>Your connections</h2>
+      <p class="cx-note"><b>Have Claude?</b> <a href="${CLAUDE_STUDIO_URL}" target="_blank" rel="noopener">Open the Studio inside Claude</a> instead. It uses your Claude plan and your RealMLS connector in Claude, so you need no API key or proxy. Ask Elliot to invite your Claude email.</p>
       <p class="cx-note">Saved only in this browser. Your key goes only to Anthropic, and your MLS calls go only to your own proxy. iMath never sees them. <a href="${SETUP_GUIDE_URL}" target="_blank" rel="noopener">Setup guide</a></p>
       <fieldset><legend>AI (Anthropic)</legend>
         ${field(FIELDS[0])}

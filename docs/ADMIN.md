@@ -8,6 +8,14 @@
 4. Optional: add a custom domain such as `studio.imathgroup.com` under **Settings**, **Pages**, then tell agents to use it as their proxy's `ALLOWED_ORIGIN`.
 5. If the repo moves (for example to an iMath Group organization), update `src/config.js`, `ALLOWED_ORIGIN` in `worker/wrangler.toml`, and the addresses in README.md and docs/PROXY.md.
 
+## Updating the Studio inside Claude
+
+The same code runs inside Claude, where agents use their Claude plan and the RealMLS connector instead of their own keys.
+
+1. With `public/roster.json` in place, run `npm run build:claude`. It writes `dist-claude/studio.html` (gitignored; it contains the roster).
+2. Ask Claude to publish `dist-claude/studio.html` to the Studio artifact (`https://claude.ai/artifact/UvVmYPtpsbkPNppfLnxzED`), keeping its capabilities. The exact list is in ARCHITECTURE.md under "Running inside Claude".
+3. Keep the artifact invite-only. Invite each agent's Claude email from its **Share** menu, at Viewer level, and leave the public link off.
+
 ## The team roster (kept private)
 
 Names, phone numbers, emails, NMLS numbers and loan officer headshots are **not** in the repo or on the public site. They live in one private file, `public/roster.json`, which git ignores.

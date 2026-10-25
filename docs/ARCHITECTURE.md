@@ -89,7 +89,23 @@ All are small branches on `window.claude.byok`, so the same files still behave a
 
 ## Open items
 
-1. **MLS result shape.** The Worker returns Spark listings flattened from `StandardFields`. The Flexmls connector the Studio was built on may name or nest fields differently. Compare one `ListingsListingSearch` and one `ListingsListPhotos` result from Claude against the Worker, and adjust `flatten()` in `worker/src/index.js`.
+1. **Photo room tags through the Worker.** The RealMLS connector returns each photo with `Tags.Room` (for example "Kitchen"), which the CMA and Listing Video use to pick and sort photos. Confirm a real Spark photo response through the Worker includes it; without it the Studio falls back to Claude labels and file names.
 2. **Exported CMA runtime.** The script inside `02-cma-runtime.js` is still obfuscated. Run it through `tools/rebuild/` separately.
 3. **Page weight.** Assets and fonts are embedded as data URIs (about 2 MB). Move them to files in `public/assets/` once each use is checked (some go straight into jsPDF).
-4. **Claude-artifact build.** Add a script that inlines everything into one HTML file for publishing back to the Claude artifact.
+
+## Matching the RealMLS connector
+
+Checked against real RealMLS calls (Oct 25, 2026). The Worker returns the same shapes:
+
+- `ListingsListingSearch`: `{ total_entries, total_pages, previous_page, next_page, results: [{ Id, ResourceUri, StandardFields: {...}, FlexmlsLink }] }`. The CMA engine reads `result.StandardFields`.
+- `ListingsListPhotos`: `{ photos: [{ Id, Name, Caption, Uri800, Primary, Tags }] }`.
+- `MarketStatistics*`: `{ Dates: [...], <Option>: [...] }`, one array per requested option.
+
+## Running inside Claude
+
+`npm run build:claude` (or `python3 -I tools/build-claude.py`) writes `dist-claude/studio.html`: one page with the styles, markup and legacy scripts inline, without `src/`, and with the private roster embedded. Inside Claude the Studio uses Claude's runtime, so `window.claude.byok` is unset and every legacy file behaves as originally written. Publish it to the Studio artifact with these capabilities, pinned to runtime contract 0.2.74:
+
+- `downloads`, `sample`
+- `mcp`: `RealMLS` (ListingsListingSearch, ListingsListPhotos, ListingsShowPhoto, MarketStatisticsPrice, MarketStatisticsAbsorption, MarketStatisticsDaysOnMarket, MarketStatisticsRatio, MarketStatisticsInventory) and `Parallel Search` (web_search, web_fetch)
+
+The artifact must stay invite-only, because the embedded roster holds contact details.
