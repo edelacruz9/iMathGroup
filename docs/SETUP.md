@@ -64,7 +64,11 @@ Elliot sends you a file called `roster.json`. In **Connections**, under **Team r
 
 ## Pull listings from the MLS
 
-On **Social Posts** (Just Listed, Open House, Under Contract, Just Sold) and **Open House Flyers**, choose **Pull from MLS**, type the MLS number or street address, and click **Pull listing**. It fills the address, city, price, beds, baths and square feet. Check the photo box to also bring in the listing photos (the primary photo for a post, up to four for a flyer). Only use photos you have the right to use. For another office's listing, get their permission and add a courtesy line. You can edit anything afterwards, or choose **Enter manually** to type everything yourself.
+On **Social Posts** (Just Listed, Open House, Under Contract, Just Sold) and **Open House Flyers**, choose **Pull from MLS**, type the MLS number or street address, and click **Pull listing**. It fills the address, city, price, beds, baths and square feet. Check the photo box to also bring in the listing photos.
+
+- **Social Posts** use the primary photo.
+- **Open House Flyers** show every listing photo. Tap up to four in the order you want them; **1** is the large hero photo. The first four are chosen for you until you change them.
+- **Flyer description:** the flyer prints a short description (70 words or less) instead of bullet highlights. It comes from the MLS remarks, shortened by Claude when they are longer. If the MLS has no remarks, it comes from the home's Zillow description (needs Claude and web search). You can edit it; the counter shows the word count, and **Shorten with Claude** trims it. The description prints on Magazine Cover, Classic Grid, Agent Spotlight and Personal Brand; Classic Grid and Agent Spotlight with a loan officer have the least room, and the form tells you when a style cuts it short. Only use photos you have the right to use. For another office's listing, get their permission and add a courtesy line. You can edit anything afterwards, or choose **Enter manually** to type everything yourself.
 
 ## 6. Fill in your profile
 

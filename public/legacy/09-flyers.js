@@ -60,7 +60,38 @@
     });
     return X - x;
   }
+  // Description paragraph drawn where the highlight bullets go. X.room is the style's free space
+  // (inches from the first baseline to the last one allowed). The type shrinks to fit but not below
+  // DESC_MIN (about 6.8 pt, still readable in print); text that still does not fit ends with an
+  // ellipsis, and B.descFit tells the form so it can warn the agent.
+  const DESC_MIN = 0.095;
+  function Fdesc(q, text, x, N, G, X) {
+    const room = X.room != null ? X.room : (Math.ceil((X.max || 4) / (X.cols || 1)) - 1) * X.size * (X.lh || 1.7);
+    const gap = 1.3;
+    let size = Math.max(DESC_MIN, Math.min(X.size * 0.9, 0.13));
+    let lines = B.wrapLines(q, text, { size, weight: 400, fam: D }, G);
+    while ((lines.length - 1) * size * gap > room && size > DESC_MIN) {
+      size = Math.max(DESC_MIN, size * 0.95);
+      lines = B.wrapLines(q, text, { size, weight: 400, fam: D }, G);
+    }
+    const fit = Math.max(1, Math.floor(room / (size * gap) + 1e-6) + 1);
+    const all = String(text).split(/\s+/).filter(Boolean).length;
+    let shown = all;
+    if (lines.length > fit) {
+      lines = lines.slice(0, fit);
+      lines[fit - 1] = lines[fit - 1].replace(/[\s,.;:]+\S*$/, "") + "…";
+      shown = lines.join(" ").split(/\s+/).filter(Boolean).length;
+    }
+    if (q.canvas && q.canvas.width >= 500) {
+      B.descFit = { cut: shown < all, shown, all };
+    }
+    lines.forEach((line, i) => R(q, line, x, N + i * size * gap, { size, weight: 400, fam: D, color: X.color }));
+    return (lines.length - 1) * size * gap + X.size * (X.lh || 1.7);
+  }
   function F(q, T, x, N, G, X) {
+    if (T.description) {
+      return Fdesc(q, T.description, x, N, G, X);
+    }
     const H = (T.highlights || []).filter(Boolean).slice(0, X.max || 4);
     const C = X.size;
     let I = N;
@@ -316,6 +347,7 @@
       J1 += 0.44;
       F(T, G, Z, J1, J2 ? 5.9 : 7.6, {
         size: 0.15,
+        room: 0.64,
         color: S.ink,
         cols: 2
       });
@@ -413,6 +445,7 @@
       const J0 = N.qrOn && N.qrUrl;
       F(q, N, Z, 8.68, J0 ? 6.2 : 7.4, {
         size: 0.13,
+        room: 0.2,
         color: S.ink,
         cols: 2,
         max: 4
@@ -1025,6 +1058,8 @@
       });
       F(T, G, Z, 9.05, J1 - (G.qrOn && G.qrUrl ? 1 : 0), {
         size: 0.11,
+        // With a loan officer, the headshot block starts near 9.49 in; without one, the footer is at 10.3 in.
+        room: k(G) ? 0.35 : 0.9,
         color: S.ink,
         cols: 1,
         max: 3,
@@ -1158,6 +1193,7 @@
       });
       F(T, G, Z, J0 + 0.9, 7.6 - (G.qrOn && G.qrUrl ? 1.1 : 0), {
         size: 0.12,
+        room: 0.77,
         color: S.ink,
         cols: 2,
         max: 4,

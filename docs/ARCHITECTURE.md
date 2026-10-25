@@ -72,7 +72,7 @@ Models: `default` tier is `claude-opus-5-5` with server-side refusal fallback on
 | 27-fun-app.js | m24 | `iMathFunApp` Avatars and GIFs |
 | 28-listing-video-app.js | m25 | `iMathLVApp` Listing Video tab |
 | 29-access.js | m26 | `iMathAccess` access and onboarding checks |
-| 30-mls-import.js | new | `iMathMlsImport`: Pull from MLS or Enter manually on Social Posts (listing templates) and Open House Flyers. Fills the tab's own fields and photo input |
+| 30-mls-import.js | new | `iMathMlsImport`: Pull from MLS or Enter manually on Social Posts (listing templates) and Open House Flyers. Fills the tab's own fields and photo input; flyer photo picker; flyer description from MLS remarks or Zillow, condensed to 70 words |
 
 Names like `X4` and `Ug` inside these files come from the deobfuscator. Rename them gradually as each tab gets touched.
 
@@ -86,6 +86,7 @@ All are small branches on `window.claude.byok`, so the same files still behave a
 - `25-studio-shell.js`: `XqOwn()` setup steps (own key, Spark token, proxy, connect, test, lookup); `Xy` help link and `XL` message point to the setup guide and Connections; the wizard finds the online-lookup step by id instead of position.
 - `29-access.js`: `Fown()` rows for the Access Check, an Open Connections button, and the report line.
 - `30-mls-import.js` is new (not from the artifact), so a rebuild from the artifact keeps it as long as ORDER.txt still lists it.
+- `09-flyers.js`: `F()` draws `description` as a paragraph (`Fdesc`) when present, in each style's real free space (`room`), never below 6.8 pt, and reports `iMathPrint.descFit` so the form can warn. `25-studio-shell.js` and `index.html`: the flyer's Highlights field became Description.
 
 `tools/rebuild/` regenerates these files from a published artifact, which drops these changes. Review `git diff public/legacy/` after a rebuild and re-apply them.
 

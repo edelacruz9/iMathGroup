@@ -1776,7 +1776,8 @@
       sqft: "1,850",
       ohDate: "Saturday, October 3",
       ohTime: "1 to 4 PM",
-      highlights: "Renovated chef kitchen\nWalk to Five Points\nFenced backyard\nNew roof 2024",
+      highlights: "",
+      description: "Light-filled 1920s bungalow with a renovated chef's kitchen, original oak floors and a new roof in 2024. The fenced backyard has room to garden and entertain, and Five Points shops and dining are a short walk away.",
       qrUrl: ""
     };
     function X5() {
@@ -1788,6 +1789,7 @@
       });
       ["address", "city", "price", "beds", "baths", "sqft", "ohDate", "ohTime"].forEach(XQ => Xg[XQ] = X4[XQ]);
       Xg.highlights = X4.highlights.split("\n").map(XQ => XQ.trim()).filter(Boolean).slice(0, 4);
+      Xg.description = String(X4.description || "").replace(/\s+/g, " ").trim();
       if (X4.qrUrl) {
         Xg.qrUrl = X4.qrUrl;
       }

@@ -260,7 +260,9 @@
           <label>Square feet<input type="text" id="fl_sqft"></label>
           <label>Open house date<input type="text" id="fl_ohDate"></label>
           <label>Open house time<input type="text" id="fl_ohTime"></label>
-          <label class="full">Highlights, one per line (up to 4)<textarea id="fl_highlights"></textarea></label>
+          <label class="full">Description, 70 words max <span class="tag" id="fl_descCount"></span><textarea id="fl_description" rows="4"></textarea></label>
+          <div class="full fl-desc-tools"><button class="mini" type="button" id="fl_descShorten">Shorten with Claude</button><span class="status" id="fl_descStatus" role="status"></span></div>
+          <p class="note full" id="fl_descFit" role="status"></p>
           <label class="full">Listing link for the QR code<input type="url" id="fl_qrUrl" placeholder="Uses your profile link if empty"></label>
         </div>
       </div>
