@@ -40,7 +40,8 @@ export function createMcp(settings, sample) {
     if (res.status === 401) throw { code: "needs_reauth", message: body.error || "Proxy passcode or Spark key rejected." };
     if (res.status === 429) throw { code: "rate_limited", retryable: true, retryAfterMs: 2000 };
     if (!res.ok) throw { code: body.code || "error", message: body.error || `Proxy error ${res.status}`, retryable: res.status >= 500 };
-    return { payload: body.payload };
+    // content carries image blocks (ListingsShowPhoto), as the Claude runtime's results do.
+    return body.content ? { payload: body.payload, content: body.content } : { payload: body.payload };
   }
 
   // Runs one Claude request with the matching server tool and returns its text.

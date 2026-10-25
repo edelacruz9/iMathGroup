@@ -72,6 +72,7 @@ Models: `default` tier is `claude-opus-5-5` with server-side refusal fallback on
 | 27-fun-app.js | m24 | `iMathFunApp` Avatars and GIFs |
 | 28-listing-video-app.js | m25 | `iMathLVApp` Listing Video tab |
 | 29-access.js | m26 | `iMathAccess` access and onboarding checks |
+| 30-mls-import.js | new | `iMathMlsImport`: Pull from MLS or Enter manually on Social Posts (listing templates) and Open House Flyers. Fills the tab's own fields and photo input |
 
 Names like `X4` and `Ug` inside these files come from the deobfuscator. Rename them gradually as each tab gets touched.
 
@@ -84,6 +85,7 @@ All are small branches on `window.claude.byok`, so the same files still behave a
 - `00-assets.js`: loan officer headshots removed (they live in the private roster).
 - `25-studio-shell.js`: `XqOwn()` setup steps (own key, Spark token, proxy, connect, test, lookup); `Xy` help link and `XL` message point to the setup guide and Connections; the wizard finds the online-lookup step by id instead of position.
 - `29-access.js`: `Fown()` rows for the Access Check, an Open Connections button, and the report line.
+- `30-mls-import.js` is new (not from the artifact), so a rebuild from the artifact keeps it as long as ORDER.txt still lists it.
 
 `tools/rebuild/` regenerates these files from a published artifact, which drops these changes. Review `git diff public/legacy/` after a rebuild and re-apply them.
 
@@ -99,6 +101,7 @@ Checked against real RealMLS calls (Oct 25, 2026). The Worker returns the same s
 
 - `ListingsListingSearch`: `{ total_entries, total_pages, previous_page, next_page, results: [{ Id, ResourceUri, StandardFields: {...}, FlexmlsLink }] }`. The CMA engine reads `result.StandardFields`.
 - `ListingsListPhotos`: `{ photos: [{ Id, Name, Caption, Uri800, Primary, Tags }] }`.
+- `ListingsShowPhoto` (read with `{ raw: true }`): `{ payload, content: [{ type: "image", mimeType, data }] }`. The Worker downloads the photo from Spark's CDN and returns the same image block.
 - `MarketStatistics*`: `{ Dates: [...], <Option>: [...] }`, one array per requested option.
 
 ## Running inside Claude

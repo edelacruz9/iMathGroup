@@ -35,8 +35,9 @@ export default {
     }
 
     try {
-      const payload = await runTool(m[1], args || {}, env);
-      return reply({ payload }, 200, cors);
+      const out = await runTool(m[1], args || {}, env);
+      // ListingsShowPhoto returns { payload, content } (an image block); everything else is a payload.
+      return reply(out && Array.isArray(out.content) ? out : { payload: out }, 200, cors);
     } catch (err) {
       return reply({ error: err.message, code: err.code || "error" }, err.status || 502, cors);
     }
@@ -77,7 +78,15 @@ async function runTool(tool, args, env) {
     const key = need(args.listing_key);
     const id = need(args.photo_id);
     const d = await spark(`/listings/${key}/photos/${id}`, env);
-    return (d.Results || [])[0] || null;
+    const photo = (d.Results || [])[0] || null;
+    // Like the RealMLS connector, also return the image itself as an MCP image block, which
+    // Listing Video, Social Posts and Open House Flyers read. Photos come from Spark's CDN.
+    const src = photo && (photo.Uri1600 || photo.Uri1280 || photo.Uri1024 || photo.Uri800 || photo.UriLarge);
+    if (!src || !/^https:\/\/[a-z0-9.-]+\.sparkplatform\.com\//.test(src)) return photo;
+    const img = await fetch(src);
+    if (!img.ok) return photo;
+    const mimeType = (img.headers.get("content-type") || "image/jpeg").split(";")[0];
+    return { payload: photo, content: [{ type: "image", mimeType, data: toBase64(await img.arrayBuffer()) }] };
   }
   if (STATS[tool]) {
     const q = new URLSearchParams();
@@ -115,6 +124,13 @@ function listing(r) {
     StandardFields: r.StandardFields || {},
     ...(id ? { FlexmlsLink: `https://members.flexmls.com/start/listing/number/index.html?list=${encodeURIComponent(id)}` } : {}),
   };
+}
+
+function toBase64(buf) {
+  const bytes = new Uint8Array(buf);
+  let bin = "";
+  for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
+  return btoa(bin);
 }
 
 function inList(field, values) {

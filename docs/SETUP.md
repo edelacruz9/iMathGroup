@@ -62,6 +62,10 @@ Your keys are saved only in this browser. On a new computer, connect again. To r
 
 Elliot sends you a file called `roster.json`. In **Connections**, under **Team roster**, click **Import roster file** and choose it. The Studio reloads with the team and the loan officers filled in. Keep the file private; it has everyone's contact details.
 
+## Pull listings from the MLS
+
+On **Social Posts** (Just Listed, Open House, Under Contract, Just Sold) and **Open House Flyers**, choose **Pull from MLS**, type the MLS number or street address, and click **Pull listing**. It fills the address, city, price, beds, baths and square feet. Check the photo box to also bring in the listing photos (the primary photo for a post, up to four for a flyer). Only use photos you have the right to use. For another office's listing, get their permission and add a courtesy line. You can edit anything afterwards, or choose **Enter manually** to type everything yourself.
+
 ## 6. Fill in your profile
 
 Pick yourself under **Who are you?**, then check your name, title, phone, email, website and photo. These print on everything you make. Not on the roster yet? Choose **I am not on the list yet** and type your details.
