@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.wrangler/
+.dev.vars
+.env*
+.DS_Store
+# The real team roster has contact details; only roster.example.json is committed.
+roster.json
+public/roster.json

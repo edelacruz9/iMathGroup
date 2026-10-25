@@ -1,0 +1,11 @@
+name = "imath-mls"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+workers_dev = true
+
+[vars]
+# The address you open the Studio from. Comma-separate if you use more than one.
+ALLOWED_ORIGIN = "https://edelacruz9.github.io"
+
+# Secrets are set with `npx wrangler secret put SPARK_TOKEN` and `... STUDIO_PASSCODE`,
+# or in the Cloudflare dashboard under Settings > Variables and Secrets. Never put them here.

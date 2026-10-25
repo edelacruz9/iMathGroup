@@ -1,0 +1,46 @@
+{
+  "name": "iMath Group Roster",
+  "updated": "2026-10-25",
+  "defaults": {
+    "title": "REALTOR®",
+    "website": "www.example.com",
+    "tagline": "Humble + Hungry + Smart",
+    "officeAddress": "Office address"
+  },
+  "people": [
+    {
+      "id": "agent-example",
+      "role": "agent",
+      "name": "Agent Name",
+      "title": "",
+      "license": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "social": "",
+      "tagline": "",
+      "officeAddress": "",
+      "bio": "",
+      "qrUrl": "",
+      "spanish": false,
+      "headshot": ""
+    },
+    {
+      "id": "lo-example",
+      "role": "lo",
+      "name": "Loan Officer Name",
+      "title": "Loan Officer",
+      "nmls": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "social": "",
+      "tagline": "",
+      "officeAddress": "",
+      "bio": "",
+      "qrUrl": "",
+      "spanish": false,
+      "headshot": ""
+    }
+  ]
+}

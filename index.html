@@ -1,0 +1,903 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>iMath Marketing Studio</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; media-src 'self' data: blob: https:; connect-src 'self' https:; worker-src 'self' blob:; frame-src 'none'; object-src 'none'">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="legacy/base.css">
+  <link rel="stylesheet" href="legacy/studio.css">
+</head>
+<body>
+<!-- (c) 2026 Elliot De la Cruz and iMath Group. All rights reserved. Proprietary and confidential. Licensed for use only. Copying, modification, reverse engineering, redistribution, or use of this code, design, or layout as a template is prohibited without written permission. -->
+<header class="mast">
+  <div class="wrap">
+    <img id="mastLogo" alt="iMath Group and United Real Estate Gallery">
+    <div>
+      <h1>Marketing Studio<i>.</i></h1>
+      <p>Social posts, business cards, open house flyers, yard signs, email signatures, and live MLS market reports. Your name leads, the iMath Group and United Real Estate Gallery lockup keeps every piece compliant.</p>
+    </div>
+  </div>
+</header>
+<nav class="tabs" aria-label="Sections"><div class="wrap">
+  <button type="button" data-tab="social" class="tab">Social Posts</button>
+  <button type="button" data-tab="cards" class="tab">Business Cards</button>
+  <button type="button" data-tab="flyers" class="tab">Open House Flyers</button>
+  <button type="button" data-tab="signs" class="tab">Yard Signs</button>
+  <button type="button" data-tab="email" class="tab">Email Signature</button>
+  <button type="button" data-tab="cma" class="tab">CMA and Investor Report</button>
+  <button type="button" data-tab="docs" class="tab">Create Anything</button>
+  <button type="button" data-tab="tools" class="tab">Tool Library</button>
+  <button type="button" data-tab="video" class="tab">Listing Video</button>
+  <button type="button" data-tab="fun" class="tab">Avatars and GIFs</button>
+  <button type="button" data-tab="guide" class="tab">Brand Guide</button>
+  <button type="button" data-tab="tips" class="tab">Tips and Limits</button>
+</div></nav>
+<div class="tabbar" id="tabbar"><div class="wrap tb-row"><button type="button" class="tb-arrow" id="tb_prev" aria-label="Previous tab"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button><button type="button" class="tb-menu" id="tb_menu" aria-expanded="false" aria-controls="tb_panel"><small>You are in</small><b id="tb_name">Social Posts</b><span>All tabs</span></button><button type="button" class="tb-arrow" id="tb_next" aria-label="Next tab"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="tb-panel" id="tb_panel" hidden><div class="wrap tb-grid"></div></div></div>
+
+<div class="guide-ov" id="setupGuide" hidden role="dialog" aria-modal="true" aria-labelledby="sgTitle">
+  <div class="guide">
+    <div class="guide-head"><div><div class="eyebrow">One time, about 5 minutes</div><h2 id="sgTitle">Set up the CMA tool<span class="dot">.</span></h2><p>You need two things: your own <b>Flexmls</b> username and password, and your own <b>Claude</b> account. Do the steps in order. Each one says exactly what to click, what you should see, and what to do if it looks different.</p></div><button class="mini" type="button" data-guide-close aria-label="Close guide">Close</button></div>
+    <ol class="guide-steps">
+      <li><div class="gs-head"><b>Open the studio inside Claude</b><span class="gs-state" data-gs="claude"></span></div>
+        <ol><li>Sign in at <b>claude.ai</b> with your own account.</li><li>Open the Marketing Studio link Elliot shared with you. Do not use a downloaded copy.</li></ol>
+        <p class="gs-see"><b>You should see:</b> the studio inside Claude, with this guide button on the CMA tab.</p>
+        <p class="gs-fix"><b>If it says the page is private or you cannot open it:</b> ask Elliot to share the studio with your email address.</p></li>
+      <li><div class="gs-head"><b>Turn on AI access in Flexmls</b><span class="gs-state" data-gs="flex"></span></div>
+        <ol><li>Sign in to <a href="https://www.flexmls.com/" target="_blank" rel="noopener">Flexmls</a> as usual.</li><li>Open the <b>Menu</b>, then <b>Preferences</b>, then <b>AI Settings</b>. Tip: type <b>AI Settings</b> in the Flexmls menu search box.</li><li>Switch the <b>MCP server</b> toggle on.</li><li>Read the terms and click <b>I Agree</b>.</li></ol>
+        <p class="gs-see"><b>You should see:</b> the MCP server toggle turned on.</p>
+        <p class="gs-fix"><b>If you do not see AI Settings:</b> realMLS already allows it, so update Flexmls or contact realMLS member support and ask them to enable the Flexmls MCP server for your login.</p></li>
+      <li><div class="gs-head"><b>Add RealMLS to your Claude account</b><span class="gs-state" data-gs="conn"></span></div>
+        <ol><li>Open <a href="https://claude.ai/customize/connectors" target="_blank" rel="noopener">Claude connectors</a>. Or in Claude click your name or initials at the bottom left, then <b>Customize</b> (older versions say <b>Settings</b>), then <b>Connectors</b>.</li><li>Click the <b>+</b> button, then <b>Add custom connector</b>.</li><li>Name: <span class="cc-copy"><code>RealMLS</code><button type="button" class="mini" data-copy="RealMLS">Copy</button></span> Type it exactly like this. The studio looks for this name.</li><li>Remote MCP server URL: <span class="cc-copy"><code>https://mcp.fbsdata.com/mcp</code><button type="button" class="mini" data-copy="https://mcp.fbsdata.com/mcp">Copy</button></span></li><li>Leave Advanced settings alone and click <b>Add</b>.</li></ol>
+        <p class="gs-see"><b>You should see:</b> RealMLS in your connectors list with a <b>Connect</b> button.</p>
+        <p class="gs-fix"><b>If there is no Add custom connector button:</b> on a Team or Enterprise plan your Claude admin must allow custom connectors or add RealMLS for everyone. <b>On the Free plan</b> you can have only one custom connector, so remove any other custom connector first. <b>If you already added it under a different name,</b> remove it and add it again as RealMLS.</p></li>
+      <li><div class="gs-head"><b>Connect it with your Flexmls login</b><span class="gs-state" data-gs="auth"></span></div>
+        <ol><li>Still in Claude connectors, click <b>Connect</b> next to RealMLS.</li><li>A Flexmls sign in window opens. Sign in with <b>your own</b> Flexmls username and password. Claude never sees them.</li><li>Click <b>Allow</b> if Flexmls asks.</li></ol>
+        <p class="gs-see"><b>You should see:</b> RealMLS marked as connected.</p>
+        <p class="gs-fix"><b>If no window opens:</b> allow pop ups for claude.ai in your browser and click Connect again. <b>If Flexmls refuses:</b> finish step 2 first. <b>If it later says Sign in again:</b> click RealMLS, then Reconnect.</p></li>
+      <li><div class="gs-head"><b>Let the studio use it</b><span class="gs-state" data-gs="perm"></span></div>
+        <ol><li>Come back to the studio and <b>reload the page</b> so it sees your new connector.</li><li>Open the CMA tab and click <b>Set up everything</b>.</li><li>Claude asks if this page may use RealMLS. Click <b>Allow</b>. Choose <b>Always allow</b> if Claude offers it so you are not asked again.</li></ol>
+        <p class="gs-see"><b>You should see:</b> the checklist turn green and say All set.</p>
+        <p class="gs-fix"><b>If you clicked Don't allow by mistake:</b> reload the page and click Set up everything again. <b>If nothing happens when you click:</b> reload the page; the permission box only appears once per visit.</p></li>
+      <li><div class="gs-head"><b>Run the live test</b><span class="gs-state" data-gs="test"></span></div>
+        <ol><li>Click <b>Test now</b> in the checklist.</li></ol>
+        <p class="gs-see"><b>You should see:</b> Live test with your MLS login: Done.</p>
+        <p class="gs-fix"><b>If it fails:</b> the checklist names the reason. Flexmls refused: redo step 2. Sign in again: redo step 4. MLS busy: wait a minute and test again.</p></li>
+      <li><div class="gs-head"><b>Optional: turn on the online lookup</b><span class="gs-state" data-gs="web"></span></div>
+        <ol><li>In <a href="https://claude.ai/customize/connectors" target="_blank" rel="noopener">Claude connectors</a> click <b>Browse connectors</b>.</li><li>Search <b>Parallel Search</b> and click <b>Connect</b>. It is free and needs no login.</li><li>Reload the studio and click <b>Allow</b> when asked.</li></ol>
+        <p class="gs-see"><b>You should see:</b> Online lookup: Done. Reports now fill gaps from public records, realtor.com, Redfin, Zillow, Homes.com, Trulia and PropertyReports.us.</p>
+        <p class="gs-fix"><b>If it says the free search limit was reached:</b> wait a few minutes. Reports still work with realMLS only.</p></li>
+    </ol>
+    <p class="wz-checked" id="guideChecked"></p>
+    <div class="guide-foot"><a class="btn green" id="guideHelp" href="https://claude.ai/new" target="_blank" rel="noopener">Stuck? Ask Claude in a new window</a><button class="btn ghost" type="button" data-guide-close>Back to the studio</button></div>
+  </div>
+</div>
+<main class="wrap">
+<div class="license" id="licenseBar" hidden>
+  <div><b>Private tool, licensed for use only.</b> The iMath Marketing Studio is the property of Elliot De la Cruz and iMath Group. You may use it to create marketing and reports for your own iMath Group business. You may not copy, download, modify, reverse engineer, share, resell, or use it or its design, code, or layouts as a template for any other site or tool.</div>
+  <button class="btn green" type="button" id="licenseOk">I understand and agree</button>
+</div>
+<details class="access" id="access" data-state="checking">
+  <summary><span class="eyebrow">Access check</span><span class="acc-sum">Checking what works for you...</span></summary>
+  <div class="acc-body"></div>
+</details>
+<section id="profile" class="profile">
+  <details id="profileBox" open>
+    <summary><span class="eyebrow">Step 1, used everywhere</span><span class="ptitle">My profile</span><span class="psum" id="profileSummary"></span></summary>
+    <div class="roster-pick"><label for="p_roster">Who are you?</label><select id="p_roster"></select><a class="mini" href="https://claude.ai/artifact/RokUo5PwekPu9LRkV2KRyx#join" target="_blank" rel="noopener">Not listed? Onboarding sheet</a><p class="note" id="p_rosterNote"></p></div>
+    <div class="grid pgrid">
+      <label>Name as licensed<input type="text" id="p_agentName" autocomplete="name"></label>
+      <label>Title<select id="p_titleSel"><option>REALTOR®</option><option>Sales Associate</option><option>Broker Associate</option><option>Team Lead</option><option value="__custom">Custom</option></select></label>
+      <label id="customTitleWrap" hidden>Custom title<input type="text" id="p_customTitle"></label>
+      <label>Phone<input type="tel" id="p_phone" placeholder="904.555.0123"></label>
+      <label>Email<input type="email" id="p_email"></label>
+      <label>Website<input type="text" id="p_website" placeholder="www.explorejacksonvilleflhomes.com"></label>
+      <label>Social handle<input type="text" id="p_social" placeholder="@yourhandle"></label>
+      <label class="full">Tagline for card backs<input type="text" id="p_tagline" placeholder="Humble + Hungry + Smart"></label>
+      <label class="full">Office address (optional, prints on business card backs)<input type="text" id="p_officeAddress" placeholder="1000 Riverside Ave. Ste 550, Jacksonville, FL 32204" maxlength="90"></label>
+      <label class="full">Short bio for flyers<textarea id="p_bio"></textarea></label>
+      <label>QR code link<input type="url" id="p_qrUrl" placeholder="https://"></label>
+      <label class="check"><input type="checkbox" id="p_qrOn"> Add a QR code where the design has room</label>
+      <label class="check"><input type="checkbox" id="p_bilingualBadge"> I speak Spanish (adds "Se habla español")</label>
+      <label class="check full" id="p_avatarWrap" hidden><input type="checkbox" id="p_useAvatar"> Use my avatar instead of my photo everywhere</label>
+      <div class="file full"><span id="hsName">Headshot: none yet, initials will show. Tip: a transparent PNG cutout looks best.</span><input type="file" id="headshotIn" accept="image/*" aria-label="Upload headshot"></div>
+    </div>
+    <p class="note">Saved in this browser only. Nothing is uploaded or shared.</p>
+  </details>
+</section>
+
+<section data-panel="social" id="social">
+  <div class="eyebrow">Instagram, Facebook, TikTok, LinkedIn, Google</div>
+  <h2>Social Posts<span class="dot">.</span></h2>
+  <p class="lede">Pick a template and size, add your photo and details, then download a ready to post image, a swipeable carousel, or a lightly branded video with a matching caption.</p>
+  <div class="builder">
+    <div class="stage">
+      <div class="canvasbox"><img id="preview" alt="Post preview"><canvas id="vidCanvas" hidden aria-label="Video preview"></canvas><video id="vidSrc" playsinline preload="auto" hidden></video></div>
+      <div class="carstrip" id="carStrip" hidden></div>
+      <div class="vidbar" id="vidBar" hidden><button class="btn" type="button" id="vidPlay">Play</button><input type="range" id="vidSeek" min="0" max="1000" value="0" aria-label="Scrub video"><span id="vidTime">0:00</span></div>
+      <div class="meta"><span id="sizeInfo"></span><span id="useInfo"></span></div>
+      <div class="actions">
+        <button class="btn green" id="dl" type="button">Download PNG</button>
+        <button class="btn ghost" id="dlPdf" type="button" hidden>LinkedIn PDF</button>
+        <button class="btn ghost" id="copyCap" type="button">Copy caption</button>
+        <button class="btn ghost" id="pack" type="button">Starter pack (zip)</button>
+      </div>
+      <div class="status" id="status" role="status"></div>
+    </div>
+    <div>
+      <div class="panel">
+        <h3>Template and size</h3>
+        <div class="seg" id="postType" role="group" aria-label="Post type"></div>
+        <div class="cats" id="cats"></div>
+        <div class="seg" id="formats" role="group" aria-label="Size"></div>
+        <div class="seg" id="langs" role="group" aria-label="Language"></div>
+      </div>
+      <div class="panel">
+        <h3>Post details <small id="tplName"></small></h3>
+        <div class="file" id="photoRow"><span id="photoName">Photo: add a bright, horizontal photo you have rights to use</span><input type="file" id="photoIn" accept="image/*" aria-label="Upload photo"></div>
+        <div class="grid" id="fields" style="margin-top:12px"></div>
+        <ul class="remind" id="remind"></ul>
+      </div>
+      <div class="panel" id="carPanel" hidden>
+        <h3>Carousel slides <small id="carCount"></small></h3>
+        <p class="note">Slide 1 is the template above. Add up to 9 more. Every slide carries the brokerage line; the last slide is your contact card.</p>
+        <div class="slides" id="slides"></div>
+        <div class="actions" style="margin-bottom:10px"><button class="btn ghost" type="button" id="addSlide">Add slide</button><button class="mini" type="button" id="resetSlides">Reset to suggested slides</button></div>
+      </div>
+      <div class="panel" id="vidPanel" hidden>
+        <h3>Branded video <small>Soft, light touch branding</small></h3>
+        <div class="file"><span id="vidName">Add a video (MP4 or MOV, up to 3 minutes)</span><input type="file" id="vidIn" accept="video/*" aria-label="Upload video"></div>
+        <div class="grid" style="margin-top:12px">
+          <div class="full"><label>Shape</label><div class="seg" id="vidFmt" role="group" aria-label="Video shape"></div></div>
+          <div class="full"><label>Fit</label><div class="seg" id="vidFit" role="group" aria-label="Video fit"></div></div>
+        </div>
+        <h4 class="sub">Branding layers</h4>
+        <div class="toggles" id="vidToggles"></div>
+        <label>Softness <span class="tag" id="vidSoftVal"></span><input type="range" id="vidSoft" min="20" max="100" value="80"></label>
+        <h4 class="sub">Banner</h4>
+        <div class="grid">
+          <label class="full">Headline<input type="text" id="vidHead" maxlength="36"></label>
+          <label class="full">Second line<input type="text" id="vidSub" maxlength="60"></label>
+          <div class="full"><label>Style</label><div class="seg" id="vidStyle" role="group" aria-label="Banner style"></div></div>
+          <div class="full"><label>Position and timing</label><div class="seg" id="vidPos" role="group" aria-label="Banner position"></div><div class="seg" id="vidWhen" role="group" aria-label="Banner timing"></div></div>
+        </div>
+        <ul class="remind"><li>The brokerage name always stays on screen. If you turn off both the header and footer, a small license line appears by itself.</li><li>Keep this tab open and visible while the video exports. It records in real time.</li></ul>
+      </div>
+      <div class="panel">
+        <h3>Caption <small>Edit before posting</small></h3>
+        <pre class="cap" id="caption"></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-panel="cards" id="cards" hidden>
+  <div class="eyebrow">3.5 x 2 in, double sided, print ready, for realtors and loan officers</div>
+  <h2>Business Cards<span class="dot">.</span></h2>
+  <p class="lede">Ten styles built from what top producers are carrying right now. Three of them put you front and center, and the other seven can add your photo with one click, sized and placed the way you like. Realtor cards carry the combined iMath Group and United Real Estate Gallery lockup. Loan officer cards switch to iMath Group powered by Cornerstone First Mortgage, with no brokerage marks at all.</p>
+  <div class="seg modeseg" id="cardMode" role="group" aria-label="Who is this card for"><button type="button" class="chip" data-m="re" aria-pressed="true">Realtor card</button><button type="button" class="chip" data-m="lo" aria-pressed="false">Loan officer card</button></div>
+  <div class="builder">
+    <div class="stage">
+      <div class="canvasbox twin"><img id="cardFront" alt="Card front"><img id="cardBack" alt="Card back"></div>
+      <div class="meta"><span id="cardSpec"></span><span>Front and back, 0.125 in bleed, 300 dpi</span></div>
+      <div class="actions">
+        <button class="btn green" type="button" data-export="cards" data-kind="pdf">Download print PDF</button>
+        <button class="btn ghost" type="button" data-export="cards" data-kind="png">Download PNGs</button>
+      </div>
+      <div class="status" id="cardsStatus" role="status"></div>
+    </div>
+    <div>
+      <div class="panel" id="loCardPanel" hidden><h3>Loan officer details <small>Lending cards only</small></h3>
+        <div class="grid">
+          <div class="full"><span class="lbl">Main color</span><div class="seg" id="lc_color" role="group" aria-label="Main card color"><button type="button" class="chip" data-c="gray" aria-pressed="true"><span class="sw" style="background:#62666a"></span>Slate gray</button><button type="button" class="chip" data-c="navy" aria-pressed="false"><span class="sw" style="background:#002e5e"></span>Navy</button></div></div>
+          <label>Loan officer<select id="lc_lo"></select></label>
+          <label>Name as licensed in NMLS<input type="text" id="lc_name"></label>
+          <label>Title<input type="text" id="lc_title" placeholder="Loan Officer"></label>
+          <label>Individual NMLS number<input type="text" id="lc_nmls" inputmode="numeric" placeholder="Required"></label>
+          <label>Phone<input type="tel" id="lc_phone"></label>
+          <label>Email<input type="email" id="lc_email"></label>
+          <label>Website<input type="text" id="lc_website"></label>
+          <label>Social handle<input type="text" id="lc_social" placeholder="@yourhandle"></label>
+          <label class="full">Tagline for the back<input type="text" id="lc_tagline" maxlength="90"></label>
+          <label class="full">Office address (optional, prints on the back)<input type="text" id="lc_officeAddress" placeholder="Licensed branch address: Street, Suite, City, FL ZIP" maxlength="90"></label>
+          <label>Branch NMLS (optional)<input type="text" id="lc_branchNmls" inputmode="numeric" placeholder="If Cornerstone asks for it"></label>
+          <label class="check full"><input type="checkbox" id="lc_qrOn"> Add a custom QR code</label>
+          <label>QR code link<input type="url" id="lc_qrUrl" placeholder="https://"></label>
+          <label>QR label<input type="text" id="lc_qrLabel" maxlength="26" placeholder="SCAN TO GET STARTED"></label>
+          <label class="check full"><input type="checkbox" id="lc_bilingual"> Speaks Spanish (adds "Se habla español" on the back)</label>
+          <div class="file full"><span id="lc_photoName"></span><input type="file" id="lc_photoIn" accept="image/*" aria-label="Upload loan officer headshot"></div>
+        </div>
+        <p class="warn" id="lc_warn" hidden></p>
+        <ul class="remind"><li>Your NMLS number prints on the front next to your title. The back carries Cornerstone First Mortgage NMLS #173855, FL MLD1510, NMLS Consumer Access, and Equal Housing Lender.</li><li>The logo is always iMath Group powered by Cornerstone First Mortgage. No United Real Estate Gallery marks appear on lending cards.</li><li>Keep rates, payments, down payment amounts, and program promises off cards. Those trigger extra disclosures.</li><li>If you add an office address, use the licensed branch address. Ask Cornerstone whether the branch NMLS should print with it.</li><li>Send the PDF to Cornerstone marketing compliance for approval before you order.</li></ul>
+      </div>
+      <div class="panel"><h3>Style <small>Tap to choose</small></h3><div class="styles" id="cardStyles"></div></div>
+      <div class="panel"><h3>Options</h3>
+        <div class="photoctl" id="cardPhotoCtl">
+          <label class="check"><input type="checkbox" id="cd_photo"> Show my photo on this card</label>
+          <p class="note" id="cd_photoNote"></p>
+          <div class="grid" id="cd_photoAdj">
+            <label>Photo size <span class="tag" id="cd_scaleVal">100%</span><input type="range" id="cd_scale" min="60" max="140" step="5" value="100"></label>
+            <label>Move left or right <span class="tag" id="cd_dxVal">0 in</span><input type="range" id="cd_dx" min="-0.5" max="0.5" step="0.05" value="0"></label>
+            <label>Move up or down <span class="tag" id="cd_dyVal">0 in</span><input type="range" id="cd_dy" min="-0.4" max="0.4" step="0.05" value="0"></label>
+            <div style="display:flex;align-items:end"><button type="button" class="btn ghost" id="cd_photoReset">Reset photo</button></div>
+          </div>
+        </div>
+        <div class="grid">
+          <label>Back side language<select id="cardLang"><option value="en">English</option><option value="es">Español</option></select></label>
+          <label>Print file<select class="marks"><option value="0">Printer ready, bleed only (Vistaprint, online printers)</option><option value="1">With crop marks (local print shops)</option></select></label>
+        </div>
+        <ul class="remind"><li>Recommended stock: 16 pt matte or soft touch. Spot gloss or foil on the logo is a nice upgrade.</li><li>Your QR code, tagline, social handle, office address, and "Se habla español" come from your profile. The office address prints on the back of every card.</li><li>Every style can show your headshot. Hero Headshot, Vertical Portrait, and Photo Band always do. The photo never covers your name, phone, or logo, and it always stays inside the safe print area.</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-panel="flyers" id="flyers" hidden>
+  <div class="eyebrow">8.5 x 11 in, print ready</div>
+  <h2>Open House Flyers<span class="dot">.</span></h2>
+  <p class="lede">The home leads, you come next, and your loan officer is optional and never larger than you. English, Spanish, or bilingual, with the required fine print built in.</p>
+  <div class="builder">
+    <div class="stage">
+      <div class="canvasbox"><img id="flyerPrev" alt="Flyer preview" class="tall"></div>
+      <div class="meta"><span>8.5 x 11 in, 0.125 in bleed, 300 dpi</span><span id="flyerLoInfo"></span></div>
+      <div class="actions">
+        <button class="btn green" type="button" data-export="flyers" data-kind="pdf">Download print PDF</button>
+        <button class="btn ghost" type="button" data-export="flyers" data-kind="png">Download PNG</button>
+      </div>
+      <div class="status" id="flyersStatus" role="status"></div>
+    </div>
+    <div>
+      <div class="panel"><h3>Style <small>Tap to choose</small></h3><div class="styles tallthumbs" id="flyerStyles"></div></div>
+      <div class="panel"><h3>The home</h3>
+        <div class="file"><span id="flyerPhotoName">Photos: up to 4. The first is the hero.</span><input type="file" id="flyerPhotos" accept="image/*" multiple aria-label="Upload listing photos"></div>
+        <div class="grid" style="margin-top:12px">
+          <label>Street address<input type="text" id="fl_address"></label>
+          <label>City, state, ZIP<input type="text" id="fl_city"></label>
+          <label>Price<input type="text" id="fl_price"></label>
+          <label>Bedrooms<input type="text" id="fl_beds"></label>
+          <label>Bathrooms<input type="text" id="fl_baths"></label>
+          <label>Square feet<input type="text" id="fl_sqft"></label>
+          <label>Open house date<input type="text" id="fl_ohDate"></label>
+          <label>Open house time<input type="text" id="fl_ohTime"></label>
+          <label class="full">Highlights, one per line (up to 4)<textarea id="fl_highlights"></textarea></label>
+          <label class="full">Listing link for the QR code<input type="url" id="fl_qrUrl" placeholder="Uses your profile link if empty"></label>
+        </div>
+      </div>
+      <div class="panel"><h3>Language and loan officer</h3>
+        <div class="seg" id="flyerLang" role="group" aria-label="Language"></div>
+        <div class="grid">
+          <label>Loan officer (optional)<select id="flyerLO" class="loSel"></select></label>
+          <label>Loan officer size<select id="flyerLOSize"><option value="smaller">Smaller than me (recommended)</option><option value="equal">Equal to me</option></select></label>
+          <label class="full">Print file<select class="marks"><option value="0">Printer ready, bleed only</option><option value="1">With crop marks</option></select></label>
+        </div>
+        <ul class="remind"><li>Describe the home, not the ideal buyer. Fair Housing applies to flyers too.</li><li>Co branded flyers: split the printing cost with your loan officer in proportion to the space each of you uses.</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsec" id="signin">
+    <div class="eyebrow">Matches the flyer</div>
+    <h2>Open House Sign In Sheet<span class="dot">.</span></h2>
+    <p class="lede">Uses the address, date, language, and loan officer from the flyer above. Add a QR code so guests can sign in on their phone instead of with a pen.</p>
+    <div class="builder">
+      <div class="stage">
+        <div class="canvasbox"><img id="siPrev" alt="Sign in sheet preview" class="tall"></div>
+        <div class="actions">
+          <button class="btn green" type="button" data-export="signin" data-kind="pdf">Download sign in PDF</button>
+          <button class="btn ghost" type="button" data-export="signin" data-kind="png">PNG</button>
+        </div>
+        <div class="status" id="signinStatus" role="status"></div>
+      </div>
+      <div>
+        <div class="panel"><h3>Style</h3><div class="chips" id="siStyles" style="margin-bottom:12px"></div></div>
+        <div class="panel"><h3>QR code</h3>
+          <div class="grid">
+            <label class="check full"><input type="checkbox" id="si_qrOn" checked> Show a sign in QR code</label>
+            <label class="full">QR link (Google Form, CRM open house page, or listing page)<input type="url" id="si_qrUrl" placeholder="https://"></label>
+            <label>Label under the code<input type="text" id="si_qrLabel" placeholder="Scan to sign in"></label>
+            <label>QR color<select id="si_qrColor"><option value="#002e5e">Navy</option><option value="#000000">Black</option><option value="#3f8f39">Green (dark)</option></select></label>
+          </div>
+          <ul class="remind"><li>Test the code with your phone before the open house.</li><li>Sign in data belongs to the listing agent. Keep it private and follow up within 24 hours.</li><li>The consent line updates automatically when a loan officer is selected.</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-panel="signs" id="signs" hidden>
+  <div class="eyebrow">24 x 18 panels, 36 x 24 large, 6 x 24 riders, directionals</div>
+  <h2>Yard Signs<span class="dot">.</span></h2>
+  <p class="lede">Choose one style family and every sign, rider, and arrow in it matches. Status words are sized for about one inch of letter height per ten feet of viewing distance.</p>
+  <div class="builder">
+    <div class="stage">
+      <div class="canvasbox"><img id="signPrev" alt="Sign preview"></div>
+      <div class="meta"><span id="signSpec"></span><span>0.125 in bleed, 150 dpi at full size</span></div>
+      <div class="actions">
+        <button class="btn green" type="button" data-export="sign" data-kind="pdf">Download this sign (PDF)</button>
+        <button class="btn ghost" type="button" data-export="sign" data-kind="png">PNG</button>
+      </div>
+      <div class="status" id="signsStatus" role="status"></div>
+      <p class="warn" id="signWarn" hidden></p>
+    </div>
+    <div>
+      <div class="panel"><h3>Style family <small>Every piece matches</small></h3><div class="styles" id="signStyles"></div></div>
+      <div class="panel"><h3>Piece and message</h3>
+        <div class="seg" id="signPiece" role="group" aria-label="Piece"></div>
+        <div class="chips" id="signMsg" style="margin-bottom:12px"></div>
+        <div class="grid">
+          <label id="dirNoteWrap">Directional note<input type="text" id="sg_dirNote" placeholder="Today 1 to 4 PM"></label>
+          <label id="dirStatusWrap">Directional message<select id="sg_dirStatus"><option value="open_house">Open House</option><option value="for_sale">For Sale</option><option value="coming_soon">Coming Soon</option></select></label>
+          <label>Loan officer (optional)<select id="signLO" class="loSel"></select></label>
+          <label>Listing link for QR<input type="url" id="sg_qrUrl" placeholder="Uses your profile link if empty"></label>
+        </div>
+        <div class="photoctl" id="signPhotoCtl">
+          <label class="check"><input type="checkbox" id="sg_photo"> Show my photo on this sign</label>
+          <p class="note" id="sg_photoNote"></p>
+          <div class="grid" id="sg_photoAdj">
+            <label>Photo size <span class="tag" id="sg_scaleVal">100%</span><input type="range" id="sg_scale" min="60" max="160" step="5" value="100"></label>
+            <label>Move left or right <span class="tag" id="sg_dxVal">0 in</span><input type="range" id="sg_dx" min="-4" max="4" step="0.25" value="0"></label>
+            <label>Move up or down <span class="tag" id="sg_dyVal">0 in</span><input type="range" id="sg_dy" min="-3" max="3" step="0.25" value="0"></label>
+            <div style="display:flex;align-items:end"><button type="button" class="btn ghost" id="sg_photoReset">Reset photo</button></div>
+          </div>
+        </div>
+        <div class="seg" id="signLang" role="group" aria-label="Language"></div>
+        <label class="full">Print file<select class="marks"><option value="0">Printer ready, bleed only</option><option value="1">With crop marks</option></select></label>
+      </div>
+      <div class="panel"><h3>Build a full set <small>One PDF, one page per piece</small></h3>
+        <div class="setgrid" id="signSet"></div>
+        <label>Main panel size for the set<select id="setSize"><option value="panel">24 x 18</option><option value="large">36 x 24</option></select></label>
+        <div class="actions" style="margin-top:12px"><button class="btn" type="button" data-export="signset" data-kind="pdf">Download set PDF</button></div>
+        <ul class="remind"><li>Renovation, down payment assistance, and low down payment messages need a loan officer. They carry the NMLS and Equal Housing Lender lines automatically.</li><li>Property eligibility for FHA 203(k) or Conventional renovation loans is never guaranteed. Confirm with your loan officer before the sign goes up.</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-panel="email" id="email" hidden>
+  <div class="eyebrow">Outlook, Gmail, Apple Mail, iCloud, and your phone</div>
+  <h2>Email Signature<span class="dot">.</span></h2>
+  <p class="lede">Five realtor signatures that match everything else in your kit. Pick a style, add your links, copy it, and paste it into your email. Your details come from My profile.</p>
+  <div class="builder">
+    <div class="stage">
+      <div class="sigbox"><div id="sigPreview" class="sigpaper"></div></div>
+      <div class="meta"><span id="sigSpec"></span><span>Paste ready HTML signature</span></div>
+      <div class="actions">
+        <button class="btn green" type="button" id="sigCopy">Copy signature</button>
+        <button class="btn ghost" type="button" id="sigSelect">Select it instead</button>
+        <button class="btn ghost" type="button" id="sigText">Copy plain text</button>
+      </div>
+      <div class="actions">
+        <button class="btn ghost" type="button" id="sigPhotoDl">Download my photo</button>
+        <button class="btn ghost" type="button" id="sigLogoDl">Download logo</button>
+      </div>
+      <div class="status" id="sigStatus" role="status"></div>
+      <div class="panel siginstall"><h3>Add it to your email <small>Pick where you send from</small></h3>
+        <div class="seg" id="sigClients" role="group" aria-label="Email app"></div>
+        <ol class="steps" id="sigSteps"></ol>
+      </div>
+    </div>
+    <div>
+      <div class="panel"><h3>Style <small>Tap to choose</small></h3><div class="sigstyles" id="sigStyles"></div></div>
+      <div class="panel"><h3>Options</h3>
+        <label class="check"><input type="checkbox" id="sg2_photo" checked> Show my photo <span class="tag">Highly recommended</span></label>
+        <p class="note" id="sg2_photoNote">People reply faster to a face they recognize. Your headshot comes from My profile.</p>
+        <label class="check"><input type="checkbox" id="sg2_addr"> Show my office address</label>
+        <div class="grid">
+          <label class="full">Photo link (optional, best for Gmail)<input type="url" id="sg2_photoUrl" placeholder="https:// link to a hosted headshot"></label>
+        </div>
+        <h4 class="sub">Personal links</h4>
+        <div class="grid" id="sg2_links"></div>
+        <h4 class="sub">Social media</h4>
+        <div class="grid" id="sg2_socials"></div>
+        <ul class="remind"><li>The brokerage name, license number, and Equal Housing Opportunity line are built in and stay on every style.</li><li>Keep it to two or three links. A short signature gets more clicks.</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-panel="cma" id="cma" hidden>
+  <div class="eyebrow">Live from realMLS | Seller, buyer and investor reports</div>
+  <h2>CMA and Investor Report<span class="dot">.</span></h2>
+  <p class="lede">Connect your own realMLS login once, then type an address and get a full, branded report: value range with an adjustment grid, comps with photos and a map, market stats, rent comps, flip and rental math, a mortgage calculator, and a seller net sheet. Only your contact details from My profile appear on it.</p>
+  <div class="panel cma-connect" id="cma_connect">
+    <div class="wz-head">
+      <div class="wz-title"><h3>Set up your studio <small id="wz_sum">Checking your setup</small></h3><div class="wz-bar" aria-hidden="true"><i id="wz_bar"></i></div></div>
+      <div class="wz-top"><button class="btn ghost" type="button" data-guide>Open the setup guide</button><button class="btn green" type="button" id="wz_go">Set up everything</button><button class="mini" type="button" id="wz_toggle" aria-expanded="true">Hide steps</button></div>
+    </div>
+    <ol class="wz" id="wz_steps"></ol>
+    <div class="wz-foot">
+      <label class="check"><input type="checkbox" id="cc_web_use" checked> Use online lookup to fill gaps</label>
+      <div class="actions"><a class="btn ghost" id="wz_help" href="https://claude.ai/new" target="_blank" rel="noopener">Get help from Claude in a new window</a><button class="mini" type="button" id="cc_copy">Copy setup report for Elliot</button></div>
+    </div>
+    <div class="status" id="cc_diag_status" role="status"></div>
+  </div>
+  <div class="panel">
+    <div class="cma-top">
+      <label class="addr">Property address or MLS number<input type="text" id="cma_addr" placeholder="8943 3rd Ave, Jacksonville, FL 32208" autocomplete="off" spellcheck="false"></label>
+      <button class="btn green" type="button" id="cma_go">Build report</button>
+    </div>
+    <div class="cma-opts">
+      <div><label>Report type</label><div class="seg" id="cma_type" role="group" aria-label="Report type"></div></div>
+      <div><label>Condition of the home</label><div class="seg" id="cma_cond" role="group" aria-label="Condition"></div></div>
+      <label>Prepared for (optional)<input type="text" id="cma_client" placeholder="Client name" maxlength="60"></label>
+      <label>Co-brand with a loan officer<select id="cma_lo"></select></label>
+    </div>
+    <details class="cma-more"><summary>Adjust the facts and search</summary>
+      <p class="note" style="margin-top:8px">Leave blank to use realMLS. Fill these in when the listing is wrong or the home has never been listed.</p>
+      <div class="grid">
+        <label>ZIP code<input type="text" id="cma_zip" inputmode="numeric" maxlength="5" placeholder="32208"></label>
+        <label>Beds<input type="number" id="cma_beds" min="0" max="12" step="1"></label>
+        <label>Baths<input type="number" id="cma_baths" min="0" max="12" step="0.5"></label>
+        <label>Living sq ft<input type="number" id="cma_sqft" min="200" max="20000" step="1"></label>
+        <label>Year built<input type="number" id="cma_year" min="1850" max="2030" step="1"></label>
+        <label>Lot acres<input type="number" id="cma_lot" min="0" max="500" step="0.01"></label>
+        <label>Garage spaces<input type="number" id="cma_garage" min="0" max="6" step="1"></label>
+        <label>Pool<select id="cma_pool"><option value="">From MLS</option><option value="1">Yes</option><option value="0">No</option></select></label>
+        <label>Search radius<select id="cma_radius"><option value="">Smart</option><option value="0.5">0.5 mi</option><option value="1">1 mi</option><option value="1.5">1.5 mi</option><option value="2">2 mi</option><option value="3">3 mi</option></select></label>
+      </div>
+      <label class="check"><input type="checkbox" id="cma_photos" checked> Include listing and comp photos</label>
+    </details>
+    <div class="cma-conn" id="cma_conn" hidden></div>
+    <ul class="cma-prog" id="cma_prog" hidden></ul>
+    <div class="cma-ask" id="cma_ask" hidden role="dialog" aria-live="assertive"></div>
+    <button class="btn ghost" type="button" id="cma_skip" hidden style="margin-top:10px">Skip the online lookup</button>
+    <div class="status" id="cma_status" role="status"></div>
+  </div>
+  <details class="panel cma-chat" id="cma_chat">
+    <summary><b>Can't connect here? Run the CMA through your own Claude chat</b><span>Works for every teammate who has RealMLS added to their own Claude account. Same report, same math.</span></summary>
+    <ol class="cmc-steps">
+      <li><b>Type the address or MLS number above</b> and pick the report type and condition. Then click:<div class="actions"><a class="btn green" id="cmc_copy" href="https://claude.ai/new" target="_blank" rel="noopener">Copy the request and open Claude</a><button class="mini" type="button" id="cmc_show">Show the request</button></div><textarea id="cmc_req" readonly hidden aria-label="Request for Claude"></textarea></li>
+      <li><b>In the new Claude chat, paste and send</b> (Cmd V on a Mac, Ctrl V on Windows). Choose Allow if Claude asks to use RealMLS. It takes 1 to 3 minutes.</li>
+      <li><b>Copy Claude's answer</b> (the block that starts with IMATHCMA1, use the copy button on the block) and paste it here:<textarea id="cmc_in" placeholder="Paste Claude's answer here. It starts with IMATHCMA1."></textarea><div class="actions"><button class="btn green" type="button" id="cmc_go">Build report from Claude's answer</button><button class="mini" type="button" id="cmc_clear">Clear</button></div></li>
+    </ol>
+    <p class="note">Needs RealMLS in your own Claude account: setup steps 2 to 4 above (turn on AI access in Flexmls, add the RealMLS connector, connect it). Comp photos are left out in this mode.</p>
+    <div class="status" id="cmc_status" role="status"></div>
+  </details>
+  <div class="cma-empty" id="cma_empty"><b>Your report shows up here</b>Enter an address above. It takes about a minute to pull comps, rents, market stats and photos.</div>
+  <div class="cma-res" id="cma_res" hidden>
+    <aside class="cma-side">
+      <div class="cma-val" id="cma_val"></div>
+      <div id="cma_warn"></div>
+      <div class="panel"><h3>Download <small id="cma_pages"></small></h3>
+        <div class="actions" style="margin-bottom:10px">
+          <button class="btn" type="button" id="cma_pdf">PDF report</button>
+          <button class="btn ghost" type="button" id="cma_html">Interactive file</button>
+        </div>
+        <p class="note">The PDF is for printing and email. The interactive file opens in any browser with live calculators your client can play with.</p>
+        <div class="status" id="cma_dlstatus" role="status"></div>
+      </div>
+      <div class="panel"><h3>Comps used <small>Uncheck to exclude</small></h3>
+        <div class="cma-comps" id="cma_comps"></div>
+        <p class="note">The value, range and every page update as you change these.</p>
+      </div>
+    </aside>
+    <div class="cma-view">
+      <div class="cma-viewbar"><span id="cma_meta"></span><div class="seg" id="cma_zoom" role="group" aria-label="Preview size" style="margin:0"></div></div>
+      <div class="cma-pages"><div class="rdoc" id="cma_doc"></div></div>
+    </div>
+  </div>
+</section>
+
+<section data-panel="docs" id="docs" hidden>
+  <div class="eyebrow">Any files in, any branded piece out</div>
+  <h2>Create Anything<span class="dot">.</span></h2>
+  <p class="lede">Say what you need, add your files (PDF, Word, Excel or CSV, PowerPoint, photos, text), pick the pieces, and the studio builds them with iMath branding and optional loan officer co branding. Every piece stays editable before you download.</p>
+  <div class="panel cr-start">
+    <label for="cr_prompt">What do you want to make?</label>
+    <textarea id="cr_prompt" placeholder="Example: A promo kit for our Investor Networking Night, Thursday June 12, 6 to 8 PM at The Local, Jacksonville. Free, RSVP at imathgroup.com/rsvp. Speakers: me and Kyle Rivera. Use the attached photos."></textarea>
+    <div class="cr-ex" id="cr_ex" aria-label="Examples"></div>
+    <div class="cr-drop" id="cr_drop"><b>Add files</b><span>Drop them here or click to browse. PDF, Word, Excel or CSV, PowerPoint, photos and text. Add as many as you need.</span><input type="file" id="cr_in" multiple aria-label="Add files"></div>
+    <div class="cr-files" id="cr_files"></div>
+    <label style="margin-top:14px">Make these</label>
+    <div class="cr-outs" id="cr_outs"></div>
+    <details class="cr-brand" open><summary>Branding</summary><div class="grid2">
+      <div><label>Prepared by</label><div class="seg" id="cr_mode" role="group" aria-label="Prepared by"></div></div>
+      <div id="cr_loWrap"><label>Loan officer<select id="cr_lo"></select></label></div>
+      <div><label>Main color</label><div class="seg" id="cr_accent" role="group" aria-label="Main color"></div></div>
+      <div><label>Photo shape</label><div class="seg" id="cr_shape" role="group" aria-label="Photo shape"></div></div>
+      <div><label>Photo size <span class="tag" id="cr_psizeVal"></span><input type="range" id="cr_psize" min="60" max="170" step="5"></label><div class="toggles" id="cr_photoT"></div></div>
+      <div><label>Partner or sponsor logos (optional)</label><div class="file"><span>Add a logo</span><input type="file" id="cr_partnerIn" accept="image/*" multiple aria-label="Partner logos"></div><div class="cr-partners" id="cr_partners"></div><p class="note">Partner logos sit in a smaller "In partnership with" row. iMath stays the main brand.</p></div>
+    </div></details>
+    <div class="cr-go"><button class="btn green" type="button" id="cr_go">Create with Claude</button><button class="btn ghost" type="button" id="cr_manual">Build it myself</button><a class="btn ghost" id="cr_handoff" href="https://claude.ai/new" target="_blank" rel="noopener">Open as a Claude chat</a></div>
+    <p class="cr-note" id="cr_aiNote"></p>
+    <ul class="cma-prog" id="cr_prog" hidden></ul>
+    <div id="cr_q"></div>
+    <div class="status" id="cr_status" role="status"></div>
+  </div>
+  <div id="cr_results" hidden><div class="cr-tabs" id="cr_tabs" role="tablist" aria-label="Your pieces"></div><div id="cr_panes"></div></div>
+  <div class="panel tl-pointer"><b>Looking for calculators?</b> The buydown, payment and HELOC tools now live in the <button type="button" class="linkbtn" data-goto="tools">Tool Library tab</button>.</div>
+  <div class="panel" id="doc_upload" hidden>
+    <div class="cma-top">
+      <div class="file"><span id="doc_file">Add a Word (.docx), PDF, or text file</span><input type="file" id="doc_in" accept=".docx,.pdf,.txt,.md,.markdown,.html,.htm,text/plain,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document" aria-label="Upload document"></div>
+      <button class="btn ghost" type="button" id="doc_pasteBtn">Or paste text</button>
+    </div>
+    <div id="doc_pasteBox" hidden style="margin-top:12px"><label>Paste your text.<textarea id="doc_paste" style="min-height:160px"></textarea></label><div class="actions" style="margin-top:8px"><button class="btn" type="button" id="doc_pasteGo">Use this text</button></div></div>
+    <div class="status" id="doc_status" role="status"></div>
+  </div>
+  <div class="cma-empty" id="doc_empty" hidden><b>Your branded document shows up here</b>Tip: Word files keep their headings, lists, tables and pictures best. PDFs are rebuilt from their text.</div>
+  <div class="cma-res" id="doc_res" hidden>
+    <aside class="cma-side">
+      <div class="panel"><h3>Download <small id="doc_pages"></small></h3>
+        <div class="actions" style="margin-bottom:10px"><button class="btn green" type="button" id="doc_pdf">Download PDF</button><button class="btn ghost" type="button" id="doc_ai" hidden>Tidy structure with Claude</button></div>
+        <p class="note" id="doc_aiNote" hidden>Claude only fixes headings, lists and paragraphs. It keeps your wording.</p>
+        <div class="status" id="doc_dl" role="status"></div>
+      </div>
+      <div class="panel"><h3>Branding</h3>
+        <div hidden><div class="seg" id="doc_mode"></div><label id="doc_loWrap"><select id="doc_lo"></select></label></div>
+        <p class="note" style="margin:0 0 6px">Prepared by, loan officer and color follow Branding at the top of this tab.</p>
+        <label>Look</label><div class="seg" id="doc_style" role="group" aria-label="Look"></div>
+        <div hidden><div class="seg" id="doc_accent"></div></div>
+        <label>Text size</label><div class="seg" id="doc_size" role="group" aria-label="Text size"></div>
+      </div>
+      <div class="panel"><h3>Cover and pages</h3>
+        <div class="toggles" id="doc_pageT"></div>
+        <label>Title<input type="text" id="doc_title" maxlength="90"></label>
+        <label>Subtitle<input type="text" id="doc_sub" maxlength="120"></label>
+        <label>Prepared for (optional)<input type="text" id="doc_client" maxlength="60"></label>
+        <label style="margin-top:8px">Cover style</label><div class="seg" id="doc_coverStyle" role="group" aria-label="Cover style"></div>
+        <div class="file" id="doc_coverImgRow"><span id="doc_coverImgName">Cover photo (optional)</span><input type="file" id="doc_coverImg" accept="image/*" aria-label="Cover photo"></div>
+      </div>
+      <div class="panel"><h3>Profile photos</h3>
+        <div class="toggles" id="doc_whoT"></div>
+        <label>Show them on</label><div class="toggles" id="doc_whereT"></div>
+        <label>Size <span class="tag" id="doc_psizeVal"></span><input type="range" id="doc_psize" min="60" max="170" step="5"></label>
+        <label>Shape</label><div class="seg" id="doc_shape" role="group" aria-label="Photo shape"></div>
+        <label>Cover and closing page position</label><div class="seg" id="doc_align" role="group" aria-label="Photo position"></div>
+        <label>Header side</label><div class="seg" id="doc_side" role="group" aria-label="Header photo side"></div>
+        <label>Move up or down on the cover <span class="tag" id="doc_dyVal"></span><input type="range" id="doc_dy" min="-80" max="80" step="5"></label>
+        <div class="toggles" id="doc_ringT"></div>
+        <p class="note">Your headshot comes from My profile. Loan officer photos come from the team roster.</p>
+      </div>
+    </aside>
+    <div class="cma-view">
+      <div class="cma-viewbar"><span id="doc_meta"></span><div class="seg" id="doc_zoom" role="group" aria-label="Preview size" style="margin:0"></div></div>
+      <div class="cma-pages"><div class="ddoc" id="doc_doc"></div></div>
+    </div>
+  </div>
+</section>
+
+<section data-panel="tools" id="tools" hidden>
+  <div class="eyebrow">Calculators for agents and loan officers</div>
+  <h2>Tool Library<span class="dot">.</span></h2>
+  <p class="lede">Open a calculator, run your client's numbers, and download a branded client data sheet. Every tool runs only inside this studio.</p>
+  <div class="panel tl-brand"><div class="tl-brandrow"><div><label>Prepared by</label><div class="seg" id="tl_mode" role="group" aria-label="Prepared by"></div></div><div id="tl_loWrap"><label>Loan officer<select id="tl_lo"></select></label></div><div><label>Main color</label><div class="seg" id="tl_accent" role="group" aria-label="Main color"></div></div></div><p class="note">These match the settings in Create Anything, so your data sheets carry the same people and colors.</p></div>
+  <div id="tl_work" hidden>
+    <div class="tl-head"><button class="btn ghost" type="button" id="tl_back">Back to all tools</button><h3 id="tl_name"></h3></div>
+    <div class="status" id="tl_status" role="status"></div>
+    <div class="cr-pane" data-pane="libtool"></div>
+  </div>
+  <div class="panel cr-lib"><h3>All tools</h3><p class="note" id="cr_libNote">Tools and templates Elliot approved for the whole team. Open one to use it with your own branding.</p><div class="cr-libgrid" id="cr_lib"></div>
+    <div class="cr-owner" id="cr_owner" hidden><b>Owner tools</b><p class="note">Paste the submission an agent emailed you to test it here. Approving copies an approval packet. Paste it into your iMath Group project chat in Claude and it adds the tool to the library and republishes the studio.</p><textarea id="cr_reviewCode" placeholder="Paste the submission, starting with Team Library request" style="min-height:80px"></textarea><div class="actions" style="margin-top:8px"><button class="btn" type="button" id="cr_reviewGo">Review this tool</button></div></div>
+  </div>
+</section>
+
+<section data-panel="video" id="video" hidden>
+  <div class="eyebrow">Tours from photos, phone videos and 3D scans</div>
+  <h2>Listing Video<span class="dot">.</span></h2>
+  <p class="lede">Turn listing photos into a smooth branded tour, polish a phone walkthrough, or bring back a 3D fly through. Motion only: nothing here changes how the home looks.</p>
+  <div class="seg fun-mode" id="lv_mode" role="tablist" aria-label="Listing video tools"><button type="button" class="chip" data-v="tour" aria-pressed="true">Listing tour from photos</button><button type="button" class="chip" data-v="polish" aria-pressed="false">Polish a phone video</button><button type="button" class="chip" data-v="three" aria-pressed="false">3D tour</button><button type="button" class="chip" data-v="guide" aria-pressed="false">Shooting guide</button></div>
+
+  <div class="builder lv-builder" id="lv_tour">
+    <div class="stage">
+      <div class="canvasbox lv-box"><canvas id="lt_canvas" width="1080" height="1920" aria-label="Tour preview"></canvas></div>
+      <div class="lv-player"><button class="btn" type="button" id="lt_play">Play</button><input type="range" id="lt_seek" min="0" max="1000" value="0" aria-label="Preview position"><span class="tag" id="lt_time">0:00</span></div>
+      <div class="actions"><button class="btn green" type="button" id="lt_export">Make the MP4</button></div>
+      <div class="status" id="lt_status" role="status"></div>
+      <div class="panel lv-checks"><b>Before you post</b><ul id="lt_checks"></ul></div>
+    </div>
+    <div>
+      <div class="panel">
+        <h3>1. Photos</h3>
+        <div class="lv-row"><label>MLS number<input type="text" id="lt_mls" inputmode="numeric" placeholder="Example: 2167651"></label><button class="btn" type="button" id="lt_pull">Pull photos from RealMLS</button></div>
+        <div class="file"><span id="lt_inName">Or upload listing photos (up to 40)</span><input type="file" id="lt_in" accept="image/*" multiple aria-label="Upload listing photos"></div>
+        <label class="check lv-ok"><input type="checkbox" id="lt_ok"> I have the right to use these photos for marketing: it is my listing, or the listing broker and photographer gave permission.</label>
+        <div id="lt_details" class="lv-details"></div>
+      </div>
+      <div class="panel">
+        <h3>2. Tour order</h3>
+        <p class="note">Claude sorts the photos into a walkthrough, drops weak shots and writes room labels. Drag order with the arrows, rename any label, or tap the star on up to 3 standout photos for AI motion clips.</p>
+        <div class="actions"><button class="btn" type="button" id="lt_sort">Sort with Claude</button><button class="mini" type="button" id="lt_sortBasic">Sort by room tags</button></div>
+        <div id="lt_list" class="lv-list"></div>
+      </div>
+      <div class="panel">
+        <h3>3. Style</h3>
+        <div id="lt_style"></div>
+      </div>
+      <div class="panel">
+        <h3>4. Sound</h3>
+        <div id="lt_audio"></div>
+      </div>
+      <div class="panel" id="lt_gemPanel">
+        <h3>5. Standout AI clips (optional)</h3>
+        <p class="note">Star up to 3 photos in step 2. For each one, download the photo, copy the motion instructions, make a short clip in Gemini, then upload it here. The clip replaces that photo in the tour.</p>
+        <div id="lt_gem"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="builder lv-builder" id="lv_polish" hidden>
+    <div class="stage">
+      <div class="canvasbox lv-box"><canvas id="lp_canvas" width="1080" height="1920" aria-label="Polished video preview"></canvas><video id="lp_src" class="lv-src" playsinline muted preload="auto"></video></div>
+      <div class="lv-player"><button class="btn" type="button" id="lp_play">Play</button><input type="range" id="lp_seek" min="0" max="1000" value="0" aria-label="Preview position"><span class="tag" id="lp_time">0:00</span></div>
+      <div class="actions"><button class="btn green" type="button" id="lp_export">Make the MP4</button></div>
+      <div class="status" id="lp_status" role="status"></div>
+      <div class="panel lv-checks"><b>Before you post</b><ul id="lp_checks"></ul></div>
+    </div>
+    <div>
+      <div class="panel">
+        <h3>1. Your video</h3>
+        <div class="file"><span id="lp_inName">Add a phone video of the home (MP4 or MOV, 3 minutes or less works best)</span><input type="file" id="lp_in" accept="video/*" aria-label="Upload a phone video"></div>
+        <p class="note" id="lp_kind"></p>
+        <label class="check lv-ok"><input type="checkbox" id="lp_ok"> I have the right to use this video for marketing.</label>
+        <div id="lp_details" class="lv-details"></div>
+      </div>
+      <div class="panel">
+        <h3>2. Clean it up</h3>
+        <p class="note">The studio scans the clip for dark, blurry and shaky stretches and steadies small wobbles. Claude labels each room and flags ceilings, floors and people. Then you choose what stays.</p>
+        <div class="actions"><button class="btn" type="button" id="lp_analyze">Find the best parts</button></div>
+        <div id="lp_scenes" class="lv-list"></div>
+      </div>
+      <div class="panel">
+        <h3>3. Look and style</h3>
+        <div id="lp_style"></div>
+      </div>
+      <div class="panel">
+        <h3>4. Sound</h3>
+        <div id="lp_audio"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="lv_three" hidden>
+    <div class="lv-cols">
+      <div class="panel">
+        <h3>Make a 3D tour from a phone video</h3>
+        <p>3D scan apps turn a slow, steady phone video into a model of the home. From the model you can export a perfectly smooth fly through video, then bring it back here for iMath branding.</p>
+        <table class="lv-apps"><tr><th>App</th><th>Cost</th><th>Good for</th></tr>
+          <tr><td><b>Luma 3D Capture</b></td><td>Free</td><td>Whole rooms; exports an MP4 fly through. Test it first, Luma now focuses on AI video.</td></tr>
+          <tr><td><b>Scaniverse</b></td><td>Free (iPhone)</td><td>Single rooms and exteriors.</td></tr>
+          <tr><td><b>Polycam</b></td><td>Free plan with watermark, no splats. Basic about $150 a year</td><td>Unlimited 3D captures and clean video exports on Basic.</td></tr>
+          <tr><td><b>Matterport</b></td><td>One tour free, then from about $14 a month</td><td>Classic dollhouse tours and floor plans.</td></tr></table>
+        <p class="note">Prices change often. Check each app before you sign up. Have one person on the team handle paid accounts instead of sharing logins.</p>
+      </div>
+      <div class="panel">
+        <h3>How to capture it</h3>
+        <ol class="lv-steps"><li>Turn on every light, open blinds, close toilet lids and closets.</li><li>Record in the scan app, wide lens, walking slowly at chest height. Overlap each area; circle big rooms once.</li><li>Move through doorways slowly and straight. Keep people and pets out of the shot.</li><li>Let the app process (often about as long as the video). Then export a fly through video (MP4).</li><li>Upload the fly through below. The studio adds your intro, room labels, end card and the 3D disclosure.</li></ol>
+        <div class="file"><span id="l3_name">Upload your 3D fly through video</span><input type="file" id="l3_in" accept="video/*" aria-label="Upload a 3D fly through video"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="lv_guide" hidden>
+    <div class="lv-cols">
+      <div class="panel"><h3>Photos for a listing tour</h3><ul class="lv-tips"><li><b>Shoot wide and level.</b> Hold the phone straight up and down for vertical lines, at chest height.</li><li><b>Horizontal photos</b> work for every format. The vertical video pans across them.</li><li><b>Order matters:</b> front of home, entry, living, kitchen, dining, primary suite, other bedrooms, baths, outdoor spaces.</li><li><b>15 to 25 photos</b> make a 45 to 75 second tour. Two or three per big room is plenty.</li><li><b>Lights on, blinds open,</b> counters cleared, cars out of the driveway.</li><li><b>No people, family photos, or personal items</b> in the shot.</li><li><b>Virtually staged photos</b> keep their "Virtually staged" tag on screen.</li></ul></div>
+      <div class="panel"><h3>Phone video walkthrough</h3><ul class="lv-tips"><li><b>Use a gimbal</b> (about $100 to $150) or iPhone Action Mode. It is the biggest quality jump.</li><li><b>Hold the phone horizontal</b> for YouTube and the MLS; vertical for Reels and TikTok. Pick one per video.</li><li><b>Walk slowly,</b> about half your normal pace. Pause 2 seconds as you enter each room.</li><li><b>Glide, do not swing.</b> Turn your body, not your wrist.</li><li><b>Start outside</b> at the curb, end in the best spot: the backyard, the view or the kitchen.</li><li><b>Keep it under 3 minutes.</b> The studio trims and speeds up hallways for you.</li><li><b>Mute the room:</b> no talking. Add music or a voiceover here, or in your social app.</li></ul></div>
+      <div class="panel lv-rules"><h3>Rules we follow</h3><ul class="lv-tips"><li><b>Motion only.</b> No tool here adds, removes or changes anything in the home.</li><li><b>AI disclosure:</b> photo tours carry "Animated with AI from listing photos." 3D fly throughs carry their own label. Follow Northeast Florida MLS rules for altered media; confirm current rules with the board before using a video in the MLS.</li><li><b>MLS version:</b> virtual tour links in the MLS must usually be unbranded. Use the MLS version switch.</li><li><b>Other brokers' listings:</b> only with permission. The end card names the listing office.</li><li><b>Fair Housing:</b> describe the home, never the buyer. The studio checks your words before export.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section data-panel="fun" id="fun" hidden>
+  <div class="eyebrow">Avatars, stickers and GIFs for social</div>
+  <h2>Avatar and GIF Studio<span class="dot">.</span></h2>
+  <p class="lede">Create an AI avatar that looks like you, use it in place of your photo anywhere in the studio, and turn your photos, avatar and iMath signs into branded animated GIFs.</p>
+  <div class="seg fun-mode" id="fun_mode" role="tablist" aria-label="Maker"><button type="button" class="chip" role="tab" data-v="avatar" aria-pressed="true">Avatar maker</button><button type="button" class="chip" role="tab" data-v="gif" aria-pressed="false">GIF maker</button></div>
+
+  <div class="builder" id="fun_avatar">
+    <div class="stage">
+      <div class="canvasbox fun-box" id="av_box"><canvas id="av_canvas" width="1080" height="1080" aria-label="Avatar preview"></canvas></div>
+      <div class="actions"><button class="btn green" type="button" id="av_dl" disabled>Download PNG</button><button class="btn" type="button" id="av_use" disabled>Use as my profile picture</button><button class="btn ghost" type="button" id="av_togif" disabled>Make a GIF with it</button></div>
+      <div class="status" id="av_status" role="status"></div>
+      <div class="panel"><h3>iMath touch</h3><div class="fun-grid" id="av_fine"></div></div>
+    </div>
+    <div>
+      <div class="panel">
+        <h3>1. Pick your look</h3>
+        <p class="note">Tap the picks you like. They build the instructions for the AI. You can also type your own details.</p>
+        <div id="av_chips" class="fun-chips"></div>
+        <label for="av_prompt" style="margin-top:12px">Anything else? (optional)</label>
+        <textarea id="av_prompt" placeholder="Example: holding a coffee, big smile, wearing my glasses"></textarea>
+      </div>
+      <div class="panel fun-ai">
+        <h3>2. Make it with AI, free</h3>
+        <label for="av_out">Your AI instructions</label>
+        <textarea id="av_out" class="fun-out" readonly aria-label="AI instructions"></textarea>
+        <div class="actions" style="margin-top:8px"><a class="btn green" id="av_gemini" href="https://gemini.google.com/app" target="_blank" rel="noopener">Copy and open Gemini</a><a class="btn ghost" id="av_ai" href="https://claude.ai/new" target="_blank" rel="noopener">Use Claude with Canva instead</a><button class="mini" type="button" id="av_copy">Copy only</button></div>
+        <ol class="fun-steps"><li>Click <b>Copy and open Gemini</b>. Sign in with your Google account (free).</li><li>Attach a clear selfie, paste the instructions, and send.</li><li>Download the picture you like. Ask Gemini for changes until it looks like you.</li></ol>
+      </div>
+      <div class="panel">
+        <h3>3. Bring it back</h3>
+        <div class="file"><span id="av_photoName">Upload your AI avatar</span><input type="file" id="av_aiIn" accept="image/*" aria-label="Upload your AI avatar"></div>
+        <p class="note">It becomes your avatar here. Add an iMath badge, ring or name banner, use it as your profile picture everywhere in the studio, or turn it into GIFs.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="builder" id="fun_gif" hidden>
+    <div class="stage">
+      <div class="canvasbox fun-box" id="gif_box"><canvas id="gif_canvas" width="480" height="480" aria-label="GIF preview"></canvas></div>
+      <div class="actions"><button class="btn green" type="button" id="gif_make">Make the GIF</button><button class="btn" type="button" id="gif_dl" disabled>Download GIF</button><button class="btn ghost" type="button" id="gif_pub" disabled aria-disabled="true" title="Paused until the iMath Group GIPHY channel is approved">Publish to GIPHY (coming soon)</button></div>
+      <div class="status" id="gif_status" role="status"></div>
+      <div class="panel fun-check"><b>GIPHY ready check</b><ul id="gif_check"></ul><p class="note">Publishing is paused until the iMath Group GIPHY channel is approved. For now, download your GIF and send it to Elliot.</p></div>
+    </div>
+    <div>
+      <div class="panel">
+        <h3>1. Pictures</h3>
+        <div class="file"><span id="gif_name">Add one or more photos (or a transparent PNG cutout)</span><input type="file" id="gif_in" accept="image/*" multiple aria-label="Add photos"></div>
+        <div class="fun-thumbs" id="gif_thumbs"></div>
+        <div class="toggles" id="gif_srcT"></div>
+      </div>
+      <div class="panel">
+        <h3>2. Pick a moment</h3>
+        <div class="fun-chips" id="gif_tpl"></div>
+        <label for="gif_prompt" style="margin-top:10px">Tell it what to do</label>
+        <textarea id="gif_prompt" placeholder="Example: SOLD rider sign on green with confetti and my name tag"></textarea>
+        <div class="actions" style="margin:8px 0 4px"><button class="btn green" type="button" id="gif_go">Apply</button><button class="mini" type="button" id="gif_clear">Clear the prompt</button></div>
+        <div class="fun-chips" id="gif_chips"></div>
+      </div>
+      <div class="panel">
+        <h3>3. iMath signs and branding</h3>
+        <p class="note">Put your moment on an iMath sign and choose how much branding shows. Agents get the iMath and United lockup, loan officers get the iMath mortgage lockup.</p>
+        <div id="gif_sign"></div>
+      </div>
+      <div class="panel">
+        <h3>4. Words and settings</h3>
+        <div class="fun-grid" id="gif_fine"></div>
+        <label>Tags for GIPHY <small id="gif_tagN"></small><input type="text" id="gif_tags" placeholder="sold, congrats, new home"></label>
+      </div>
+      <div class="panel cr-owner" id="gif_owner" hidden><b>Owner tools</b><p class="note">GIPHY asks for a 250 x 250 channel avatar when you apply.</p><div class="actions"><button class="btn ghost" type="button" id="gif_chanPng">Channel avatar PNG</button><button class="btn ghost" type="button" id="gif_chanGif">Animated channel avatar GIF</button></div></div>
+    </div>
+  </div>
+</section>
+
+<section data-panel="guide" id="guide" hidden>
+  <div class="eyebrow">The new combined logo</div>
+  <h2>Our Lockup<span class="dot">.</span></h2>
+  <p class="lede">iMath Group and United Real Estate Gallery together, rebuilt as crisp vector art. Florida team advertising rules say the team name can never be larger than the brokerage name, so the iMath mark is always drawn smaller than the United Real Estate Gallery mark. Use these instead of typing the brokerage name.</p>
+  <div class="logos" id="lockupGrid"></div>
+  <section id="patGuide" class="pat-guide">
+    <div class="eyebrow">Thank you for your service</div>
+    <h2>Patriotic Brand<span class="dot">.</span></h2>
+    <p class="lede">The official patriotic version of iMath Group, for marketing to veterans, service members and military families. The wordmark is cut out of a gently waving U.S. flag. Navy, Montserrat and Open Sans, our voice and every compliance rule stay the same; flag red takes over the accent role from green. Turn it on with Brand theme in My profile, or per tab with Theme for this tab.</p>
+    <div class="logos" id="patLogoGrid"></div>
+    <h3 class="pg-h">Colors <small>About 60 percent blue, 30 percent white or parchment, 10 percent red. Click to copy.</small></h3>
+    <div class="swatches" id="patSwatches"></div>
+    <div class="rules pat-rules" id="patRules"></div>
+  </section>
+  <section id="rules">
+  <div class="eyebrow">Keep it consistent and compliant</div>
+  <h2>Brand Rules<span class="dot">.</span></h2>
+  <p class="lede">Every agent posts under their own name, and every post still reads as one team. These rules are what make that work.</p>
+  <div class="rules">
+    <div class="rule key">
+      <h3>The locked footer</h3>
+      <p>Every piece carries the combined iMath Group and United Real Estate Gallery lockup, the license number, and Equal Housing Opportunity, right next to your contact info. Never crop it, cover it, resize one half, or rebuild it by hand.</p>
+    </div>
+    <div class="rule">
+      <h3>Florida advertising rules</h3>
+      <ul>
+        <li>The brokerage name, United Real Estate Gallery, appears on every ad and sits right next to your contact info.</li>
+        <li>The team name, iMath Group, is never larger than the brokerage name. The templates are sized for this, so do not enlarge the logo.</li>
+        <li>Use your name as it is registered with the state, at least your last name.</li>
+      </ul>
+    </div>
+    <div class="rule">
+      <h3>Mortgage on real estate pieces</h3>
+      <p>Social posts stay real estate only. For flyers and signs, add a loan officer only through the generator option, which adds the NMLS numbers, Cornerstone First Mortgage license, and Equal Housing Lender language. Never type rates, payments, or down payment amounts on a real estate piece. Split co branded printing costs with your loan officer in proportion to the space each of you uses.</p>
+    </div>
+    <div class="rule">
+      <h3>Fair Housing language</h3>
+      <p>Describe the property and the location, never the kind of person who should live there.</p>
+      <div class="dodont">
+        <div class="no">Perfect for young families</div><div class="yes">Four bedrooms and a fenced yard</div>
+        <div class="no">Great for retirees</div><div class="yes">Single level living</div>
+        <div class="no">Safe, exclusive neighborhood</div><div class="yes">Gated community with a clubhouse</div>
+      </div>
+    </div>
+    <div class="rule">
+      <h3>Photos and permission</h3>
+      <ul>
+        <li>Use listing photos you or the brokerage have rights to. Never repost another brokerage's listing photos.</li>
+        <li>Get written permission before posting a client's name, face, or testimonial.</li>
+        <li>Market stats always name the source and the month.</li>
+      </ul>
+    </div>
+    <div class="rule">
+      <h3>Our voice</h3>
+      <ul>
+        <li>Warm, confident, and local, like a trusted neighbor who knows the market.</li>
+        <li>Lead with the client's goal, not the transaction.</li>
+        <li>No emojis, hyphens, or dashes in captions.</li>
+        <li>Spanish captions are written, not machine translated. Keep "usted" for clients.</li>
+      </ul>
+    </div>
+    <div class="rule">
+      <h3>Stories and Reels</h3>
+      <p>The 9:16 template keeps your name, contact info, and footer above the bottom 250 pixels so the reply bar never covers them. Keep added stickers and text out of the top 250 pixels too.</p>
+    </div>
+    <div class="rule">
+      <h3>Our values, in every post</h3>
+      <p>Impact, Mindset, Authenticity, Together, Hustle. That's the math behind iMath. Humble + Hungry + Smart.</p>
+    </div>
+  </div>
+  <p class="src">Rule sources: <a href="https://www.law.cornell.edu/regulations/florida/Fla-Admin-Code-Ann-R-61J2-10-025" target="_blank" rel="noopener">Fla. Admin. Code 61J2-10.025 (Advertising)</a> and <a href="https://www.law.cornell.edu/regulations/florida/Fla-Admin-Code-Ann-R-61J2-10-026" target="_blank" rel="noopener">61J2-10.026 (Team or Group Advertising)</a>. This page is a brand guide, not legal advice; check with the broker of record when in doubt.</p>
+</section>
+
+<section id="captions">
+  <div class="eyebrow">English and Spanish</div>
+  <h2>Caption Library<span class="dot">.</span></h2>
+  <p class="lede">Every template has a matching caption in both languages. Words in braces fill in automatically in the Post Builder. Always end with the signature so the brokerage name sits beside your contact info.</p>
+  <div class="caplist" id="caplist"></div>
+  <div class="tags" id="tagsets"></div>
+</section>
+
+<section id="calendar">
+  <div class="eyebrow">A rhythm anyone can keep</div>
+  <h2>Weekly Content Calendar<span class="dot">.</span></h2>
+  <p class="lede">Five posts a week keeps you visible without burning out. Swap days as needed; keep the mix.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Day</th><th>Post</th><th>Template</th><th>Best size</th></tr></thead>
+    <tbody>
+      <tr><td><b>Monday</b></td><td>Teach something useful</td><td><span class="pill">Home Tip</span></td><td>Feed 4:5</td></tr>
+      <tr><td><b>Tuesday</b></td><td>Listing activity, yours or the team's with permission</td><td><span class="pill">Just Listed</span> <span class="pill">Under Contract</span></td><td>Feed 4:5 and Story</td></tr>
+      <tr><td><b>Wednesday</b></td><td>Show your community</td><td><span class="pill">Community Spotlight</span></td><td>Feed 4:5, Google Business</td></tr>
+      <tr><td><b>Thursday</b></td><td>Build trust in you</td><td><span class="pill">Client Story</span> <span class="pill">Meet the Agent</span></td><td>Square</td></tr>
+      <tr><td><b>Friday</b></td><td>Wins and weekend plans</td><td><span class="pill">Just Sold</span> <span class="pill">New Keys</span> <span class="pill">Open House</span></td><td>Feed 4:5 and Story</td></tr>
+      <tr><td><b>Monthly</b></td><td>First week market numbers, mid month a values post</td><td><span class="pill">Market Update</span> <span class="pill">iMath Values</span></td><td>Square, LinkedIn</td></tr>
+    </tbody>
+  </table></div>
+  <div class="dates">
+    <div class="date"><b>Sept 15 to Oct 15</b>Hispanic Heritage Month. A strong moment for bilingual posts.</div>
+    <div class="date"><b>Oct 31</b>Halloween. Community events, safe trick or treat spots.</div>
+    <div class="date"><b>Nov 11</b>Veterans Day. Thank those who served.</div>
+    <div class="date"><b>Nov 26</b>Thanksgiving. Holiday Greeting template.</div>
+    <div class="date"><b>Dec 25 and Jan 1</b>Holiday and New Year greetings.</div>
+  </div>
+</section>
+
+<section id="logos">
+  <div class="eyebrow">Approved for real estate posts</div>
+  <h2>Logos and Colors<span class="dot">.</span></h2>
+  <p class="lede">These single logos have the Cornerstone First Mortgage line removed so they are safe for real estate content. For anything you print, use the combined lockup above. Keep clear space around the logo equal to the height of the green dot.</p>
+  <div class="logos" id="logoGrid"></div>
+  <div class="swatches" id="swatches"></div>
+  <div class="type">
+    <div><div class="eyebrow">Headlines</div><div style="font:900 34px/1.1 var(--hf)">Montserrat Black</div><p class="note" style="margin-top:6px">Names, headlines, labels. All caps for headlines, finished with the green dot.</p></div>
+    <div><div class="eyebrow">Body</div><div style="font:400 24px/1.3 var(--bf)">Open Sans Regular</div><p class="note" style="margin-top:6px">Addresses, details, and fine print. Semibold for emphasis.</p></div>
+  </div>
+</section>
+
+
+  <section id="research">
+    <div class="eyebrow">What the top producers actually use</div>
+    <h2>Style Research<span class="dot">.</span></h2>
+    <p class="lede">We looked past template shops at what leading brokerages, top teams, and the busiest sign vendors produce, plus what is rising in 2026 design. Here are the 20 most used styles and where each one landed.</p>
+    <div class="tablewrap"><table id="researchTable"><thead><tr><th>Style</th><th>Who uses it</th><th>2026 trend</th><th>Where we used it</th></tr></thead><tbody></tbody></table></div>
+    <p class="src" id="researchSrc"></p>
+  </section>
+</section>
+
+<section data-panel="tips" id="tips" hidden>
+  <div class="eyebrow">Read before you print</div>
+  <h2>Tips and Limits<span class="dot">.</span></h2>
+  <div class="panel tips-setup"><div><h3>CMA tool setup guide</h3><p>Step by step: turn on Flexmls AI access, add the RealMLS connector in Claude, connect your login and run the live test.</p></div><button class="btn green" type="button" data-guide>Open the setup guide</button></div>
+  <div class="rules" id="tipsGrid"></div>
+  <div class="rule key license-card" id="license">
+    <h3>License and ownership</h3>
+    <p>Copyright &copy; 2026 Elliot De la Cruz and iMath Group. All rights reserved. The iMath Marketing Studio, including its code, designs, layouts, templates, text, report formats and calculators, is proprietary and confidential.</p>
+    <p>Access is a limited, revocable, non transferable permission to use the studio as provided, only to create marketing materials and reports for your own iMath Group business. Elliot De la Cruz is the only person authorized to change it.</p>
+    <p>Without written permission from Elliot De la Cruz you may not copy, save, download, or reproduce the studio or its source code; modify it or create derivative works; reverse engineer it; share access with anyone else; resell or sublicense it; or use it, its design, or its code as a template or model for another website, app, or tool. Materials and reports you create for your clients are yours to use for that business purpose.</p>
+    <p>Unauthorized use may end your access and may violate copyright and other laws. Questions or permission requests go to Elliot De la Cruz, elliot@imathgroup.com.</p>
+  </div>
+</section>
+
+<footer>iMath Group, a team at United Real Estate Gallery (Rayson Partners, LLC), FL Lic. CQ1066513. Mortgage services through Cornerstone First Mortgage, NMLS #173855. Equal Housing Opportunity. Questions about this studio go to Elliot De la Cruz.<br>&copy; 2026 Elliot De la Cruz and iMath Group. All rights reserved. Proprietary tool licensed for use only; copying, editing, or reuse as a template is prohibited. <a href="#tips" id="licenseLink">License terms</a></footer>
+</main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" crossorigin="anonymous"></script>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
