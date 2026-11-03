@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cornerstone Flex Line for Homeowners</title>
+<meta name="description" content="See how a Cornerstone Flex Line home equity line of credit can work for your home, with examples and an estimator. iMath Group, powered by Cornerstone First Mortgage.">
+<meta name="robots" content="noindex,nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cornerstone Flex Line for Homeowners">
+<meta property="og:description" content="See how a Cornerstone Flex Line can put your home's equity to work, with six examples and a line estimator. iMath Group, powered by Cornerstone First Mortgage.">
+<meta property="og:image" content="https://edelacruz9.github.io/iMathGroup/flexline-homeowners/share.jpg">
+<meta property="og:url" content="https://edelacruz9.github.io/iMathGroup/flexline-homeowners/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#00203f">
+<link rel="icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700&amp;family=Unbounded:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+:root{
+  /* iMath Group palette: navy world, green energy, gray support */
+  --ink:#00203f;        /* page background, deep navy */
+  --navy:#002e5e;       /* brand navy panels */
+  --navy-2:#0a3d73;     /* raised panel */
+  --go:#6bc063;         /* brand green, the equity color */
+  --go-hot:#8fe37f;     /* green highlight */
+  --paper:#f3f7fb;      /* primary text */
+  --mist:#b6c3d1;       /* secondary text, lightened brand gray */
+  --line:#24507f;       /* hairlines */
+  --display:"Unbounded", "Arial Black", system-ui, sans-serif;
+  --body:"Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  /* layout: one bold kinetic hero, then a tight scanning rhythm of cards and one live estimator */
+  color-scheme: dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--paper);font:400 17px/1.55 var(--body);overflow-x:hidden}
+html[data-lang="en"] .l-es{display:none}
+html[data-lang="es"] .l-en{display:none}
+a{color:var(--go-hot)}
+:focus-visible{outline:3px solid var(--go-hot);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+.ribbon{background:#f2c94c;color:#1b1b1b;text-align:center;font:700 13px/1.3 var(--body);padding:7px 12px;letter-spacing:.02em}
+header.top{position:sticky;top:0;z-index:20;background:rgba(0,32,63,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;gap:16px;min-height:64px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}
+.mark{display:flex;flex-direction:column;line-height:1;text-decoration:none;color:var(--paper)}
+.mark b{font:800 24px/1 var(--display);letter-spacing:-.02em}
+.mark b i{color:var(--go);font-style:normal}
+.mark small{font:700 10px/1 var(--body);letter-spacing:.32em;color:var(--mist);margin-top:3px}
+.powered{font-size:12px;color:var(--mist);border-left:1px solid var(--line);padding-left:14px;line-height:1.25}
+.powered strong{color:var(--paper);font-weight:600;display:block}
+.spacer{flex:1}
+.btn{display:inline-flex;align-items:center;gap:8px;font:700 15px/1 var(--body);padding:14px 20px;border-radius:999px;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .2s, background .2s, box-shadow .2s}
+.btn.go{background:var(--go);color:#062a12;box-shadow:0 8px 30px -8px rgba(107,192,99,.7)}
+.btn.go:hover{transform:translateY(-2px);background:var(--go-hot)}
+.btn.ghost{border-color:var(--line);color:var(--paper);background:transparent}
+.btn.ghost:hover{border-color:var(--go)}
+.btn.sm{padding:10px 14px;font-size:14px}
+.lang{background:var(--navy);border:1px solid var(--line);border-radius:999px;display:inline-flex;padding:3px}
+.lang button{all:unset;cursor:pointer;font:700 12px/1 var(--body);padding:8px 11px;border-radius:999px;color:var(--mist)}
+.lang button[aria-pressed="true"]{background:var(--go);color:#062a12}
+.lang button:focus-visible{outline:3px solid var(--go-hot)}
+
+/* HERO */
+.hero{position:relative;padding:56px 0 40px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-30% -10% auto auto;width:70vw;height:70vw;max-width:900px;max-height:900px;background:radial-gradient(closest-side,rgba(107,192,99,.22),transparent 70%);animation:breathe 9s ease-in-out infinite;pointer-events:none}
+@keyframes breathe{50%{transform:scale(1.15) translate(-4%,6%)}}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;position:relative}
+.eyebrow{display:inline-flex;gap:10px;align-items:center;font:700 12px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--go-hot)}
+.eyebrow::before{content:"";width:28px;height:2px;background:var(--go)}
+h1{font:800 clamp(38px,6.2vw,76px)/.98 var(--display);letter-spacing:-.035em;margin:18px 0 18px;text-wrap:balance}
+h1 em{font-style:normal;color:var(--go)}
+.kinetic{font:600 clamp(20px,2.6vw,30px)/1.2 var(--display);letter-spacing:-.02em;color:var(--mist);display:flex;flex-wrap:wrap;gap:.35em;align-items:baseline;min-height:2.6em}
+.rot{position:relative;display:inline-block;color:var(--paper);background:linear-gradient(transparent 62%,rgba(107,192,99,.45) 62%);padding:0 .1em}
+.rot.swap{animation:swap .55s cubic-bezier(.2,.9,.2,1.2)}
+@keyframes swap{0%{opacity:0;transform:translateY(.6em) rotateX(60deg)}100%{opacity:1;transform:none}}
+.lede{max-width:56ch;color:var(--mist);font-size:19px;margin:18px 0 26px}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap}
+
+/* House visual */
+.house{width:100%;max-width:440px;justify-self:center;filter:drop-shadow(0 30px 60px rgba(0,0,0,.45))}
+.house .wave{animation:wave 4.5s linear infinite}
+@keyframes wave{to{transform:translateX(-200px)}}
+.house .rise{animation:rise 3.2s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise{from{transform:translateY(120px)}}
+.house text{font-family:var(--body);font-weight:700}
+.house .pulse{animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.45}}
+
+/* Stat band */
+.stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:linear-gradient(90deg,var(--navy),var(--ink))}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.stat{padding:22px 18px;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+.stat b{display:block;font:800 clamp(24px,3vw,36px)/1.05 var(--display);color:var(--go);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.stat span{font-size:14px;color:var(--mist);display:block;margin-top:6px}
+
+/* Marquee */
+.marquee{overflow:hidden;white-space:nowrap;padding:18px 0;border-bottom:1px solid var(--line);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee .track{display:inline-flex;gap:14px;animation:slide 38s linear infinite;padding-left:14px}
+.marquee .chip{font:600 15px/1 var(--display);letter-spacing:-.01em;padding:12px 18px;border:1px solid var(--line);border-radius:999px;color:var(--paper);background:rgba(10,61,115,.45)}
+.marquee .chip:nth-child(3n+1){border-color:var(--go);color:var(--go-hot)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+section{padding:72px 0}
+h2{font:800 clamp(28px,4vw,48px)/1.04 var(--display);letter-spacing:-.03em;margin:0 0 14px;text-wrap:balance}
+h2 em{font-style:normal;color:var(--go)}
+.sub{color:var(--mist);max-width:62ch;margin:0 0 34px;font-size:18px}
+
+/* Scenario cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{position:relative;background:linear-gradient(160deg,var(--navy-2),var(--navy));border:1px solid var(--line);border-radius:22px;padding:24px 22px 20px;display:flex;flex-direction:column;gap:12px;transition:transform .35s cubic-bezier(.2,.9,.2,1), border-color .3s, box-shadow .35s;overflow:hidden}
+.card::after{content:"";position:absolute;left:0;bottom:0;height:4px;width:var(--fill,60%);background:var(--go);transition:width .8s cubic-bezier(.2,.9,.2,1)}
+.card:hover{transform:translateY(-6px) rotate(-.4deg);border-color:var(--go);box-shadow:0 24px 50px -20px rgba(107,192,99,.45)}
+.card:hover::after{width:100%}
+.tag{align-self:flex-start;font:700 11px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:#062a12;background:var(--go);padding:6px 9px;border-radius:6px}
+.card h3{font:700 20px/1.18 var(--display);letter-spacing:-.02em;margin:0;text-wrap:balance}
+.card p{margin:0;color:var(--mist);font-size:15.5px}
+.nums{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px;margin-top:auto;padding-top:12px;border-top:1px dashed var(--line);font-size:13px;color:var(--mist)}
+.nums dt{margin:0}
+.nums dd{margin:0;text-align:right;color:var(--paper);font-weight:600;font-variant-numeric:tabular-nums}
+.big{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.big span{font-size:13px;color:var(--mist)}
+.big b{font:800 30px/1 var(--display);color:var(--go-hot);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.why{font-size:13px;color:var(--paper);background:rgba(0,32,63,.6);border-left:3px solid var(--go);padding:8px 10px;border-radius:0 8px 8px 0}
+
+/* Estimator */
+.est{display:grid;grid-template-columns:1fr 1.05fr;gap:26px;background:radial-gradient(circle at 85% 10%,rgba(107,192,99,.16),transparent 50%),var(--navy);border:1px solid var(--line);border-radius:28px;padding:30px}
+.field{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
+.field label{font-weight:700;font-size:14px;letter-spacing:.02em}
+.field .row{display:flex;gap:12px;align-items:center}
+.field output{font:700 18px/1 var(--display);min-width:9ch;text-align:right;font-variant-numeric:tabular-nums;color:var(--go-hot)}
+input[type=range]{flex:1;accent-color:var(--go);height:28px}
+select{appearance:none;background:var(--ink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236bc063' stroke-width='2' fill='none'/%3E%3C/svg%3E") no-repeat right 14px center;color:var(--paper);border:1px solid var(--line);border-radius:12px;padding:13px 40px 13px 14px;font:600 16px var(--body)}
+.seg{display:flex;gap:8px;flex-wrap:wrap}
+.seg button{all:unset;cursor:pointer;padding:11px 14px;border:1px solid var(--line);border-radius:12px;font-weight:600;font-size:15px}
+.seg button[aria-pressed="true"]{background:var(--go);color:#062a12;border-color:var(--go)}
+.seg button:focus-visible{outline:3px solid var(--go-hot)}
+.result{background:var(--ink);border:1px solid var(--line);border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:16px}
+.status{align-self:flex-start;font:700 12px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;padding:7px 10px;border-radius:999px;background:rgba(107,192,99,.18);color:var(--go-hot);border:1px solid var(--go)}
+.status.warn{background:rgba(242,201,76,.14);color:#f2c94c;border-color:#f2c94c}
+.result .amount{font:800 clamp(40px,6vw,64px)/1 var(--display);letter-spacing:-.04em;color:var(--go);font-variant-numeric:tabular-nums}
+.stack{display:flex;height:54px;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#0b2a4a}
+.stack div{transition:flex-basis .7s cubic-bezier(.2,.9,.2,1);display:flex;align-items:center;justify-content:center;font:700 12px/1.1 var(--body);overflow:hidden;white-space:nowrap;min-width:0}
+.stack .s1{background:#3d6b9a;color:#fff}
+.stack .s2{background:var(--go);color:#062a12;background-image:repeating-linear-gradient(115deg,rgba(255,255,255,.18) 0 10px,transparent 10px 20px);background-size:200% 100%;animation:shimmer 3s linear infinite}
+.stack .s3{background:#16395f;color:var(--mist)}
+@keyframes shimmer{to{background-position:-56px 0}}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--mist)}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.explain{font-size:14.5px;color:var(--mist);margin:0}
+.fine{font-size:12.5px;color:var(--mist);margin:0;opacity:.9}
+
+/* Flow */
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:step}
+.step{background:var(--navy);border:1px solid var(--line);border-radius:22px;padding:22px}
+.step h3{font:700 22px/1.1 var(--display);margin:6px 0 8px;letter-spacing:-.02em}
+.step p{margin:0;color:var(--mist);font-size:15.5px}
+.step .n{font:800 13px/1 var(--display);color:var(--go)}
+.meter{height:16px;border-radius:999px;background:#0b2a4a;border:1px solid var(--line);overflow:hidden;margin:16px 0 4px}
+.meter i{display:block;height:100%;width:30%;background:var(--go);border-radius:999px;animation:cycle 6s cubic-bezier(.6,0,.3,1) infinite}
+@keyframes cycle{0%{width:12%}30%{width:78%}55%{width:34%}80%{width:70%}100%{width:12%}}
+
+/* Easy list */
+.easy{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.easy li{list-style:none;background:var(--navy);border:1px solid var(--line);border-radius:18px;padding:18px;font-weight:600;display:flex;gap:12px;align-items:flex-start;font-size:15.5px}
+.easy li svg{flex:none;margin-top:2px}
+.easy{padding:0;margin:0}
+
+/* Know + FAQ */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.know{background:linear-gradient(160deg,#0d3561,var(--navy));border:1px solid var(--line);border-radius:22px;padding:24px}
+.know ul{margin:0;padding-left:20px;display:grid;gap:10px;color:var(--mist)}
+.know li b{color:var(--paper)}
+details{border-bottom:1px solid var(--line);padding:16px 2px}
+summary{cursor:pointer;font:700 17px/1.3 var(--display);letter-spacing:-.01em;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--go);font-size:24px;line-height:1;transition:transform .3s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--mist);margin:10px 0 0}
+
+/* Contact */
+.contact{background:linear-gradient(120deg,var(--go),#4fa648);color:#062a12;border-radius:30px;padding:38px;display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:center;position:relative;overflow:hidden}
+.contact::before{content:"";position:absolute;right:-80px;top:-80px;width:280px;height:280px;border-radius:50%;border:40px solid rgba(255,255,255,.18);animation:breathe 7s ease-in-out infinite}
+.contact h2{color:#04210d}
+.contact h2 em{color:#fff}
+.contact p{margin:0;font-size:18px}
+.card-lo{background:#04210d;color:var(--paper);border-radius:22px;padding:22px;display:grid;gap:10px;position:relative}
+.card-lo b{font:800 22px/1.1 var(--display)}
+.card-lo a{color:var(--go-hot);font-weight:700;text-decoration:none}
+.card-lo .btn.go{justify-content:center}
+.card-lo small{color:var(--mist)}
+
+footer{padding:46px 0 60px;color:var(--mist);font-size:12.5px;line-height:1.6;border-top:1px solid var(--line);margin-top:40px}
+footer .wrap{display:grid;gap:12px}
+footer .eho{display:flex;gap:12px;align-items:center;color:var(--paper);font-weight:700;font-size:13px}
+
+/* Scroll driven entrance, visible at rest where unsupported */
+@supports (animation-timeline: view()){
+  .lift{animation:lift linear both;animation-timeline:view();animation-range:entry 0% cover 28%}
+  @keyframes lift{from{transform:translateY(36px) scale(.97)}to{transform:none}}
+}
+
+@media (max-width:920px){
+  .hero .wrap,.est,.split,.contact{grid-template-columns:1fr}
+  .cards,.flow{grid-template-columns:1fr 1fr}
+  .easy{grid-template-columns:1fr 1fr}
+  .stats .wrap{grid-template-columns:1fr 1fr}
+  .stat:nth-child(2){border-right:0}
+  .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .house{max-width:340px}
+  .powered{display:none}
+}
+@media (max-width:600px){
+  .cards,.flow,.easy{grid-template-columns:1fr}
+  section{padding:54px 0}
+  .est,.contact{padding:20px}
+  header.top .btn.sm.hidem{display:none}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important}
+  .marquee .track{white-space:normal;flex-wrap:wrap}
+}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <a class="mark" href="#top" aria-label="iMath Group home"><b>iMath<i>+</i></b><small>GROUP</small></a>
+  <div class="powered"><strong>Cornerstone Flex Line</strong><span class="l-en">Powered by Cornerstone First Mortgage</span><span class="l-es" lang="es">Respaldado por Cornerstone First Mortgage</span></div>
+  <div class="spacer"></div>
+  <div class="lang" role="group" aria-label="Language">
+    <button type="button" id="lang-en" aria-pressed="true">EN</button>
+    <button type="button" id="lang-es" aria-pressed="false">ES</button>
+  </div>
+  <a class="btn go sm hidem" href="#contact"><span class="l-en">Talk to Elliot</span><span class="l-es" lang="es">Hable con Elliot</span></a>
+</div></header>
+<main id="top">
+
+<section class="hero"><div class="wrap">
+  <div>
+    <span class="eyebrow"><span class="l-en">Cornerstone Flex Line · Home equity line of credit</span><span class="l-es" lang="es">Cornerstone Flex Line · Línea de crédito hipotecaria</span></span>
+    <h1><span class="l-en">Your home has been <em>saving</em> for you.</span><span class="l-es" lang="es">Su casa ha estado <em>ahorrando</em> para usted.</span></h1>
+    <div class="kinetic"><span><span class="l-en">Now put it to work on</span><span class="l-es" lang="es">Ahora póngala a trabajar en</span></span><span class="rot" id="rot">a kitchen remodel</span></div>
+    <p class="lede"><span class="l-en">One line of credit you can use, pay down, and use again, while the first mortgage you already have stays exactly where it is.</span><span class="l-es" lang="es">Una línea de crédito que puede usar, pagar y volver a usar, mientras la hipoteca que ya tiene se queda exactamente igual.</span></p>
+    <div class="cta-row">
+      <a class="btn go" href="#estimate"><span class="l-en">Estimate my line</span><span class="l-es" lang="es">Estimar mi línea</span></a>
+      <a class="btn ghost" href="#examples"><span class="l-en">See six examples</span><span class="l-es" lang="es">Ver seis ejemplos</span></a>
+    </div>
+  </div>
+  <svg class="house" viewBox="0 0 400 400" role="img" aria-label="Illustration of a home filling with equity">
+  <defs>
+    <clipPath id="hc"><path d="M200 34 L370 168 L342 168 L342 372 L58 372 L58 168 L30 168 Z"/></clipPath>
+    <linearGradient id="eq" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fe37f"/><stop offset="1" stop-color="#4fa648"/></linearGradient>
+  </defs>
+  <path d="M200 34 L370 168 L342 168 L342 372 L58 372 L58 168 L30 168 Z" fill="#0a3d73" stroke="#24507f" stroke-width="3"/>
+  <g clip-path="url(#hc)">
+    <g class="rise">
+      <g class="wave"><path d="M0 160 Q50 140 100 160 T200 160 T300 160 T400 160 T500 160 T600 160 V400 H0 Z" fill="url(#eq)"/></g>
+      <rect x="0" y="282" width="600" height="120" fill="#3d6b9a"/>
+      <rect x="0" y="160" width="600" height="36" fill="#ffffff" opacity=".12" class="pulse"/>
+    </g>
+  </g>
+  <rect x="172" y="300" width="56" height="72" rx="6" fill="#00203f" opacity=".7"/>
+  <text x="200" y="186" text-anchor="middle" font-size="17" fill="#062a12">FLEX LINE</text>
+  <text x="200" y="246" text-anchor="middle" font-size="19" fill="#062a12">EQUITY</text>
+  <text x="200" y="338" text-anchor="middle" font-size="15" fill="#ffffff">MORTGAGE</text>
+</svg>
+</div></section>
+
+<div class="stats"><div class="wrap">
+  <div class="stat"><b data-count="317000">$317,000</b><span><span class="l-en">Duval County median sold price, October 2026, up 2.3% from November 2025 (local MLS)</span><span class="l-es" lang="es">Precio medio de venta en el condado Duval, octubre 2026, 2.3% más que en noviembre 2025 (MLS local)</span></span></div>
+  <div class="stat"><b>89.99%</b><span><span class="l-en">of your home's value can count toward your mortgage plus line</span><span class="l-es" lang="es">del valor de su casa puede sumar su hipoteca más la línea</span></span></div>
+  <div class="stat"><b data-count="1500000">$1,500,000</b><span><span class="l-en">largest line, first lien on a primary home</span><span class="l-es" lang="es">línea máxima, primera posición en residencia principal</span></span></div>
+  <div class="stat"><b data-count="25000">$25,000</b><span><span class="l-en">smallest line, so it fits small projects too</span><span class="l-es" lang="es">línea mínima, ideal también para proyectos pequeños</span></span></div>
+</div></div>
+
+<div class="marquee" aria-label="Ways to use a Flex Line"><div class="track"><span class="chip"><span class="l-en">Kitchen remodel</span><span class="l-es" lang="es">Remodelar la cocina</span></span><span class="chip"><span class="l-en">Hurricane ready roof</span><span class="l-es" lang="es">Techo para huracanes</span></span><span class="chip"><span class="l-en">Pool and patio</span><span class="l-es" lang="es">Piscina y patio</span></span><span class="chip"><span class="l-en">ADU for family</span><span class="l-es" lang="es">ADU para la familia</span></span><span class="chip"><span class="l-en">Pay off cards</span><span class="l-es" lang="es">Pagar tarjetas</span></span><span class="chip"><span class="l-en">College tuition</span><span class="l-es" lang="es">Universidad</span></span><span class="chip"><span class="l-en">Medical bills</span><span class="l-es" lang="es">Cuentas médicas</span></span><span class="chip"><span class="l-en">Start a business</span><span class="l-es" lang="es">Iniciar un negocio</span></span><span class="chip"><span class="l-en">Emergency fund</span><span class="l-es" lang="es">Fondo de emergencia</span></span><span class="chip"><span class="l-en">Impact windows</span><span class="l-es" lang="es">Ventanas de impacto</span></span><span class="chip"><span class="l-en">Wedding</span><span class="l-es" lang="es">Boda</span></span><span class="chip"><span class="l-en">Solar panels</span><span class="l-es" lang="es">Paneles solares</span></span><span class="chip" aria-hidden="true"><span class="l-en">Kitchen remodel</span><span class="l-es" lang="es">Remodelar la cocina</span></span><span class="chip" aria-hidden="true"><span class="l-en">Hurricane ready roof</span><span class="l-es" lang="es">Techo para huracanes</span></span><span class="chip" aria-hidden="true"><span class="l-en">Pool and patio</span><span class="l-es" lang="es">Piscina y patio</span></span><span class="chip" aria-hidden="true"><span class="l-en">ADU for family</span><span class="l-es" lang="es">ADU para la familia</span></span><span class="chip" aria-hidden="true"><span class="l-en">Pay off cards</span><span class="l-es" lang="es">Pagar tarjetas</span></span><span class="chip" aria-hidden="true"><span class="l-en">College tuition</span><span class="l-es" lang="es">Universidad</span></span><span class="chip" aria-hidden="true"><span class="l-en">Medical bills</span><span class="l-es" lang="es">Cuentas médicas</span></span><span class="chip" aria-hidden="true"><span class="l-en">Start a business</span><span class="l-es" lang="es">Iniciar un negocio</span></span><span class="chip" aria-hidden="true"><span class="l-en">Emergency fund</span><span class="l-es" lang="es">Fondo de emergencia</span></span><span class="chip" aria-hidden="true"><span class="l-en">Impact windows</span><span class="l-es" lang="es">Ventanas de impacto</span></span><span class="chip" aria-hidden="true"><span class="l-en">Wedding</span><span class="l-es" lang="es">Boda</span></span><span class="chip" aria-hidden="true"><span class="l-en">Solar panels</span><span class="l-es" lang="es">Paneles solares</span></span></div></div>
+
+<section id="examples"><div class="wrap">
+  <span class="eyebrow"><span class="l-en">Examples</span><span class="l-es" lang="es">Ejemplos</span></span>
+  <h2><span class="l-en">Six homeowners. <em>One</em> flexible line.</span><span class="l-es" lang="es">Seis dueños de casa. <em>Una</em> línea flexible.</span></h2>
+  <p class="sub"><span class="l-en">Each example uses the program's published limits with illustrative home values. Your numbers will be your own.</span><span class="l-es" lang="es">Cada ejemplo usa los límites publicados del programa con valores ilustrativos. Sus números serán los suyos.</span></p>
+  <div class="cards"><article class="card lift" style="--fill:62%">
+  <span class="tag"><span class="l-en">Keep your mortgage</span><span class="l-es" lang="es">Conserve su hipoteca</span></span>
+  <h3><span class="l-en">Tap equity without touching the first mortgage you already have</span><span class="l-es" lang="es">Use su valor líquido sin tocar la hipoteca que ya tiene</span></h3>
+  <p><span class="l-en">A Jacksonville family wants cash for projects but likes their current first mortgage exactly as it is. The Flex Line sits behind it in second position.</span><span class="l-es" lang="es">Una familia de Jacksonville quiere efectivo para proyectos pero le gusta su hipoteca actual tal como está. La Flex Line va detrás, en segunda posición.</span></p>
+  <dl class="nums"><dt><span class="l-en">Home value</span><span class="l-es" lang="es">Valor</span></dt><dd>$400,000</dd><dt><span class="l-en">Mortgage that stays</span><span class="l-es" lang="es">Hipoteca que se queda</span></dt><dd>$240,000</dd><dt><span class="l-en">Score</span><span class="l-es" lang="es">Crédito</span></dt><dd>740</dd></dl>
+  <div class="big"><span><span class="l-en">Estimated line</span><span class="l-es" lang="es">Línea estimada</span></span><b data-count="119960">$119,960</b></div>
+  <div class="why"><span class="l-en">Standalone second lien up to 89.99% of value with a 720+ score.</span><span class="l-es" lang="es">Segunda posición hasta 89.99% del valor con crédito de 720 o más.</span></div>
+</article><article class="card lift" style="--fill:74%">
+  <span class="tag"><span class="l-en">Renovate</span><span class="l-es" lang="es">Renovar</span></span>
+  <h3><span class="l-en">Build the kitchen, the pool, or an ADU for Mom</span><span class="l-es" lang="es">Construya la cocina, la piscina o un ADU para mamá</span></h3>
+  <p><span class="l-en">Draw as each contractor invoice arrives instead of borrowing everything on day one. Accessory dwelling units are eligible.</span><span class="l-es" lang="es">Retire fondos según llega cada factura del contratista en vez de pedir todo el primer día. Las unidades accesorias (ADU) son elegibles.</span></p>
+  <dl class="nums"><dt><span class="l-en">Home value</span><span class="l-es" lang="es">Valor</span></dt><dd>$550,000</dd><dt><span class="l-en">Mortgage that stays</span><span class="l-es" lang="es">Hipoteca que se queda</span></dt><dd>$300,000</dd><dt><span class="l-en">Score</span><span class="l-es" lang="es">Crédito</span></dt><dd>725</dd></dl>
+  <div class="big"><span><span class="l-en">Estimated line</span><span class="l-es" lang="es">Línea estimada</span></span><b data-count="194945">$194,945</b></div>
+  <div class="why"><span class="l-en">ADUs and manufactured homes are eligible property types.</span><span class="l-es" lang="es">Los ADU y casas manufacturadas son propiedades elegibles.</span></div>
+</article><article class="card lift" style="--fill:48%">
+  <span class="tag"><span class="l-en">Consolidate</span><span class="l-es" lang="es">Consolidar</span></span>
+  <h3><span class="l-en">Roll scattered balances into one line</span><span class="l-es" lang="es">Junte saldos dispersos en una sola línea</span></h3>
+  <p><span class="l-en">Card balances, a car note, a medical bill. One line, one statement, and a plan to pay it down on your schedule.</span><span class="l-es" lang="es">Tarjetas, un préstamo de auto, una cuenta médica. Una línea, un estado de cuenta y un plan para pagarla a su ritmo.</span></p>
+  <dl class="nums"><dt><span class="l-en">Home value</span><span class="l-es" lang="es">Valor</span></dt><dd>$325,000</dd><dt><span class="l-en">Mortgage that stays</span><span class="l-es" lang="es">Hipoteca que se queda</span></dt><dd>$210,000</dd><dt><span class="l-en">Score</span><span class="l-es" lang="es">Crédito</span></dt><dd>705</dd></dl>
+  <div class="big"><span><span class="l-en">Estimated line</span><span class="l-es" lang="es">Línea estimada</span></span><b data-count="66250">$66,250</b></div>
+  <div class="why"><span class="l-en">Scores from 700 to 719 can reach 85% of value.</span><span class="l-es" lang="es">Puntajes de 700 a 719 pueden llegar a 85% del valor.</span></div>
+</article><article class="card lift" style="--fill:88%">
+  <span class="tag"><span class="l-en">Almost paid off</span><span class="l-es" lang="es">Casi pagada</span></span>
+  <h3><span class="l-en">Replace a small remaining mortgage with a big line</span><span class="l-es" lang="es">Cambie una hipoteca pequeña por una línea grande</span></h3>
+  <p><span class="l-en">The Flex Line can sit in first position, pay off the last $90,000, and leave the rest ready to use.</span><span class="l-es" lang="es">La Flex Line puede ir en primera posición, pagar los últimos $90,000 y dejar el resto listo para usar.</span></p>
+  <dl class="nums"><dt><span class="l-en">Home value</span><span class="l-es" lang="es">Valor</span></dt><dd>$450,000</dd><dt><span class="l-en">Paid off by the line</span><span class="l-es" lang="es">Pagado por la línea</span></dt><dd>$90,000</dd><dt><span class="l-en">Left to use</span><span class="l-es" lang="es">Disponible</span></dt><dd>$270,000</dd></dl>
+  <div class="big"><span><span class="l-en">Estimated line</span><span class="l-es" lang="es">Línea estimada</span></span><b data-count="360000">$360,000</b></div>
+  <div class="why"><span class="l-en">First lien lines up to 80% of value; cash out restrictions do not apply.</span><span class="l-es" lang="es">Primera posición hasta 80% del valor; no aplican restricciones de cash out.</span></div>
+</article><article class="card lift" style="--fill:95%">
+  <span class="tag"><span class="l-en">Free and clear</span><span class="l-es" lang="es">Sin hipoteca</span></span>
+  <h3><span class="l-en">Own it outright? Keep a large line ready and waiting</span><span class="l-es" lang="es">¿Su casa está pagada? Tenga una línea grande lista</span></h3>
+  <p><span class="l-en">Retirees and long time owners can open a line with no minimum draw at closing, then use it only when life calls for it.</span><span class="l-es" lang="es">Jubilados y dueños de muchos años pueden abrir una línea sin retiro mínimo al cierre y usarla solo cuando la vida lo pida.</span></p>
+  <dl class="nums"><dt><span class="l-en">Home value</span><span class="l-es" lang="es">Valor</span></dt><dd>$600,000</dd><dt><span class="l-en">Mortgage</span><span class="l-es" lang="es">Hipoteca</span></dt><dd>$0</dd><dt><span class="l-en">Score</span><span class="l-es" lang="es">Crédito</span></dt><dd>770</dd></dl>
+  <div class="big"><span><span class="l-en">Estimated line</span><span class="l-es" lang="es">Línea estimada</span></span><b data-count="480000">$480,000</b></div>
+  <div class="why"><span class="l-en">First lien lines up to $1,500,000 on primary homes.</span><span class="l-es" lang="es">Líneas en primera posición hasta $1,500,000 en residencias principales.</span></div>
+</article><article class="card lift" style="--fill:56%">
+  <span class="tag"><span class="l-en">Second home</span><span class="l-es" lang="es">Segunda vivienda</span></span>
+  <h3><span class="l-en">The beach condo counts, even in a tricky complex</span><span class="l-es" lang="es">El condominio en la playa cuenta, aun en un complejo difícil</span></h3>
+  <p><span class="l-en">Standalone lines need no condo questionnaire, and non warrantable complexes are fine as long as units there are selling.</span><span class="l-es" lang="es">Las líneas independientes no piden cuestionario del condominio, y los complejos no garantizables están bien si las unidades se están vendiendo.</span></p>
+  <dl class="nums"><dt><span class="l-en">Condo value</span><span class="l-es" lang="es">Valor</span></dt><dd>$380,000</dd><dt><span class="l-en">Mortgage that stays</span><span class="l-es" lang="es">Hipoteca que se queda</span></dt><dd>$200,000</dd><dt><span class="l-en">Score</span><span class="l-es" lang="es">Crédito</span></dt><dd>730</dd></dl>
+  <div class="big"><span><span class="l-en">Estimated line</span><span class="l-es" lang="es">Línea estimada</span></span><b data-count="104000">$104,000</b></div>
+  <div class="why"><span class="l-en">Second homes: up to 80% of value and a $250,000 line with 720+.</span><span class="l-es" lang="es">Segundas viviendas: hasta 80% del valor y $250,000 con 720 o más.</span></div>
+</article></div>
+</div></section>
+
+<section id="estimate"><div class="wrap">
+  <span class="eyebrow"><span class="l-en">Estimator</span><span class="l-es" lang="es">Estimador</span></span>
+  <h2><span class="l-en">How big could <em>your</em> line be?</span><span class="l-es" lang="es">¿De qué tamaño podría ser <em>su</em> línea?</span></h2>
+  <p class="sub"><span class="l-en">Move the sliders. The math follows the program's published limits by credit range and occupancy.</span><span class="l-es" lang="es">Mueva los controles. El cálculo sigue los límites publicados por rango de crédito y ocupación.</span></p>
+  <div class="est lift">
+    <div>
+      <div class="field"><label for="hv"><span class="l-en">Home value</span><span class="l-es" lang="es">Valor de la casa</span></label><div class="row"><input type="range" id="hv" min="100000" max="2000000" step="5000" value="400000"><output id="hv-o" for="hv">$400,000</output></div></div>
+      <div class="field"><label for="mb"><span class="l-en">What you owe on your mortgage (enter $0 if paid off)</span><span class="l-es" lang="es">Lo que debe en su hipoteca ($0 si está pagada)</span></label><div class="row"><input type="range" id="mb" min="0" max="1500000" step="5000" value="240000"><output id="mb-o" for="mb">$240,000</output></div></div>
+      <div class="field"><label for="band"><span class="l-en">Credit score range</span><span class="l-es" lang="es">Rango de crédito</span></label><select id="band"><option value="760" data-en="760 or higher" data-es="760 o más">760 or higher</option><option value="720" data-en="720 to 759" data-es="720 a 759" selected>720 to 759</option><option value="700" data-en="700 to 719" data-es="700 a 719">700 to 719</option><option value="680" data-en="680 to 699" data-es="680 a 699">680 to 699</option></select></div>
+      <div class="field"><span class="l" id="occ-l" style="font-weight:700;font-size:14px"><span class="l-en">This home is my</span><span class="l-es" lang="es">Esta casa es mi</span></span><div class="seg" id="occ" role="group" aria-labelledby="occ-l">
+  <button type="button" data-v="primary" aria-pressed="true"><span class="l-en">Primary home</span><span class="l-es" lang="es">Residencia principal</span></button>
+  <button type="button" data-v="second" aria-pressed="false"><span class="l-en">Second home</span><span class="l-es" lang="es">Segunda vivienda</span></button>
+</div></div>
+    </div>
+    <div class="result" aria-live="polite">
+  <span class="status" id="status">Estimate</span>
+  <div><div class="fine"><span class="l-en">Estimated line</span><span class="l-es" lang="es">Línea estimada</span></div><div class="amount" id="amount">$0</div></div>
+  <div class="stack" aria-hidden="true"><div class="s1" id="s1"></div><div class="s2" id="s2"></div><div class="s3" id="s3"></div></div>
+  <div class="legend"><span><i style="background:#3d6b9a"></i><span class="l-en">Mortgage</span><span class="l-es" lang="es">Hipoteca</span></span><span><i style="background:#6bc063"></i><span class="l-en">Flex Line</span><span class="l-es" lang="es">Flex Line</span></span><span><i style="background:#16395f"></i><span class="l-en">Equity left untouched</span><span class="l-es" lang="es">Valor que queda intacto</span></span></div>
+  <p class="explain" id="explain"></p>
+  <p class="fine"><span class="l-en">Illustration only, using published program limits. Not an offer of credit. Your actual line depends on credit approval, valuation, income, debts, and title.</span><span class="l-es" lang="es">Solo ilustrativo, con los límites publicados del programa. No es una oferta de crédito. Su línea real depende de aprobación de crédito, valuación, ingresos, deudas y título.</span></p>
+</div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <span class="eyebrow"><span class="l-en">How it flows</span><span class="l-es" lang="es">Cómo funciona</span></span>
+  <h2><span class="l-en">Use it. Pay it down. <em>Use it again.</em></span><span class="l-es" lang="es">Úsela. Páguela. <em>Úsela otra vez.</em></span></h2>
+  <div class="flow">
+    <div class="step lift"><span class="n">01</span><h3><span class="l-en">Open your line</span><span class="l-es" lang="es">Abra su línea</span></h3><p><span class="l-en">One application, one closing. No minimum draw required at closing.</span><span class="l-es" lang="es">Una solicitud, un cierre. No se requiere retiro mínimo al cierre.</span></p><div class="meter"><i></i></div></div>
+    <div class="step lift"><span class="n">02</span><h3><span class="l-en">Draw when you need it</span><span class="l-es" lang="es">Retire cuando lo necesite</span></h3><p><span class="l-en">Take what you need when the line funds. After that, draw more online or by phone once the line is active, about 30 days after closing.</span><span class="l-es" lang="es">Tome lo que necesite cuando la línea se financie. Después, retire más en línea o por teléfono cuando la línea esté activa, unos 30 días después del cierre.</span></p><div class="meter"><i style="animation-delay:-2s"></i></div></div>
+    <div class="step lift"><span class="n">03</span><h3><span class="l-en">Pay down, reuse</span><span class="l-es" lang="es">Pague y reutilice</span></h3><p><span class="l-en">Pay principal back whenever you like and that room opens up again for the next project.</span><span class="l-es" lang="es">Pague capital cuando quiera y ese espacio se abre otra vez para el próximo proyecto.</span></p><div class="meter"><i style="animation-delay:-4s"></i></div></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <span class="eyebrow"><span class="l-en">Built to be easy</span><span class="l-es" lang="es">Hecha para ser fácil</span></span>
+  <h2><span class="l-en">Less paperwork than you expect.</span><span class="l-es" lang="es">Menos papeles de lo que espera.</span></h2>
+  <ul class="easy"><li class="lift"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#6bc063"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#062a12" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg><span class="l-en">No asset verification or reserves</span><span class="l-es" lang="es">Sin verificación de activos ni reservas</span></li><li class="lift"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#6bc063"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#062a12" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg><span class="l-en">No condo documents, non warrantable OK</span><span class="l-es" lang="es">Sin documentos de condominio, no garantizables OK</span></li><li class="lift"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#6bc063"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#062a12" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg><span class="l-en">Automated valuation for lines up to $400,000</span><span class="l-es" lang="es">Valuación automatizada para líneas hasta $400,000</span></li><li class="lift"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#6bc063"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#062a12" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg><span class="l-en">Single bureau credit on standalone lines</span><span class="l-es" lang="es">Crédito de un solo buró en líneas independientes</span></li><li class="lift"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#6bc063"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#062a12" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg><span class="l-en">Manufactured homes and ADUs eligible</span><span class="l-es" lang="es">Casas manufacturadas y ADU elegibles</span></li><li class="lift"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#6bc063"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#062a12" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg><span class="l-en">Trusts welcome</span><span class="l-es" lang="es">Se aceptan fideicomisos</span></li><li class="lift"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#6bc063"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#062a12" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg><span class="l-en">No minimum draw at closing</span><span class="l-es" lang="es">Sin retiro mínimo al cierre</span></li><li class="lift"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#6bc063"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#062a12" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg><span class="l-en">Primary homes and second homes</span><span class="l-es" lang="es">Residencias principales y segundas viviendas</span></li></ul>
+</div></section>
+
+<section><div class="wrap split">
+  <div class="know lift">
+    <h2 style="font-size:28px"><span class="l-en">Good to know</span><span class="l-es" lang="es">Bueno saber</span></h2>
+    <ul>
+      <li><span class="l-en"><b>Your rate can change.</b> Ask me how it works for your situation before you apply.</span><span class="l-es" lang="es"><b>Su tasa puede cambiar.</b> Pregúnteme cómo funciona en su caso antes de solicitar.</span></li>
+      <li><span class="l-en"><b>Not available in Texas or New York.</b> Investment properties are not eligible.</span><span class="l-es" lang="es"><b>No disponible en Texas ni Nueva York.</b> Propiedades de inversión no son elegibles.</span></li>
+      <li><span class="l-en"><b>Partner names on your paperwork.</b> Closing documents mention Rhyze Solutions, the program partner, and the application includes a credit union membership form.</span><span class="l-es" lang="es"><b>Nombres de socios en sus documentos.</b> Los documentos de cierre mencionan a Rhyze Solutions, socio del programa, y la solicitud incluye un formulario de membresía de una cooperativa de crédito.</span></li>
+      <li><span class="l-en"><b>Service after closing</b> is handled by Midwest Loan Services, with an online portal for statements and draws.</span><span class="l-es" lang="es"><b>El servicio después del cierre</b> lo maneja Midwest Loan Services, con un portal en línea para estados de cuenta y retiros.</span></li>
+    </ul>
+  </div>
+  <div>
+    <details><summary><span class="l-en">Will this change my current mortgage?</span><span class="l-es" lang="es">¿Esto cambia mi hipoteca actual?</span></summary><p><span class="l-en">Not when the line sits in second position. Your first mortgage keeps its terms. If your home is paid off or nearly paid off, the line can go in first position instead.</span><span class="l-es" lang="es">No cuando la línea va en segunda posición. Su primera hipoteca conserva sus términos. Si su casa está pagada o casi pagada, la línea puede ir en primera posición.</span></p></details>
+    <details><summary><span class="l-en">Do I have to use the whole line?</span><span class="l-es" lang="es">¿Tengo que usar toda la línea?</span></summary><p><span class="l-en">No. There is no minimum draw at closing. Use what you need, when you need it.</span><span class="l-es" lang="es">No. No hay retiro mínimo al cierre. Use lo que necesite, cuando lo necesite.</span></p></details>
+    <details><summary><span class="l-en">Will I need an appraisal?</span><span class="l-es" lang="es">¿Necesito un avalúo?</span></summary><p><span class="l-en">Often not. An automated valuation can work for lines up to $400,000. A full appraisal is always an option, and some homes will need one.</span><span class="l-es" lang="es">Muchas veces no. Una valuación automatizada puede servir para líneas hasta $400,000. Un avalúo completo siempre es una opción y algunas casas lo necesitarán.</span></p></details>
+    <details><summary><span class="l-en">Do you need my bank statements?</span><span class="l-es" lang="es">¿Necesita mis estados de cuenta?</span></summary><p><span class="l-en">The line itself does not require asset verification. You list where any cash to close comes from on the application.</span><span class="l-es" lang="es">La línea en sí no requiere verificación de activos. Usted indica en la solicitud de dónde viene el dinero para el cierre.</span></p></details>
+    <details><summary><span class="l-en">How soon can I use the money?</span><span class="l-es" lang="es">¿Qué tan pronto puedo usar el dinero?</span></summary><p><span class="l-en">You can take an initial draw when the line funds. New draws open about 30 days after closing, once the servicer sets up your account and sends a welcome packet.</span><span class="l-es" lang="es">Puede hacer un retiro inicial cuando la línea se financie. Los nuevos retiros se abren unos 30 días después del cierre, cuando el servicer activa su cuenta y le envía un paquete de bienvenida.</span></p></details>
+  </div>
+</div></section>
+
+<section id="contact"><div class="wrap">
+<div class="contact lift">
+  <div>
+    <h2><span class="l-en">Let's map out <em>your</em> line.</span><span class="l-es" lang="es">Diseñemos <em>su</em> línea.</span></h2>
+    <p><span class="l-en">Tell me what you want to do with your equity. I will run your real numbers, explain how the rate works, and show you every option side by side.</span><span class="l-es" lang="es">Cuénteme qué quiere hacer con el valor de su casa. Le corro sus números reales, le explico cómo funciona la tasa y le muestro cada opción lado a lado.</span></p>
+  </div>
+  <div class="card-lo">
+    <b>Elliot De la Cruz</b>
+    <small><span class="l-en">Loan Officer, iMath Group · NMLS 2290569 · Hablo español</span><span class="l-es" lang="es">Oficial de Préstamos, iMath Group · NMLS 2290569 · Hablo español</span></small>
+    <a href="tel:+19043276449">(904) 327 6449</a>
+    <a href="mailto:elliot@imathgroup.com?subject=Cornerstone%20Flex%20Line">elliot@imathgroup.com</a>
+    <a class="btn go" href="https://portal.myhometrac.com/homehub/signup/elliot@imathgroup.com?utm_source=flexline_page&amp;utm_medium=web&amp;utm_campaign=flexline_homeowner"><span class="l-en">Start my application</span><span class="l-es" lang="es">Comenzar mi solicitud</span></a>
+  </div>
+</div></div></section>
+
+</main>
+<footer><div class="wrap">
+  <div class="eho"><svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3L2 14h4v15h20V14h4z" fill="none" stroke="#f3f7fb" stroke-width="2.4"/><path d="M11 17h10M11 22h10" stroke="#f3f7fb" stroke-width="2.4"/></svg><span class="l-en">Equal Housing Opportunity</span><span class="l-es" lang="es">Igualdad de Oportunidades en la Vivienda</span></div>
+  
+  <p><span class="l-en">Elliot De la Cruz, Loan Officer, NMLS 2290569. iMath Group, powered by Cornerstone First Mortgage, LLC, NMLS 173855. 1000 Riverside Avenue, Suite 550, Jacksonville, FL 32204. Licensing information: nmlsconsumeraccess.org.</span><span class="l-es" lang="es">Elliot De la Cruz, Oficial de Préstamos, NMLS 2290569. iMath Group, respaldado por Cornerstone First Mortgage, LLC, NMLS 173855. 1000 Riverside Avenue, Suite 550, Jacksonville, FL 32204. Información de licencias: nmlsconsumeraccess.org.</span>
+   <a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/2290569">NMLS 2290569</a> · <a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/173855">NMLS 173855</a></p>
+  <p><span class="l-en">The Cornerstone Flex Line is a home equity line of credit with a rate that can change. Examples and estimates on this page are for illustration only and are not an offer of credit or a commitment to lend. All lines are subject to credit approval, property valuation, income and debt qualification, title review, and program guidelines, which can change without notice. Available for primary residences and second homes. Not available in Texas or New York. Membership in the program's partner credit union is part of the application. Before you apply, ask for the booklet What You Should Know About Home Equity Lines of Credit and the program disclosures.</span><span class="l-es" lang="es">La Cornerstone Flex Line es una línea de crédito sobre el valor líquido de la vivienda con una tasa que puede cambiar. Los ejemplos y estimados en esta página son solo ilustrativos y no son una oferta de crédito ni un compromiso de préstamo. Toda línea está sujeta a aprobación de crédito, valuación de la propiedad, calificación de ingresos y deudas, revisión de título y las guías del programa, que pueden cambiar sin aviso. Disponible para residencias principales y segundas viviendas. No disponible en Texas ni Nueva York. La membresía en la cooperativa de crédito asociada al programa es parte de la solicitud. Antes de solicitar, pida el folleto Lo Que Debe Saber Sobre las Líneas de Crédito Sobre el Valor Líquido de la Vivienda y las divulgaciones del programa.</span></p>
+</div></footer>
+<script>
+(function(){
+  var root=document.documentElement;
+  var words={"en": ["a kitchen remodel", "a hurricane ready roof", "college tuition", "paying off cards", "an ADU for family", "peace of mind"], "es": ["remodelar la cocina", "un techo para huracanes", "la universidad", "pagar las tarjetas", "un ADU para la familia", "su tranquilidad"]};
+  function setLang(l){
+    root.dataset.lang=l; root.lang=l;
+    document.getElementById('lang-en').setAttribute('aria-pressed',l==='en');
+    document.getElementById('lang-es').setAttribute('aria-pressed',l==='es');
+    try{localStorage.setItem('flexlang',l)}catch(e){}
+    document.querySelectorAll('option[data-en]').forEach(function(o){o.textContent=o.dataset[l]});
+    rotIdx=0; paintRot(false); if(window.recalc) window.recalc();
+  }
+  var rot=document.getElementById('rot'), rotIdx=0;
+  function paintRot(anim){
+    var list=words[root.dataset.lang]||words.en;
+    rot.textContent=list[rotIdx%list.length];
+    if(anim){rot.classList.remove('swap');void rot.offsetWidth;rot.classList.add('swap');}
+  }
+  document.getElementById('lang-en').addEventListener('click',function(){setLang('en')});
+  document.getElementById('lang-es').addEventListener('click',function(){setLang('es')});
+  var saved=null; try{saved=localStorage.getItem('flexlang')}catch(e){}
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  setLang(saved==='es'?'es':'en');
+  if(!reduce) setInterval(function(){rotIdx++;paintRot(true)},2300);
+
+  // Count up when a number scrolls into view; final value is already in the markup.
+  function fmt(n){return '$'+Math.round(n).toLocaleString('en-US')}
+  if(!reduce && 'IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(!e.isIntersecting) return; io.unobserve(e.target);
+      var el=e.target, end=+el.dataset.count, t0=null;
+      function tick(t){ if(!t0)t0=t; var p=Math.min(1,(t-t0)/1100); var q=1-Math.pow(1-p,3); el.textContent=fmt(end*q); if(p<1) requestAnimationFrame(tick); }
+      requestAnimationFrame(tick);
+    })},{threshold:.6});
+    document.querySelectorAll('[data-count]').forEach(function(el){io.observe(el)});
+  }
+  window.__fmt=fmt;
+})();
+</script>
+<script>
+function $(id){return document.getElementById(id)}
+function fmt(n){return '$'+Math.round(n).toLocaleString('en-US')}
+function lang(){return document.documentElement.dataset.lang||'en'}
+function seg(groupId, onChange){
+  var g=$(groupId); g.addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b) return;
+    g.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed', x===b)});
+    onChange();
+  });
+}
+function segVal(groupId){var b=$(groupId).querySelector('[aria-pressed="true"]'); return b?b.dataset.v:null}
+function paintStack(total, a, b){
+  var c=Math.max(0,total-a-b);
+  $('s1').style.flexBasis=(a/total*100)+'%';
+  $('s2').style.flexBasis=(b/total*100)+'%';
+  $('s3').style.flexBasis=(c/total*100)+'%';
+  $('s1').textContent=a/total>.14?fmt(a):'';
+  $('s2').textContent=b/total>.14?fmt(b):'';
+  $('s3').textContent=c/total>.14?fmt(c):'';
+}
+
+var CAPS={ // Rhyze HELOC Accreditation Guidelines 2026.08.03, standalone
+ second:{primary:{'760':.8999,'720':.8999,'700':.85,'680':.80}, second:{'760':.80,'720':.80}},
+ first:{primary:{'760':.80,'720':.80,'700':.75,'680':.70}, second:{'760':.70,'720':.70}}
+};
+function calc(){
+  var V=+$('hv').value, B=+$('mb').value, band=$('band').value, occ=segVal('occ');
+  if(B>V) {B=V; $('mb').value=V;}
+  $('hv-o').textContent=fmt(V); $('mb-o').textContent=fmt(B);
+  var es=lang()==='es', line=0, ok=true, cap=0, max=0, product='';
+  if(B>0){
+    cap=(CAPS.second[occ]||{})[band]||0; max=occ==='primary'?500000:250000;
+    product=es?'línea en segunda posición; su hipoteca actual se queda igual':'second lien line; your current mortgage stays as is';
+    line=cap?Math.floor(Math.min(cap*V-B,max)):0;
+  } else {
+    cap=(CAPS.first[occ]||{})[band]||0;
+    product=es?'línea en primera posición sobre una casa sin hipoteca':'first lien line on a home with no mortgage';
+    if(occ==='primary'){ var a=Math.min(cap*V,1000000), b=band>='720'?Math.min(.70*V,1500000):0; line=cap?Math.floor(Math.max(a,b)):0; max=1500000;}
+    else { line=cap?Math.floor(Math.min(cap*V,1000000)):0; max=1000000;}
+  }
+  var st=$('status'), amt=$('amount'), ex=$('explain');
+  if(!cap){
+    ok=false; st.className='status warn';
+    st.textContent=es?'Fuera de las guías':'Outside guidelines';
+    amt.textContent='$0';
+    ex.textContent=es?'Ese rango de crédito no califica para esta combinación. Llámeme y revisamos otras opciones.':'That credit range does not qualify for this combination. Call me and we will look at other options.';
+    paintStack(V,B,0); return;
+  }
+  if(line<25000){
+    st.className='status warn'; st.textContent=es?'Debajo del mínimo de $25,000':'Below the $25,000 minimum';
+    amt.textContent=fmt(Math.max(0,line));
+    ex.textContent=es?'Con estos números la línea estimada queda debajo del mínimo del programa.':'With these numbers the estimated line falls below the program minimum.';
+    paintStack(V,B,Math.max(0,line)); return;
+  }
+  st.className='status'; st.textContent=es?'Estimado dentro de las guías':'Estimate within guidelines';
+  amt.textContent=fmt(line);
+  ex.textContent=(es?'Basado en hasta ':'Based on up to ')+(Math.round(cap*10000)/100)+(es?'% del valor de la casa, ':'% of home value, ')+product+'.';
+  paintStack(V,B,line);
+}
+['hv','mb','band'].forEach(function(id){$(id).addEventListener('input',calc)});
+seg('occ',calc); window.recalc=calc; calc();
+</script>
+</body>
+</html>
