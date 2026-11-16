@@ -399,6 +399,44 @@ footer .q .copy{background:transparent;box-shadow:inset 0 0 0 2px rgba(255,255,2
 @keyframes skyHit{20%{transform:translate(9px,6px)}45%{transform:translate(-7px,-4px)}70%{transform:translate(4px,-3px)}}
 .sky.clear .stage{transform:scale(1.15);opacity:0;transition:transform 1.3s ease .1s,opacity 1s ease .3s}
 
+/* sunny ending: clouds part, bright sky, the sun comes out */
+.sky .sunsky{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity 1.5s ease;
+  background:radial-gradient(70% 55% at 80% 10%,rgba(255,236,170,.95) 0%,rgba(255,226,140,.35) 35%,rgba(255,255,255,0) 65%),linear-gradient(180deg,#2a86e2 0%,#5fb0f2 42%,#bfe2ff 78%,#fff4dc 100%)}
+.sky.sun .sunsky{opacity:1}
+.sky .sun{position:absolute;left:80%;top:10%;width:clamp(200px,34vw,420px);aspect-ratio:1;pointer-events:none;opacity:0;
+  transform:translate(-50%,-50%) translateY(70%) scale(.45);transition:transform 1.9s cubic-bezier(.2,.9,.25,1),opacity .9s}
+.sky.sun .sun{opacity:1;transform:translate(-50%,-50%)}
+.sky .sun .disc{position:absolute;inset:26%;border-radius:50%;background:radial-gradient(circle at 40% 38%,#fffdf0 0%,#ffe680 42%,#ffb92e 100%);
+  box-shadow:0 0 60px 24px rgba(255,214,90,.8),0 0 180px 80px rgba(255,205,90,.45)}
+.sky .sun .rays{position:absolute;inset:-35%;border-radius:50%;background:repeating-conic-gradient(rgba(255,240,170,.75) 0 7deg,rgba(255,240,170,0) 7deg 20deg);
+  -webkit-mask:radial-gradient(closest-side,#000 25%,transparent 100%);mask:radial-gradient(closest-side,#000 25%,transparent 100%);animation:sunSpin 22s linear infinite}
+@keyframes sunSpin{to{transform:rotate(360deg)}}
+.sky .puff{position:absolute;width:var(--pw);height:calc(var(--pw) * .42);border-radius:50%;pointer-events:none;opacity:0;
+  background:radial-gradient(closest-side,#fff 0%,rgba(255,255,255,.9) 45%,rgba(255,255,255,0) 100%);transform:translateX(-40px);transition:opacity 1.2s .6s,transform 6s linear .6s}
+.sky.sun .puff{opacity:.95;transform:translateX(40px)}
+.sky.sun .cl{transform:translate3d(var(--fx2),-30%,0);opacity:0;transition-duration:1.5s}
+.sky.sun .flash{display:none}
+.sky .new .big,.sky .new .dt,.sky .new .cap{transition:color .9s ease,text-shadow .9s ease}
+.sky.sun .new .big{color:#0a2348;animation:none;text-shadow:0 8px 0 rgba(255,255,255,.55),0 0 50px rgba(255,255,255,.7)}
+.sky.sun .new .big .num{color:#b31942}
+.sky.sun .new .dt{color:#1d3a63}
+.sky.sun .new .cap{color:#0a2348}
+.sky .fc{display:inline-flex;align-items:center;gap:12px;margin-top:16px;padding:9px 20px 8px 14px;border-radius:999px;background:#fff;color:#0a2348;
+  font-family:var(--f-cond);font-weight:800;font-size:clamp(15px,2.4vw,22px);letter-spacing:.18em;text-transform:uppercase;box-shadow:0 10px 30px rgba(10,35,72,.25);
+  opacity:0;transform:translateY(18px) scale(.9);transition:opacity .5s 1s,transform .6s 1s cubic-bezier(.2,1.6,.4,1)}
+.sky .fc i{width:20px;height:20px;border-radius:50%;background:#ffbf2e;box-shadow:0 0 0 5px rgba(255,191,46,.35),0 0 18px 4px rgba(255,191,46,.6)}
+.sky.sun .fc{opacity:1;transform:none}
+.sky.sun .skip{color:#0a2348;background:rgba(255,255,255,.55);border-color:rgba(10,35,72,.3)}
+/* sunrise on the page hero after the storm */
+.hero .herosun{position:absolute;right:-140px;top:-190px;width:620px;height:620px;pointer-events:none;z-index:0;opacity:0;transition:opacity 1.6s ease}
+.hero .herosun.on{opacity:1}
+.hero .herosun::before{content:"";position:absolute;inset:-10%;border-radius:50%;background:repeating-conic-gradient(rgba(255,226,140,.22) 0 6deg,rgba(255,226,140,0) 6deg 18deg);
+  -webkit-mask:radial-gradient(closest-side,#000 20%,transparent 100%);mask:radial-gradient(closest-side,#000 20%,transparent 100%);animation:sunSpin 40s linear infinite}
+.hero .herosun::after{content:"";position:absolute;inset:30%;border-radius:50%;background:radial-gradient(circle at 40% 40%,#fff6d0 0%,#ffd761 50%,#ffae2b 100%);
+  box-shadow:0 0 80px 40px rgba(255,200,80,.45),0 0 240px 120px rgba(255,190,80,.22)}
+@media (max-width:640px){.hero .herosun{width:420px;height:420px;right:-170px;top:-170px}}
+@media (prefers-reduced-motion:reduce){.hero .herosun::before{animation:none}}
+
 
 /* locked and loaded page */
 .head.lnl .l3{font-size:clamp(46px,9vw,104px);color:var(--parch)}
@@ -424,6 +462,7 @@ footer .q .copy{background:transparent;box-shadow:inset 0 0 0 2px rgba(255,255,2
 </div>
 
 <header class="hero" id="top">
+  <div class="herosun" id="herosun" aria-hidden="true"></div>
   <div class="seal" aria-hidden="true"><svg viewBox="0 0 200 200">
     <defs><path id="ring" d="M100 100 m-78 0 a78 78 0 1 1 156 0 a78 78 0 1 1 -156 0"/></defs>
     <circle cx="100" cy="100" r="97" fill="#061a33" stroke="#b31942" stroke-width="5"/>
@@ -442,7 +481,7 @@ footer .q .copy{background:transparent;box-shadow:inset 0 0 0 2px rgba(255,255,2
       <div class="l1"><span class="s4">LOADED?</span></div>
       <div class="burst"></div>
     </h1>
-    <div class="ribbon"><div>Rain moved range day. Tell us you're still in.</div></div>
+    <div class="ribbon"><div>Rained out. Now it's sunny skies. Tell us you're still in.</div></div>
     <div class="when">
       <div class="date"><small>Range day<span class="nt">New date</span></small>Thursday, December 3, 2026<button class="replay" type="button" id="replay">Replay the storm</button></div>
       <div>
@@ -606,9 +645,11 @@ footer .q .copy{background:transparent;box-shadow:inset 0 0 0 2px rgba(255,255,2
       var nb = chars(o.newMain, function(k){ return k * 45; });
       var num = o.newMain.match(/\d+/);
       if (num) nb = nb.replace(new RegExp('(<span class="c"[^>]*>' + num[0].split('').join('</span><span class="c"[^>]*>') + '</span>)'), '<span class="num">$1</span>');
-      sky.innerHTML = '<div class="clouds">' + cl + '</div><canvas></canvas>' +
+      var sunny = o.sunny ? '<div class="sunsky"></div><div class="sun"><i class="rays"></i><i class="disc"></i></div>' +
+        '<i class="puff" style="left:-6%;bottom:14%;--pw:340px"></i><i class="puff" style="right:-4%;bottom:22%;--pw:280px"></i><i class="puff" style="left:18%;top:8%;--pw:220px"></i>' : '';
+      sky.innerHTML = sunny + '<div class="clouds">' + cl + '</div><canvas></canvas>' +
         '<div class="stage"><div class="slot old"><div class="dt">' + chars(o.oldTop, rnd) + '</div><div class="big">' + chars(o.oldMain, rnd) + '</div></div>' +
-        '<div class="slot new"><span class="tag">' + o.tag + '</span><div class="dt">' + o.newTop + '</div><div class="big">' + nb + '</div><div class="cap">' + o.cap + '</div></div>' +
+        '<div class="slot new"><span class="tag">' + o.tag + '</span><div class="dt">' + o.newTop + '</div><div class="big">' + nb + '</div><div class="cap">' + o.cap + '</div>' + (o.sunny ? '<div class="fc"><i></i>' + (o.sunCap || 'Bright skies ahead') + '</div>' : '') + '</div>' +
         '<div class="ro">RAINED OUT</div></div><div class="flash"></div><button class="skip" type="button">Skip</button>';
       document.body.appendChild(sky);
       return sky;
@@ -677,7 +718,7 @@ footer .q .copy{background:transparent;box-shadow:inset 0 0 0 2px rgba(255,255,2
       function reveal(){
         if (revealed) return; revealed = true;
         timers.forEach(clearTimeout);
-        sky.classList.remove('wash', 'stamp'); sky.classList.add('nu', 'clear'); r.stop();
+        sky.classList.remove('wash', 'stamp'); sky.classList.add('nu', 'clear'); if (o.sunny) sky.classList.add('sun'); r.stop();
         if (o.onReveal) o.onReveal();
         setTimeout(function(){ r.kill(); sky.remove(); busy = false; if (o.onDone) o.onDone(); }, 1700);
       }
@@ -688,8 +729,13 @@ footer .q .copy{background:transparent;box-shadow:inset 0 0 0 2px rgba(255,255,2
       T(1250, function(){ sky.classList.add('stamp'); });
       T(1750, function(){ sky.classList.add('wash'); flash(sky, 'soft'); });
       T(2750, function(){ sky.classList.remove('wash'); sky.classList.add('nu', 'hit'); flash(sky, 'on'); bolt(sky); });
-      T(3200, function(){ sky.classList.remove('hit'); r.set(.35); });
-      T(4500, reveal);
+      if (o.sunny){
+        T(3150, function(){ sky.classList.remove('hit'); r.stop(); sky.classList.add('sun'); });
+        T(6300, reveal);
+      } else {
+        T(3200, function(){ sky.classList.remove('hit'); r.set(.35); });
+        T(4500, reveal);
+      }
       return reveal;
     }
     return { run: run };
@@ -697,11 +743,13 @@ footer .q .copy{background:transparent;box-shadow:inset 0 0 0 2px rgba(255,255,2
 
   var stBtn = document.getElementById('replay'), seen = false;
   function goHero(){ document.body.classList.remove('go'); void document.body.offsetWidth; document.body.classList.add('go'); }
-  function storm(){ Storm.run({ oldTop: 'Thursday', oldMain: 'NOV 19', tag: 'New date', newTop: 'Thursday', newMain: 'DEC 3', cap: CFG.stormCap, onReveal: goHero }); }
+  var heroSun = document.getElementById('herosun');
+  function sunUp(){ heroSun.classList.add('on'); goHero(); }
+  function storm(){ heroSun.classList.remove('on'); Storm.run({ oldTop: 'Thursday', oldMain: 'NOV 19', tag: 'New date', newTop: 'Thursday', newMain: 'DEC 3', cap: CFG.stormCap, sunny: true, sunCap: 'Bright skies ahead', onReveal: sunUp }); }
   try { seen = sessionStorage.getItem('rr-storm') === '1'; sessionStorage.setItem('rr-storm', '1'); } catch (e) {}
-  if (reduce){ stBtn.hidden = true; requestAnimationFrame(goHero); }
+  if (reduce){ stBtn.hidden = true; requestAnimationFrame(sunUp); }
   else {
-    if (seen) requestAnimationFrame(goHero); else storm();
+    if (seen) requestAnimationFrame(sunUp); else storm();
     stBtn.addEventListener('click', storm);
   }
 
