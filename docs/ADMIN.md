@@ -16,6 +16,16 @@ The same code runs inside Claude, where agents use their Claude plan and the Rea
 2. Ask Claude to publish `dist-claude/studio.html` to the Studio artifact (`https://claude.ai/artifact/UvVmYPtpsbkPNppfLnxzED`), keeping its capabilities. The exact list is in ARCHITECTURE.md under "Running inside Claude".
 3. Keep the artifact invite-only. Invite each agent's Claude email from its **Share** menu, at Viewer level, and leave the public link off.
 
+## The standalone CMA and Investor Report
+
+The CMA is no longer a Studio tab. It is its own private artifact, built from the same code:
+
+1. Run `npm run build:cma`. It writes `dist-claude/cma.html` (embeds `public/roster.json` like the Studio build).
+2. Publish it to the CMA artifact (`https://claude.ai/artifact/CtN9R77xwnGYFznxz9p95x`) with the same capabilities as the Studio (RealMLS, Parallel Search, sample, downloads).
+3. Share it only with agents who have Claude and the RealMLS connector, at Viewer level. It keeps the Claude chat backup for anyone whose page cannot reach the MLS.
+
+`cma/section.html` holds the CMA markup and `cma/ORDER.txt` the scripts it loads. The Studio keeps the MLS connection wizard under Tips and Limits for Pull from MLS and Listing Video.
+
 ## The team roster (kept private)
 
 Names, phone numbers, emails, NMLS numbers and loan officer headshots are **not** in the repo or on the public site. They live in one private file, `public/roster.json`, which git ignores.
