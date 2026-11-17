@@ -1,0 +1,66 @@
+"""Build the standalone iMath CMA and Investor Report as one page for a private Claude artifact.
+
+Usage: python3 -I tools/build-cma.py            (writes dist-claude/cma.html)
+
+Same engine, report and Claude chat backup the CMA tab used to have, split out of the Marketing
+Studio so the Studio works for every agent. It reuses the Studio shell (25-studio-shell.js): the shell
+only runs the tabs whose panels are on the page, so this page shows My profile and the CMA. Markup that
+is only here lives in cma/. The private public/roster.json is embedded like the Studio build.
+"""
+import json, pathlib, re
+
+repo = pathlib.Path(__file__).resolve().parent.parent
+pub = repo / "public"
+legacy = pub / "legacy"
+html = (repo / "index.html").read_text()
+body = html.split("<body>", 1)[1].split("</body>", 1)[0]
+cdn = re.findall(r'<script src="(https://cdnjs\.cloudflare\.com/[^"]+)"[^>]*></script>', body)
+
+def cut(start, end):
+    i = body.index(start); j = body.index(end, i) + len(end)
+    return body[i:j]
+
+guide = cut('<div class="guide-ov" id="setupGuide"', '\n</div>\n')
+for a, b in [('Connect your MLS<span class="dot">', 'Set up the CMA tool<span class="dot">'), ('with this guide button on the Tips and Limits tab', 'with this guide button on the CMA page'), ('Open the Tips and Limits tab and click ', 'Come back to this page and click ')]:
+    guide = guide.replace(a, b)
+license_bar = cut('<div class="license" id="licenseBar" hidden>', '</button>\n</div>').replace("The iMath Marketing Studio is", "The iMath CMA and Investor Report is")
+profile = cut('<section id="profile" class="profile">', '</section>')
+license_card = cut('<div class="rule key license-card" id="license">', '\n  </div>').replace("The iMath Marketing Studio, including", "The iMath CMA and Investor Report, including")
+footer = cut('<footer>', '</footer>')
+section = (repo / "cma" / "section.html").read_text().replace(' hidden>', '>', 1)
+
+mast = '''<header class="mast">
+  <div class="wrap">
+    <img id="mastLogo" alt="iMath Group and United Real Estate Gallery">
+    <div>
+      <h1>CMA and Investor Report<i>.</i></h1>
+      <p>Live comps, value range, rent comps and investor math from your own realMLS login, built into a branded report for sellers, buyers and investors.</p>
+    </div>
+  </div>
+</header>'''
+page_body = "\n".join([mast, guide, '<main class="wrap">', license_bar, profile, section,
+                       '<section class="cma-license">' + license_card + '</section>', footer, '</main>'])
+
+def inline_script(code):
+    return "<script>\n" + code.replace("</script", "<\\/script").rstrip() + "\n</script>"
+
+parts = [
+    "<title>iMath CMA and Investor Report</title>",
+    "<!-- (c) 2026 Elliot De la Cruz and iMath Group. All rights reserved. Built from github.com/edelacruz9/iMathGroup (tools/build-cma.py). -->",
+    "<style>\n" + (legacy / "base.css").read_text() + (legacy / "studio.css").read_text() + "\n.cma-license{margin:28px 0 8px}.theme-bar{display:none!important}\n</style>",
+    page_body,
+]
+parts += [f'<script src="{u}"></script>' for u in cdn]
+roster = pub / "roster.json"
+if roster.exists():
+    data = json.loads(roster.read_text())
+    parts.append(inline_script("window.__IMATH_ROSTER = " + json.dumps(data, ensure_ascii=False) + ";"))
+    note = f"roster embedded ({len(data.get('people', []))} people)"
+else:
+    note = "no public/roster.json: built with an empty roster"
+for name in (repo / "cma" / "ORDER.txt").read_text().split():
+    parts.append(inline_script((legacy / name).read_text()))
+out = repo / "dist-claude" / "cma.html"
+out.parent.mkdir(exist_ok=True)
+out.write_text("\n".join(parts) + "\n")
+print(f"{out.relative_to(repo)}: {out.stat().st_size / 1e6:.1f} MB, {note}")
