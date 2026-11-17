@@ -24,7 +24,11 @@ const roster = await loadRoster(runtime.settings);
 if (roster) window.__IMATH_ROSTER = roster;
 
 // Fetch in parallel, run in order (async = false), like the original inline scripts.
-const order = (await (await fetch("legacy/ORDER.txt")).text()).split("\n").filter(Boolean);
+// A page can list its own scripts in <body data-scripts> (cma.html does); the Studio uses legacy/ORDER.txt.
+const listed = document.body.dataset.scripts;
+const order = listed
+  ? listed.split(/\s+/).filter(Boolean)
+  : (await (await fetch("legacy/ORDER.txt")).text()).split("\n").filter(Boolean);
 try {
   await Promise.all(
     order.map(
