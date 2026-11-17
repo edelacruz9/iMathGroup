@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "worker:dev": "wrangler dev --config worker/wrangler.toml",
     "worker:deploy": "wrangler deploy --config worker/wrangler.toml",
-    "build:claude": "python3 -I tools/build-claude.py"
+    "build:claude": "python3 -I tools/build-claude.py",
+    "build:cma": "python3 -I tools/build-cma.py"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "0.133.0"

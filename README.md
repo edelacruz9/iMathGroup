@@ -1,6 +1,6 @@
 # iMath Marketing Studio
 
-Branded marketing tools for iMath Group agents and loan officers: social posts, business cards, open house flyers and sign-in sheets, yard signs, email signatures, CMA and investor reports, listing videos, and more.
+Branded marketing tools for iMath Group agents and loan officers: social posts, business cards, open house flyers and sign-in sheets, yard signs, email signatures, listing videos, and more. The CMA and investor report is a separate page (see docs/ADMIN.md).
 
 **Bring your own keys.** The Studio only provides the functions. Each person connects their own Anthropic API key and their own MLS access, and pays for their own usage. iMath runs no server and never sees your keys or data.
 
