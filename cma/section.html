@@ -1,0 +1,82 @@
+<section data-panel="cma" id="cma" hidden>
+  <div class="eyebrow">Live from realMLS | Seller, buyer and investor reports</div>
+  <h2>CMA and Investor Report<span class="dot">.</span></h2>
+  <p class="lede">Connect your own realMLS login once, then type an address and get a full, branded report: value range with an adjustment grid, comps with photos and a map, market stats, rent comps, flip and rental math, a mortgage calculator, and a seller net sheet. Only your contact details from My profile appear on it.</p>
+  <div class="panel cma-connect" id="cma_connect">
+    <div class="wz-head">
+      <div class="wz-title"><h3>Set up your studio <small id="wz_sum">Checking your setup</small></h3><div class="wz-bar" aria-hidden="true"><i id="wz_bar"></i></div></div>
+      <div class="wz-top"><button class="btn ghost" type="button" data-guide>Open the setup guide</button><button class="btn green" type="button" id="wz_go">Set up everything</button><button class="mini" type="button" id="wz_toggle" aria-expanded="true">Hide steps</button></div>
+    </div>
+    <ol class="wz" id="wz_steps"></ol>
+    <div class="wz-foot">
+      <label class="check"><input type="checkbox" id="cc_web_use" checked> Use online lookup to fill gaps</label>
+      <div class="actions"><a class="btn ghost" id="wz_help" href="https://claude.ai/new" target="_blank" rel="noopener">Get help from Claude in a new window</a><button class="mini" type="button" id="cc_copy">Copy setup report for Elliot</button></div>
+    </div>
+    <div class="status" id="cc_diag_status" role="status"></div>
+  </div>
+  <div class="panel">
+    <div class="cma-top">
+      <label class="addr">Property address or MLS number<input type="text" id="cma_addr" placeholder="8943 3rd Ave, Jacksonville, FL 32208" autocomplete="off" spellcheck="false"></label>
+      <button class="btn green" type="button" id="cma_go">Build report</button>
+    </div>
+    <div class="cma-opts">
+      <div><label>Report type</label><div class="seg" id="cma_type" role="group" aria-label="Report type"></div></div>
+      <div><label>Condition of the home</label><div class="seg" id="cma_cond" role="group" aria-label="Condition"></div></div>
+      <label>Prepared for (optional)<input type="text" id="cma_client" placeholder="Client name" maxlength="60"></label>
+      <label>Co-brand with a loan officer<select id="cma_lo"></select></label>
+    </div>
+    <details class="cma-more"><summary>Adjust the facts and search</summary>
+      <p class="note" style="margin-top:8px">Leave blank to use realMLS. Fill these in when the listing is wrong or the home has never been listed.</p>
+      <div class="grid">
+        <label>ZIP code<input type="text" id="cma_zip" inputmode="numeric" maxlength="5" placeholder="32208"></label>
+        <label>Beds<input type="number" id="cma_beds" min="0" max="12" step="1"></label>
+        <label>Baths<input type="number" id="cma_baths" min="0" max="12" step="0.5"></label>
+        <label>Living sq ft<input type="number" id="cma_sqft" min="200" max="20000" step="1"></label>
+        <label>Year built<input type="number" id="cma_year" min="1850" max="2030" step="1"></label>
+        <label>Lot acres<input type="number" id="cma_lot" min="0" max="500" step="0.01"></label>
+        <label>Garage spaces<input type="number" id="cma_garage" min="0" max="6" step="1"></label>
+        <label>Pool<select id="cma_pool"><option value="">From MLS</option><option value="1">Yes</option><option value="0">No</option></select></label>
+        <label>Search radius<select id="cma_radius"><option value="">Smart</option><option value="0.5">0.5 mi</option><option value="1">1 mi</option><option value="1.5">1.5 mi</option><option value="2">2 mi</option><option value="3">3 mi</option></select></label>
+      </div>
+      <label class="check"><input type="checkbox" id="cma_photos" checked> Include listing and comp photos</label>
+    </details>
+    <div class="cma-conn" id="cma_conn" hidden></div>
+    <ul class="cma-prog" id="cma_prog" hidden></ul>
+    <div class="cma-ask" id="cma_ask" hidden role="dialog" aria-live="assertive"></div>
+    <button class="btn ghost" type="button" id="cma_skip" hidden style="margin-top:10px">Skip the online lookup</button>
+    <div class="status" id="cma_status" role="status"></div>
+  </div>
+  <details class="panel cma-chat" id="cma_chat">
+    <summary><b>Can't connect here? Run the CMA through your own Claude chat</b><span>Works for every teammate who has RealMLS added to their own Claude account. Same report, same math.</span></summary>
+    <ol class="cmc-steps">
+      <li><b>Type the address or MLS number above</b> and pick the report type and condition. Then click:<div class="actions"><a class="btn green" id="cmc_copy" href="https://claude.ai/new" target="_blank" rel="noopener">Copy the request and open Claude</a><button class="mini" type="button" id="cmc_show">Show the request</button></div><textarea id="cmc_req" readonly hidden aria-label="Request for Claude"></textarea></li>
+      <li><b>In the new Claude chat, paste and send</b> (Cmd V on a Mac, Ctrl V on Windows). Choose Allow if Claude asks to use RealMLS. It takes 1 to 3 minutes.</li>
+      <li><b>Copy Claude's answer</b> (the block that starts with IMATHCMA1, use the copy button on the block) and paste it here:<textarea id="cmc_in" placeholder="Paste Claude's answer here. It starts with IMATHCMA1."></textarea><div class="actions"><button class="btn green" type="button" id="cmc_go">Build report from Claude's answer</button><button class="mini" type="button" id="cmc_clear">Clear</button></div></li>
+    </ol>
+    <p class="note">Needs RealMLS in your own Claude account: setup steps 2 to 4 above (turn on AI access in Flexmls, add the RealMLS connector, connect it). Comp photos are left out in this mode.</p>
+    <div class="status" id="cmc_status" role="status"></div>
+  </details>
+  <div class="cma-empty" id="cma_empty"><b>Your report shows up here</b>Enter an address above. It takes about a minute to pull comps, rents, market stats and photos.</div>
+  <div class="cma-res" id="cma_res" hidden>
+    <aside class="cma-side">
+      <div class="cma-val" id="cma_val"></div>
+      <div id="cma_warn"></div>
+      <div class="panel"><h3>Download <small id="cma_pages"></small></h3>
+        <div class="actions" style="margin-bottom:10px">
+          <button class="btn" type="button" id="cma_pdf">PDF report</button>
+          <button class="btn ghost" type="button" id="cma_html">Interactive file</button>
+        </div>
+        <p class="note">The PDF is for printing and email. The interactive file opens in any browser with live calculators your client can play with.</p>
+        <div class="status" id="cma_dlstatus" role="status"></div>
+      </div>
+      <div class="panel"><h3>Comps used <small>Uncheck to exclude</small></h3>
+        <div class="cma-comps" id="cma_comps"></div>
+        <p class="note">The value, range and every page update as you change these.</p>
+      </div>
+    </aside>
+    <div class="cma-view">
+      <div class="cma-viewbar"><span id="cma_meta"></span><div class="seg" id="cma_zoom" role="group" aria-label="Preview size" style="margin:0"></div></div>
+      <div class="cma-pages"><div class="rdoc" id="cma_doc"></div></div>
+    </div>
+  </div>
+</section>
