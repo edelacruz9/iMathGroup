@@ -24,6 +24,8 @@ The CMA is no longer a Studio tab. It is its own private artifact, built from th
 2. Publish it to the CMA artifact (`https://claude.ai/artifact/CtN9R77xwnGYFznxz9p95x`) with the same capabilities as the Studio (RealMLS, Parallel Search, sample, downloads).
 3. Share it only with agents who have Claude and the RealMLS connector, at Viewer level. It keeps the Claude chat backup for anyone whose page cannot reach the MLS.
 
+It is also on the GitHub Pages site as `cma.html` (https://edelacruz9.github.io/iMathGroup/cma.html), next to the Studio at the site root. That copy uses each agent's own keys and MLS proxy, like the hosted Studio, and its Claude chat backup works without them. `npm run build` regenerates `cma.html` before building, so edit `index.html` or `cma/`, never `cma.html` itself.
+
 `cma/section.html` holds the CMA markup and `cma/ORDER.txt` the scripts it loads. The Studio keeps the MLS connection wizard under Tips and Limits for Pull from MLS and Listing Video.
 
 ## The team roster (kept private)
