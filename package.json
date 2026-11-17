@@ -6,7 +6,7 @@
   "license": "SEE LICENSE IN LICENSE",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "python3 -I tools/build-cma.py && vite build",
     "preview": "vite preview",
     "worker:dev": "wrangler dev --config worker/wrangler.toml",
     "worker:deploy": "wrangler deploy --config worker/wrangler.toml",
