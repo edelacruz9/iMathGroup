@@ -73,12 +73,12 @@
     sJ = setTimeout(() => sQ.forEach(X2 => X2()), 180);
     sf();
   }
-  const sM = ["social", "cards", "flyers", "signs", "email", "cma", "docs", "tools", "video", "fun", "guide", "tips"];
-  let sx = "social";
+  const sM = ["social", "cards", "flyers", "signs", "email", "cma", "docs", "tools", "video", "fun", "guide", "tips"].filter(X2 => document.querySelector("[data-panel=\"" + X2 + "\"]"));
+  let sx = sM[0] || "social";
   const sj = {};
   function sv(X2) {
     if (!sM.includes(X2)) {
-      X2 = "social";
+      X2 = sM[0];
     }
     sx = X2;
     if (window.iMathTheme && window.iMathTheme.forTab(X2)) {
@@ -111,6 +111,11 @@
         document.querySelectorAll("#tb_panel .tb-item").forEach(X9 => X9.setAttribute("aria-current", X9.dataset.tab === X6 ? "page" : "false"));
       })(X2);
     } catch (X6) {}
+    if (X2 === "tips" && typeof sP !== "undefined" && sP.checkSetup && document.querySelector("#tips #cma_connect")) {
+      try {
+        sP.checkSetup();
+      } catch (X7) {}
+    }
     if (sn[X2] && !sj[X2]) {
       sj[X2] = true;
       sn[X2].init();
@@ -2502,8 +2507,8 @@
     let X8 = null;
     let X9 = false;
     let Xs = null;
-    const XX = Ul => s6("#cma_status").textContent = Ul;
-    const XU = Ul => s6("#cma_dlstatus").textContent = Ul;
+    const XX = Ul => { const Ue = s6("#cma_status"); if (Ue) Ue.textContent = Ul; };
+    const XU = Ul => { const Ue = s6("#cma_dlstatus"); if (Ue) Ue.textContent = Ul; };
     const Xl = [["full", "Full report"], ["seller", "Seller CMA"], ["buyer", "Buyer"], ["investor", "Investor"]];
     const Xg = [["auto", "Auto"], ["updated", "Updated"], ["average", "Average"], ["needs", "Needs work"]];
     const XQ = Ul => Ul == null || isNaN(Ul) ? "n/a" : "$" + Math.round(Ul).toLocaleString("en-US");
@@ -2567,6 +2572,9 @@
         Ul = window.top === window.self;
       } catch (UQ) {}
       const Ug = /iphone|ipad|android/i.test(navigator.userAgent);
+      if (!s6("#cma_chat")) {
+        return Ul ? "This copy of the studio is open outside Claude (a downloaded copy or a direct page link), so Pull from MLS cannot reach the MLS. Open the studio link Elliot sent you while signed in to claude.ai, or enter listing details by hand." : Ug ? "Claude on this phone does not let the studio use your MLS connector. Open the link on a computer, or enter listing details by hand." : "Claude has switched off the MLS connection for you on this page. That usually happens when the studio reaches you through a public link instead of an invitation to the email you use for Claude. Ask Elliot to invite your Claude email. Until then, enter listing details by hand.";
+      }
       if (Ul) {
         return "This copy of the studio is open outside Claude (a downloaded copy or a direct page link), so it cannot reach the MLS. Use the Claude chat option below, or open the studio link Elliot sent you while signed in to claude.ai.";
       } else if (Ug) {
@@ -2659,7 +2667,7 @@
         title: "Open the studio inside Claude",
         state: XV.claude === null ? "todo" : UN ? "done" : "fail",
         text: XV.claude === null ? "Checking..." : UN ? "You are in Claude. Good." : XL(),
-        act: UN || XV.claude === null ? "" : "<button class=\"btn green\" type=\"button\" data-wz=\"chat\">Run the CMA through my Claude chat</button>",
+        act: UN || XV.claude === null || !s6("#cma_chat") ? "" : "<button class=\"btn green\" type=\"button\" data-wz=\"chat\">Run the CMA through my Claude chat</button>",
         how: ["Sign in at claude.ai with your own Claude account.", "Open the Marketing Studio link Elliot shared with you. A downloaded copy cannot reach the MLS."],
         see: "This checklist says You are in Claude.",
         stuck: "If the link says the page is private, ask Elliot to share the studio with the email you use for Claude."
@@ -2820,7 +2828,7 @@
       Xj.mls = XV.live === "ok" || XV.listed && XV.perm === "granted" && XV.auth === "connected" ? "ready" : XV.listed === false ? "missing" : XV.auth === "needs_reauth" ? "reauth" : XV.claude ? "prompt" : "off";
       Xj.web = (Ul.find(Ur => Ur.id === "web") || {}).state === "done" ? "ready" : "missing";
       clearTimeout(XI);
-      if (!!XV.claude && !XR() && document.visibilityState !== "hidden" && (sx === "cma" || !!XE())) {
+      if (!!XV.claude && !XR() && document.visibilityState !== "hidden" && (sx === "cma" || sx === "tips" || !!XE())) {
         XI = setTimeout(() => Xa(true), 5000);
       }
     }
@@ -2964,7 +2972,7 @@
       get: () => XD
     });
     document.addEventListener("visibilitychange", () => {
-      if (document.visibilityState === "visible" && sx === "cma" && !XR()) {
+      if (document.visibilityState === "visible" && (sx === "cma" || sx === "tips") && !XR()) {
         Xa(true);
       }
     });
@@ -3754,7 +3762,8 @@
       draw: U5,
       exportPDF: U9,
       exportHTML: Us,
-      call: XW
+      call: XW,
+      checkSetup: () => Xa(false)
     };
   }();
   const sS = function () {
@@ -4437,7 +4446,8 @@
             if (X5.dataset.orig == null) {
               X5.dataset.orig = X5.textContent;
             }
-            X5.textContent = X4 === "patriotic" ? X5.dataset.orig.replace(/\bgreen\b/g, "red").replace(/\bGreen\b/g, "Red") : X5.dataset.orig;
+            const Xacc = X4 === "patriotic" ? "red" : X4 !== "standard" && window.iMathTheme && window.iMathTheme.current.swatches ? window.iMathTheme.current.swatches[1][0].toLowerCase() : "";
+            X5.textContent = Xacc ? X5.dataset.orig.replace(/\bgreen\b/g, Xacc).replace(/\bGreen\b/g, Xacc[0].toUpperCase() + Xacc.slice(1)) : X5.dataset.orig;
           });
         })();
       } catch (X4) {}
@@ -4446,15 +4456,22 @@
         X3.src = ASSETS_SRC.lockupHRev;
       }
     }, 0);
-    s7("#p_theme .chip").forEach(X3 => X3.setAttribute("aria-pressed", String(X3.dataset.v === X2)));
+    s7("#p_theme .pal-opt").forEach(X3 => X3.setAttribute("aria-pressed", String(X3.dataset.v === X2)));
     s7(".theme-bar").forEach(X3 => {
       const X4 = X3.dataset.tb;
       const X5 = sT.tabSetting(X4);
       const X6 = (X5 || X2) === "patriotic";
-      X3.querySelectorAll(".chip").forEach(Xs => Xs.setAttribute("aria-pressed", String(Xs.dataset.v === X5)));
-      const X7 = X3.querySelector("[data-v=\"\"]");
+      const Xsel = X3.querySelector("select");
+      if (Xsel) {
+        Xsel.value = X5;
+      }
+      const X7 = X3.querySelector("option[value=\"\"]");
       if (X7) {
-        X7.textContent = "Studio default (" + (X2 === "patriotic" ? "Patriotic" : "Standard") + ")";
+        X7.textContent = "Studio default (" + sT.paletteName(X2) + ")";
+      }
+      const Xsw = X3.querySelector(".th-sw");
+      if (Xsw) {
+        Xsw.innerHTML = sT.PALETTES.find(Xp => Xp.id === (X5 || X2)).swatches.map(Xc => "<i style=\"background:" + Xc[1] + "\" title=\"" + Xc[0] + "\"></i>").join("");
       }
       X3.classList.toggle("on", X6);
       const X8 = X3.querySelector(".th-vh");
@@ -4476,6 +4493,9 @@
     }
   }
   function sz() {
+    if (!s6("#caplist")) {
+      return;
+    }
     const X2 = window.iMathKit;
     s6("#caplist").innerHTML = X2.TEMPLATES.filter(X6 => X6.id !== "profile_cover").map(X6 => "<article class=\"capcard\"><h3>" + X6.name + "<span>" + X6.cat + "</span></h3>" + ["en", "es"].map(X7 => "<div><div class=\"row\"><span class=\"lang\">" + (X7 === "en" ? "ENGLISH" : "ESPAÑOL") + "</span><button type=\"button\" class=\"mini\" data-copy=\"" + X6.id + "|" + X7 + "\">Copy</button></div><p>" + s9(s1.CAPTIONS[X6.id][X7].replace(/\{(\w+?)_(en|es)\}/g, "{$1}")) + "</p></div>").join("") + "</article>").join("");
     s6("#caplist").querySelectorAll("[data-copy]").forEach(X6 => X6.onclick = () => {
@@ -4488,6 +4508,10 @@
     s6("#lockupGrid").innerHTML = [["lockupH", "Lockup, horizontal", "light", "iMath_United_lockup_horizontal.svg"], ["lockupHRev", "Lockup, horizontal reverse", "dark", "iMath_United_lockup_horizontal_reverse.svg"], ["lockupV", "Lockup, stacked", "light", "iMath_United_lockup_stacked.svg"], ["lockupVRev", "Lockup, stacked reverse", "dark", "iMath_United_lockup_stacked_reverse.svg"], ["mortColor", "Mortgage lockup (loan officers only)", "light", "iMath_Cornerstone_mortgage_lockup.svg"]].map(([X6, X7, X8, X9]) => "<div class=\"logo\"><div class=\"well " + X8 + "\"><img src=\"" + X3(X6) + "\" alt=\"" + X7 + "\"></div><div class=\"cap2\"><span>" + X7 + "</span><button type=\"button\" class=\"mini\" data-dl=\"" + X6 + "|" + X9 + "\">SVG</button></div></div>").join("");
     s6("#logoGrid").innerHTML = [["logoColor", "iMath Group, full color", "light", "imath_group_color.png"], ["logoReverse", "iMath Group, reverse", "dark", "imath_group_reverse.png"], ["logoBlack", "iMath Group, black", "light", "imath_group_black.png"], ["iconColor", "Icon, avatars", "light", "imath_icon_color.png"], ["iconReverse", "Icon reverse", "dark", "imath_icon_reverse.png"]].map(([X6, X7, X8, X9]) => "<div class=\"logo\"><div class=\"well " + X8 + "\"><img src=\"" + X3(X6) + "\" alt=\"" + X7 + "\"></div><div class=\"cap2\"><span>" + X7 + "</span><button type=\"button\" class=\"mini\" data-dl=\"" + X6 + "|" + X9 + "\">Download</button></div></div>").join("");
     const X4 = [["pat_logo", "Patriotic logo, primary (mortgage)", "light", "imath_patriotic_logo.png"], ["pat_logoRev", "Patriotic logo, reversed (mortgage)", "dark", "imath_patriotic_logo_reversed.png"], ["pat_lockupH", "Patriotic realtor lockup", "light", "imath_patriotic_united_lockup.svg"], ["pat_lockupHRev", "Patriotic realtor lockup, reverse", "dark", "imath_patriotic_united_lockup_reverse.svg"], ["pat_word", "Patriotic wordmark, no tagline", "light", "imath_patriotic_wordmark.png"], ["pat_icon", "iM+ icon", "light", "imath_patriotic_icon.png"], ["pat_iconRev", "iM+ icon, reversed", "dark", "imath_patriotic_icon_reversed.png"], ["pat_avCream", "Profile image, parchment", "light", "imath_patriotic_avatar_cream.png"], ["pat_avNavy", "Profile image, navy", "dark", "imath_patriotic_avatar_navy.png"]];
+    if (s6("#palCards") && window.iMathTheme) {
+      s6("#palCards").innerHTML = window.iMathTheme.PALETTES.filter(Xp => !Xp.patriotic).map(Xp => "<div class=\"pal-card\"><div class=\"pal-strip\">" + Xp.swatches.map(Xc => "<button type=\"button\" data-hex=\"" + Xc[1] + "\" style=\"background:" + Xc[1] + "\" title=\"Copy " + Xc[1] + "\"></button>").join("") + "</div><b>" + s9(Xp.name) + "</b><p>" + s9(Xp.vibe) + "</p><small>" + Xp.swatches.map(Xc => s9(Xc[0]) + " " + Xc[1]).join("  |  ") + "</small></div>").join("");
+      s7("#palCards [data-hex]").forEach(X8 => X8.onclick = () => sK(X8.dataset.hex, () => {}));
+    }
     if (s6("#patLogoGrid")) {
       s6("#patLogoGrid").innerHTML = X4.map(([X8, X9, Xs, XX]) => "<div class=\"logo\"><div class=\"well " + Xs + "\"><img src=\"" + ASSETS_SRC[X8] + "\" alt=\"" + X9 + "\"></div><div class=\"cap2\"><span>" + X9 + "</span><button type=\"button\" class=\"mini\" data-dl=\"" + X8 + "|" + XX + "\">Download</button></div></div>").join("");
       const X6 = [["Old Glory Blue", "#0A3161", "Dominant. Backgrounds, headlines, logo outline. Pantone 282 C."], ["Old Glory Red", "#B31942", "Accent only. Eyebrows, stars, bands, highlights. Replaces green. Pantone 193 C."], ["White", "#FFFFFF", "Space and stripes."], ["Deep Navy", "#061A33", "Dark backgrounds and night fields."], ["Parchment", "#F4EFE4", "Warm light background with a heritage feel."], ["Honor Gold", "#C2A35A", "Rare. Medal like details on formal pieces only."]];
@@ -4813,12 +4837,13 @@
       }
       const Xs = document.createElement("div");
       Xs.className = "theme-pick";
-      Xs.innerHTML = "<span class=\"lbl\">Brand theme</span><div class=\"chips\" id=\"p_theme\" role=\"group\" aria-label=\"Brand theme\"><button type=\"button\" class=\"chip\" data-v=\"standard\">Standard</button><button type=\"button\" class=\"chip\" data-v=\"patriotic\"><span class=\"th-flag\" aria-hidden=\"true\"></span>Patriotic</button></div><p class=\"note\">Patriotic is our veteran and military family brand: flag colors, the patriotic iMath logo and the VA disclaimer on mortgage pieces. Use it for veteran marketing only. Each tab can also switch on its own.</p>";
+      const Xpal = Xp => "<button type=\"button\" class=\"pal-opt" + (Xp.patriotic ? " pat" : "") + "\" data-v=\"" + Xp.id + "\" aria-pressed=\"false\"><span class=\"pal-sw\">" + Xp.swatches.map(Xc => "<i style=\"background:" + Xc[1] + "\"></i>").join("") + "</span><b>" + (Xp.patriotic ? "<span class=\"th-flag\" aria-hidden=\"true\"></span>" : "") + s9(Xp.name) + "</b><small>" + s9(Xp.vibe) + "</small></button>";
+      Xs.innerHTML = "<span class=\"lbl\">Color palette</span><div class=\"pal-grid\" id=\"p_theme\" role=\"group\" aria-label=\"Color palette\">" + sT.PALETTES.map(Xpal).join("") + "</div><p class=\"note\">Pick the colors for everything you make. Your layouts, logos and fine print stay the same; only the colors change. Each tab can also use its own palette. Patriotic adds flag logos and the VA disclaimer, and is for veteran marketing only.</p>";
       const XX = s6("#profileBox .roster-pick");
       if (XX) {
         XX.after(Xs);
       }
-      Xs.querySelectorAll(".chip").forEach(XU => XU.onclick = () => {
+      Xs.querySelectorAll(".pal-opt").forEach(XU => XU.onclick = () => {
         sT.setGlobal(XU.dataset.v);
         sb();
       });
@@ -4830,7 +4855,7 @@
         const Xg = document.createElement("div");
         Xg.className = "theme-bar";
         Xg.dataset.tb = XU;
-        Xg.innerHTML = "<span class=\"th-lbl\">Theme for this tab</span><div class=\"chips\" role=\"group\" aria-label=\"Theme for this tab\"><button type=\"button\" class=\"chip\" data-v=\"\">Studio default</button><button type=\"button\" class=\"chip\" data-v=\"standard\">Standard</button><button type=\"button\" class=\"chip\" data-v=\"patriotic\"><span class=\"th-flag\" aria-hidden=\"true\"></span>Patriotic</button></div><button type=\"button\" class=\"mini th-vh\" hidden>Veteran headlines</button><p class=\"th-note\" hidden>Patriotic is on: flag colors, patriotic logos, ribbon bands and star bullets. Mortgage pieces add \"" + sT.VA + "\" Disclosures stay in English.</p><div class=\"th-pop\" hidden></div>";
+        Xg.innerHTML = "<label class=\"th-lbl\" for=\"th_sel_" + XU + "\">Colors for this tab</label><span class=\"th-sw\" aria-hidden=\"true\"></span><select id=\"th_sel_" + XU + "\"><option value=\"\">Studio default</option>" + sT.PALETTES.map(Xp => "<option value=\"" + Xp.id + "\">" + s9(Xp.name) + "</option>").join("") + "</select><button type=\"button\" class=\"mini th-vh\" hidden>Veteran headlines</button><p class=\"th-note\" hidden>Patriotic is on: flag colors, patriotic logos, ribbon bands and star bullets. Mortgage pieces add \"" + sT.VA + "\" Disclosures stay in English.</p><div class=\"th-pop\" hidden></div>";
         const XQ = [...Xl.children].filter(Xr => Xr.matches(".eyebrow, h2, p.lede, .lede"));
         const XN = XQ.length ? XQ[XQ.length - 1] : null;
         if (XN) {
@@ -4838,10 +4863,10 @@
         } else {
           Xl.prepend(Xg);
         }
-        Xg.querySelectorAll(".chip").forEach(Xr => Xr.onclick = () => {
-          sT.setTab(XU, Xr.dataset.v);
+        Xg.querySelector("select").onchange = Xr => {
+          sT.setTab(XU, Xr.target.value);
           sb();
-        });
+        };
         const XJ = Xg.querySelector(".th-pop");
         Xg.querySelector(".th-vh").onclick = () => {
           if (!XJ.hidden) {
@@ -4916,7 +4941,7 @@
       }), 50);
     };
     const X3 = (location.hash || "").replace("#", "");
-    sv(sM.includes(X3) ? X3 : "social");
+    sv(sM.includes(X3) ? X3 : sM[0]);
     for (let Xs = 0; Xs < 30 && (!window.claude || !window.claude.use); Xs++) {
       await new Promise(XX => setTimeout(XX, 100));
     }

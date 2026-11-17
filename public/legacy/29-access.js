@@ -31,13 +31,13 @@
     }, N.listed ? {
       s: "ok",
       t: "Ready",
-      why: "CMA reports and Listing Video MLS photos use your own MLS proxy and Spark key.",
+      why: "Pull from MLS (social posts, flyers) and Listing Video MLS photos use your own MLS proxy and Spark key.",
       fix: ""
     } : {
       s: "off",
       t: "Not connected",
       why: "Your MLS proxy is not set up in this browser yet.",
-      fix: go + " Add your proxy address and passcode (the setup guide shows how to get them). Until then, type details and upload photos, or use Run the CMA through my Claude chat in the CMA tab."
+      fix: go + " Add your proxy address and passcode (the setup guide shows how to get them). Until then, type details and upload photos."
     }), Object.assign({
       k: "ai",
       name: "AI writing and sorting"
@@ -78,7 +78,7 @@
       s: "warn",
       t: "Needs setup",
       why: "RealMLS is not added to your Claude account yet.",
-      fix: "Open the CMA tab and follow setup steps 2 to 4 (about 5 minutes, free)."
+      fix: "Open Tips and Limits, MLS connection, and follow setup steps 2 to 4 (about 5 minutes, free)."
     } : N.auth === "needs_reauth" ? {
       s: "warn",
       t: "Sign in again",
@@ -92,18 +92,18 @@
     } : {
       s: "ok",
       t: N.permMls === "granted" ? "Ready" : "Ready, Claude asks the first time",
-      why: "CMA reports and Listing Video MLS photos use your own RealMLS login.",
+      why: "Pull from MLS (social posts, flyers) and Listing Video MLS photos use your own RealMLS login.",
       fix: ""
     } : {
       s: "off",
       t: "Off in this view",
       why: N.phone ? "The Claude phone app does not let shared pages use your MLS connector." : "Claude has switched off the MLS connection for you on this page. This usually happens when the studio reaches you through a public link instead of an invitation to your own Claude email.",
-      fix: N.phone ? "Open the link on a computer, or use Run the CMA through my Claude chat." : "Ask Elliot to invite the email you use for Claude. Until then, use Run the CMA through my Claude chat in the CMA tab. It builds the same report."
+      fix: N.phone ? "Open the link on a computer, or enter listing details by hand." : "Ask Elliot to invite the email you use for Claude. Until then, enter listing details by hand; everything else works."
     } : {
       s: "off",
       t: "Off here",
       why: "This copy of the studio is open outside Claude, so it cannot reach the MLS.",
-      fix: "Open the studio link Elliot sent you while signed in to claude.ai. Until then, use Run the CMA through my Claude chat in the CMA tab."
+      fix: "Open the studio link Elliot sent you while signed in to claude.ai. Until then, enter listing details by hand."
     };
     h.push(Object.assign({
       k: "mls",

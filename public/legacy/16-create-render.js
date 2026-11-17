@@ -114,7 +114,7 @@
       }
     },
     pptx: async function (X, G, k) {
-      const E = A => Z.iMathTheme && Z.iMathTheme.on ? Z.iMathTheme.mapColor("#" + A.toLowerCase()).slice(1).toUpperCase() : A;
+      const E = A => Z.iMathTheme && Z.iMathTheme.active ? Z.iMathTheme.mapColor("#" + A.toLowerCase()).slice(1).toUpperCase() : A;
       await k();
       const Q = new Z.PptxGenJS();
       Q.layout = "LAYOUT_WIDE";

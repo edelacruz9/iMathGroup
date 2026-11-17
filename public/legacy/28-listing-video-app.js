@@ -583,7 +583,7 @@
         _select: "ListingId,ListingKey,UnparsedAddress,City,ListPrice,ClosePrice,BedsTotal,BathsTotal,LivingArea,MlsStatus,ListOfficeName,PublicRemarks",
         _limit: 5,
         property_type_codes: c6.TYPES || ["A", "B", "C", "D", "E", "F"],
-        status_values: c6.ALL_STATUS || ["Active", "Pending", "Closed"]
+        status_values: c6.ALL_STATUS || ["Active", "Active Under Contract", "Coming Soon", "Pending", "Closed", "Expired", "Withdrawn", "Cancelled"]
       });
       const c9 = c8 && c8.results && c8.results[0];
       if (!c9) {
@@ -646,7 +646,7 @@
       rh();
     } catch (cs) {
       const cR = cs && cs.code;
-      r8(cR === "not_granted" || cR === "server_not_connected" || cR === "not_connected" ? "RealMLS is not connected in this view. Open the CMA tab and follow the RealMLS setup guide, or upload photos instead." : "RealMLS did not answer. Try again in a moment, or upload photos instead.");
+      r8(cR === "not_granted" || cR === "server_not_connected" || cR === "not_connected" ? "RealMLS is not connected in this view. Open Tips and Limits, MLS connection, and follow the RealMLS setup guide, or upload photos instead." : "RealMLS did not answer. Try again in a moment, or upload photos instead.");
     } finally {
       c7.disabled = false;
     }

@@ -96,7 +96,7 @@
         _select: SELECT,
         _limit: 5,
         property_type_codes: cma.TYPES || ["A", "B", "C", "D", "E", "F"],
-        status_values: cma.ALL_STATUS || ["Active", "Pending", "Closed"],
+        status_values: cma.ALL_STATUS || ["Active", "Active Under Contract", "Coming Soon", "Pending", "Closed", "Expired", "Withdrawn", "Cancelled"],
       });
       const hit = res && res.results && res.results[0];
       if (!hit) return say(isNumber ? "No listing with that MLS number. Check the number, or enter the details manually." : "No listing at that address. Try the MLS number, or enter the details manually.", true);
