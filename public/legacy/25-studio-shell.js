@@ -2565,7 +2565,7 @@
     const XC = (Ul, Ug, UQ) => "<a class=\"btn " + (UQ || "ghost") + "\" href=\"" + Ul + "\" target=\"_blank\" rel=\"noopener\">" + Ug + "</a>";
     function XL() {
       if (window.claude && window.claude.byok) {
-        return "Your MLS proxy is not connected yet. Click Connections at the bottom right and add your proxy address and passcode. Until then, use Run the CMA through my Claude chat or type the details yourself.";
+        return (window.__STUDIO_LINKS || {}).relay ? "Your MLS is not connected yet. Click Connections at the bottom right, choose Connect my MLS and sign in with your own Flexmls login. Until then, type the details yourself." : "Your MLS proxy is not connected yet. Click Connections at the bottom right and add your proxy address and passcode. Until then, use Run the CMA through my Claude chat or type the details yourself.";
       }
       let Ul = false;
       try {
@@ -2589,6 +2589,56 @@
       const live = XV.live === "ok";
       const failed = XV.live && XV.live !== "ok";
       const saved = XV.listed === true;
+      if (links.relay) {
+        return [{
+          id: "flex",
+          title: "Turn on AI access in Flexmls",
+          state: live || saved ? "done" : "todo",
+          text: "A one time switch inside Flexmls that lets this studio read the MLS with your login.",
+          act: "<a class=\"btn green\" href=\"https://www.flexmls.com/\" target=\"_blank\" rel=\"noopener\">Open Flexmls</a>",
+          how: ["Sign in to Flexmls as usual.", "Open the Menu, then Preferences, then AI Settings. Tip: type AI Settings in the Flexmls menu search box.", "Switch the MCP server toggle on.", "Read the terms and click I Agree."],
+          see: "The MCP server toggle turned on.",
+          stuck: "No AI Settings? Update Flexmls, or ask realMLS member support to enable the Flexmls MCP server for your login."
+        }, {
+          id: "connect",
+          title: "Connect your MLS to the studio",
+          state: saved ? "done" : "todo",
+          text: saved ? "Your Flexmls sign in is saved in this browser." : "Click Connect my MLS in Connections and sign in with your own Flexmls username and password. The studio never sees them.",
+          act: saved ? "" : open,
+          how: ["Click Open Connections.", "Click Connect my MLS.", "Sign in to Flexmls in the window that opens and click Allow. The page reloads."],
+          see: "Connected with your Flexmls login. in Connections.",
+          stuck: "No window opens? Allow pop ups for this site and try again. Flexmls refuses? Finish step 1 first."
+        }, {
+          id: "test",
+          title: "Live test with your MLS login",
+          state: live ? "done" : failed ? "fail" : "todo",
+          text: live ? "Your MLS answered. You are ready." : failed ? (XH(XV.live) === "reauth" ? "Your MLS sign in expired. Click Connect my MLS in Connections and sign in again." : XH(XV.live) === "missing" ? "Your MLS is not connected yet. Do step 2." : "Your MLS did not answer" + (XV.liveMsg ? ": " + s9(XV.liveMsg.slice(0, 140)) : ".")) : "One small search to confirm your MLS connection works.",
+          act: "<button class=\"btn\" type=\"button\" data-wz=\"test\">Test now</button>" + (failed ? open : ""),
+          how: ["Click Test now.", "Wait a few seconds for the answer."],
+          see: "Live test with your MLS login: Done.",
+          stuck: "Still failing? Click Connect my MLS in Connections, sign in again, then test."
+        }, {
+          id: "ai",
+          title: "Anthropic API key",
+          opt: true,
+          state: Xx ? "done" : "off",
+          text: Xx ? "Your AI key is saved in this browser." : "Optional. Write-ups, Create Anything and the online lookup use your own Anthropic account. MLS pulls work without it.",
+          act: Xx ? "" : "<a class=\"btn ghost\" href=\"https://console.anthropic.com/\" target=\"_blank\" rel=\"noopener\">Open Anthropic console</a>" + open,
+          how: ["Create an account at console.anthropic.com and add a payment method.", "Set a monthly spend limit under Limits.", "Create an API key and copy it.", "Click Open Connections, paste the key, click Test, then Save."],
+          see: "Anthropic API key: Done.",
+          stuck: "Test says browser access is blocked? Your company account may not allow it. Use a personal Anthropic account."
+        }, {
+          id: "web",
+          title: "Online lookup",
+          opt: true,
+          state: Xx ? "done" : "off",
+          text: Xx ? "On. Reports fill gaps from the web using your Anthropic key." : "Turns on with your Anthropic key.",
+          act: "",
+          how: ["Nothing extra to do: it uses the same Anthropic key."],
+          see: "Online lookup: Done.",
+          stuck: "Searches add a little to your Anthropic usage."
+        }];
+      }
       return [{
         id: "ai",
         title: "Add your Anthropic API key",
