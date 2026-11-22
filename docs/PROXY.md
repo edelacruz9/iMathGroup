@@ -1,4 +1,6 @@
-# Your personal MLS proxy
+# Your personal MLS proxy (advanced)
+
+Most agents do not need this any more: the Studio's **Connect my MLS** button signs you in with your own Flexmls login through the team relay (see RELAY.md), with no Spark token and no Cloudflare account. This proxy remains as a fallback for anyone who prefers their own Spark Datamart token.
 
 A small Cloudflare Worker that you deploy to **your own** free Cloudflare account. It keeps your Spark access token as a secret, checks your passcode, and forwards the Studio's read-only MLS requests to the Spark API. It stores and logs nothing. iMath never has access to it.
 

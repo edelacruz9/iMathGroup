@@ -52,3 +52,7 @@ The owner approval flow still works the same way: agents email a submission, you
 ## Regenerating from a newer artifact
 
 If you change the Studio in Claude first, rebuild `public/legacy/` from the published page with the scripts in `tools/rebuild/` (see its README). Review the diff before committing.
+
+## The team MLS relay (web Studio and web CMA)
+
+The Flexmls MCP server only answers approved apps like Claude, never a web page, so the GitHub Pages Studio reaches it through one relay you own: `worker/relay/` on your free Cloudflare account (see RELAY.md to deploy or move it). Agents click **Connect my MLS** in Connections and sign in with their own Flexmls login; their tokens live only in their own browser, and the relay stores and logs nothing. The relay's address is `MLS_RELAY_URL` in `src/config.js`; empty falls back to the old personal proxy flow (PROXY.md).

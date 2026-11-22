@@ -4,9 +4,9 @@ There are two ways to use the Studio. Pick one.
 
 | | Inside Claude (easiest) | On the website |
 |---|---|---|
-| You need | A Claude account (Pro or higher) and an invitation from Elliot | An Anthropic API key, a Spark token and a free Cloudflare proxy |
+| You need | A Claude account (Pro or higher) and an invitation from Elliot | Just your Flexmls login (an Anthropic API key only for the AI writing tools) |
 | AI is paid by | Your Claude plan | Your Anthropic account, per use |
-| MLS comes from | The RealMLS connector in Claude, with your Flexmls login | Your own proxy and Spark token |
+| MLS comes from | The RealMLS connector in Claude, with your Flexmls login | Connect my MLS: a Flexmls sign in through the team relay |
 | Works in | claude.ai and the Claude desktop app | Any browser |
 
 Just want cards, signs, flyers and signatures? Either way works with no setup. Setup is only for the AI tools and the MLS tools (CMA report, Listing Video).
@@ -16,49 +16,45 @@ Just want cards, signs, flyers and signatures? Either way works with no setup. S
 1. Ask Elliot to invite the email you use for Claude to the Marketing Studio.
 2. Open the invitation link while signed in to claude.ai or the Claude desktop app.
 3. On the **CMA and Investor Report** tab, click **Open the setup guide** and follow it: turn on AI Settings in Flexmls, add the RealMLS connector in Claude, connect it with your Flexmls login, then click **Allow** when the Studio asks.
-4. Fill in your profile (step 6 below). The team roster is already built in.
+4. Fill in your profile (the profile step below). The team roster is already built in.
 
 No API key, proxy or roster file is needed. Stop here.
 
 ## Option B: on the website
 
-About 15 minutes, once. You need your Flexmls login, a credit card for Anthropic, and a free Cloudflare account.
+About 5 minutes, once. You only need your Flexmls username and password.
 
-## 1. Get your AI key (for Create Anything, captions, CMA write-ups)
+### 1. Turn on AI access in Flexmls
 
-1. Go to **console.anthropic.com** and create an account.
-2. Under **Billing**, add a payment method. You pay Anthropic directly for what you use.
-3. Under **Limits**, set a monthly spend limit you are comfortable with.
-4. Under **API Keys**, click **Create Key**, name it "iMath Studio", and copy it.
+1. Sign in to **flexmls.com** as usual.
+2. Open the **Menu**, then **Preferences**, then **AI Settings** (tip: type AI Settings in the menu search box).
+3. Switch the **MCP server** toggle on, read the terms and click **I Agree**.
 
-If your Anthropic account belongs to a company organization, the admin may have turned off browser access. The Test button in step 4 will say so.
+No AI Settings entry? Update Flexmls, or ask realMLS member support to enable the Flexmls MCP server for your login.
 
-## 2. Get your MLS key (for CMA reports and Listing Video photos)
+### 2. Connect your MLS
 
-1. Sign in to the **Spark Datamart** with your Flexmls login: sparkplatform.com, then Datamart.
-2. Find the plans offered by **realMLS**.
-3. Pick a plan that covers **all listings** in the MLS, not only your own. A plan limited to your own listings will not give you comps.
-4. Accept the terms and pay any fee realMLS charges. When it is approved you get an email with an **access token**. Keep it private; it is like a password.
+1. On the Studio or CMA page, click **Connections** at the bottom right.
+2. Click **Connect my MLS**. A Flexmls sign in window opens.
+3. Sign in with **your own** Flexmls username and password and click **Allow**. The window closes itself and the page reloads.
 
-No plan available, or not approved yet? You can still use the CMA and Listing Video tabs by typing details and uploading photos.
+Your password goes only to Flexmls. The sign in travels through the team relay, which stores and logs nothing; your MLS access stays in your own browser.
 
-## 3. Deploy your personal MLS proxy
+### 3. Optional: AI writing tools
 
-Spark does not allow your token inside a web page, so it lives in a tiny server that only you control. Follow [PROXY.md](PROXY.md). You end up with:
+Create Anything, captions, CMA write-ups and the online lookup use your own Anthropic API key. MLS pulls work without one.
 
-- a proxy address like `https://imath-mls.yourname.workers.dev`
-- a passcode you chose
+1. Go to **console.anthropic.com**, create an account, add a payment method and set a monthly spend limit under **Limits**.
+2. Under **API Keys**, click **Create Key**, name it "iMath Studio", and copy it.
+3. In **Connections**, paste the key, click **Test**, then **Save**.
 
-## 4. Connect the Studio
+If your Anthropic account belongs to a company organization, the admin may have turned off browser access; the Test button will say so. Use a personal account instead.
 
-1. Open the Studio and click **Connect your accounts** (bottom right).
-2. Paste your **Anthropic API key**, then click **Test**. You should see "Connected."
-3. Paste your **proxy address** and **passcode**, then click **Test**. You should see "Your MLS answered."
-4. Click **Save**.
+Prefer to run your own Spark proxy instead of the relay? That still works: see [PROXY.md](PROXY.md) and use **Advanced** in Connections.
 
-Your keys are saved only in this browser. On a new computer, connect again. To remove them, click **Remove everything from this browser**.
+Your sign in and keys are saved only in this browser. On a new computer, connect again. To remove them, click **Remove everything from this browser**.
 
-## 5. Import the team roster
+## 4. Import the team roster
 
 Elliot sends you a file called `roster.json`. In **Connections**, under **Team roster**, click **Import roster file** and choose it. The Studio reloads with the team and the loan officers filled in. Keep the file private; it has everyone's contact details.
 
@@ -70,7 +66,7 @@ On **Social Posts** (Just Listed, Open House, Under Contract, Just Sold) and **O
 - **Open House Flyers** show every listing photo. Tap up to four in the order you want them; **1** is the large hero photo. The first four are chosen for you until you change them.
 - **Flyer description:** the flyer prints a short description (70 words or less) instead of bullet highlights. It comes from the MLS remarks, shortened by Claude when they are longer. If the MLS has no remarks, it comes from the home's Zillow description (needs Claude and web search). You can edit it; the counter shows the word count, and **Shorten with Claude** trims it. The description prints on Magazine Cover, Classic Grid, Agent Spotlight and Personal Brand; Classic Grid and Agent Spotlight with a loan officer have the least room, and the form tells you when a style cuts it short. Only use photos you have the right to use. For another office's listing, get their permission and add a courtesy line. You can edit anything afterwards, or choose **Enter manually** to type everything yourself.
 
-## 6. Fill in your profile
+## 5. Fill in your profile
 
 Pick yourself under **Who are you?**, then check your name, title, phone, email, website and photo. These print on everything you make. Not on the roster yet? Choose **I am not on the list yet** and type your details.
 
