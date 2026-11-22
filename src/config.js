@@ -9,4 +9,4 @@ export const CLAUDE_STUDIO_URL = "https://claude.ai/artifact/UvVmYPtpsbkPNppfLnx
 // It signs each agent in with their own Flexmls login and forwards the Studio's read-only MLS
 // calls, because the Flexmls MCP server does not answer web pages directly. Empty means not
 // deployed yet: the Studio then falls back to the old personal-proxy flow.
-export const MLS_RELAY_URL = "";
+export const MLS_RELAY_URL = "https://imath-mls-relay.imathgroup.workers.dev";
