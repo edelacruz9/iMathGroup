@@ -1,0 +1,10 @@
+name = "imath-mls-relay"
+main = "index.js"
+compatibility_date = "2026-09-01"
+workers_dev = true
+
+[vars]
+# The page origins allowed to use the relay. Comma separate if there is more than one.
+ALLOWED_ORIGINS = "https://edelacruz9.github.io"
+
+# No secrets. The relay stores nothing; each agent's tokens live only in their own browser.
