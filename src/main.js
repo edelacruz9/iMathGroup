@@ -7,7 +7,7 @@ import { createRuntime } from "./runtime/index.js";
 import { mountConnections } from "./runtime/connections-ui.js";
 import { loadRoster } from "./runtime/roster.js";
 import { installSetupGuide } from "./runtime/setup-guide.js";
-import { PROXY_GUIDE_URL, SETUP_GUIDE_URL } from "./config.js";
+import { MLS_RELAY_URL, PROXY_GUIDE_URL, SETUP_GUIDE_URL } from "./config.js";
 
 const runtime = createRuntime();
 // Capabilities are handed out only after every legacy script has loaded, so the studio shell
@@ -16,7 +16,7 @@ let scriptsLoaded;
 const loaded = new Promise((resolve) => (scriptsLoaded = resolve));
 window.claude = { use: async (name) => (await loaded, runtime.use(name)), byok: true };
 // Read by the legacy setup wizard (25-studio-shell.js) in place of its Claude help links.
-window.__STUDIO_LINKS = { setup: SETUP_GUIDE_URL, proxy: PROXY_GUIDE_URL };
+window.__STUDIO_LINKS = { setup: SETUP_GUIDE_URL, proxy: PROXY_GUIDE_URL, relay: !!MLS_RELAY_URL };
 mountConnections(runtime);
 installSetupGuide();
 
