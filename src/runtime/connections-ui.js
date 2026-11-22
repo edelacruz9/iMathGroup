@@ -1,6 +1,6 @@
 // Connections dialog: where each agent saves their own Anthropic key and MLS proxy.
 // Styled with the Studio's own CSS variables so it matches the rest of the page.
-import { CLAUDE_STUDIO_URL, SETUP_GUIDE_URL } from "../config.js";
+import { CLAUDE_STUDIO_URL, MLS_RELAY_URL, SETUP_GUIDE_URL } from "../config.js";
 import { importRoster } from "./roster.js";
 
 const CSS = `
@@ -24,6 +24,9 @@ const CSS = `
 .cx-status{font-size:12px;color:var(--muted,#55606b)}
 .cx-status.ok{color:var(--green-ink,#3f8f39)}.cx-status.bad{color:#c2463b}
 .cx-note{font-size:12px;color:var(--muted,#55606b);margin:0}
+.cx-body details{border:1px dashed var(--line,#d3dde8);border-radius:8px;padding:8px 10px}
+.cx-body details summary{cursor:pointer;font-size:12px;color:var(--muted,#55606b)}
+.cx-body details[open] summary{margin-bottom:8px}
 `;
 
 const FIELDS = [
@@ -48,9 +51,13 @@ export function mountConnections(runtime) {
         ${field(FIELDS[0])}
         <div class="cx-row"><button type="button" data-test="ai">Test</button><span class="cx-status" data-status="ai"></span></div>
       </fieldset>
-      <fieldset><legend>MLS (Flexmls / Spark)</legend>
+      <fieldset><legend>MLS (your Flexmls login)</legend>
+        ${MLS_RELAY_URL ? `
+        <div class="cx-row"><button type="button" class="primary" data-mls-connect>Connect my MLS</button><button type="button" data-mls-disconnect hidden>Disconnect</button><button type="button" data-test="mls">Test</button><span class="cx-status" data-status="mls"></span></div>
+        <p class="cx-note">A Flexmls sign in window opens. Your password goes only to Flexmls; the studio never sees it. First turn on the MCP server under AI Settings in Flexmls (the setup guide shows where).</p>
+        <details><summary>Advanced: use your own Spark proxy instead</summary>${field(FIELDS[1])}${field(FIELDS[2])}</details>` : `
         ${field(FIELDS[1])}${field(FIELDS[2])}
-        <div class="cx-row"><button type="button" data-test="mls">Test</button><span class="cx-status" data-status="mls"></span></div>
+        <div class="cx-row"><button type="button" data-test="mls">Test</button><span class="cx-status" data-status="mls"></span></div>`}
         <p class="cx-note">No MLS access? The CMA and Listing Video tabs still work by typing details and uploading photos.</p>
       </fieldset>
       <fieldset><legend>Team roster</legend>
@@ -75,6 +82,13 @@ export function mountConnections(runtime) {
 
   async function load() {
     for (const [k] of FIELDS) input(k).value = (await settings.get(k)) || "";
+    if (MLS_RELAY_URL) {
+      const auth = await settings.get("mlsAuth");
+      dlg.querySelector("[data-mls-disconnect]").hidden = !auth;
+      if (auth) status("mls", "Connected with your Flexmls login.", "ok");
+      else if (await settings.get("mlsProxyUrl")) status("mls", "Using your own proxy (advanced).", "ok");
+      else status("mls", "Not connected yet.");
+    }
     const roster = await settings.get("roster");
     const fromSite = !roster && Array.isArray(window.__IMATH_ROSTER?.people) && window.__IMATH_ROSTER.people.length;
     dlg.querySelector("[data-roster-clear]").hidden = !roster;
@@ -138,6 +152,32 @@ export function mountConnections(runtime) {
       status("ai", err.message || err.code || "Failed.", "bad");
     }
   };
+  if (MLS_RELAY_URL) {
+    const relayOrigin = new URL(MLS_RELAY_URL).origin;
+    window.addEventListener("message", async (e) => {
+      if (e.origin !== relayOrigin || !e.data || e.data.type !== "imath-mls-auth") return;
+      if (!e.data.ok || !e.data.auth || !e.data.auth.access_token) {
+        status("mls", "Sign in did not finish" + (e.data.error ? ": " + String(e.data.error).slice(0, 120) : "."), "bad");
+        return;
+      }
+      await settings.set("mlsAuth", e.data.auth);
+      status("mls", "Connected. Reloading...", "ok");
+      setTimeout(() => location.reload(), 700); // the Studio reads capabilities once at startup
+    });
+    dlg.querySelector("[data-mls-connect]").onclick = () => {
+      status("mls", "Waiting for the Flexmls sign in window...");
+      const w = window.open(
+        `${MLS_RELAY_URL.replace(/\/$/, "")}/auth/start?origin=${encodeURIComponent(location.origin)}`,
+        "imathmls",
+        "width=520,height=760",
+      );
+      if (!w) status("mls", "Your browser blocked the sign in window. Allow pop ups for this site and try again.", "bad");
+    };
+    dlg.querySelector("[data-mls-disconnect]").onclick = async () => {
+      await settings.set("mlsAuth", null);
+      location.reload();
+    };
+  }
   dlg.querySelector('[data-test="mls"]').onclick = async () => {
     await save();
     status("mls", "Testing...");

@@ -19,7 +19,7 @@ export function createRuntime() {
   const permissions = {
     async state(name) {
       if (name === "sample") return (await settings.get("aiKey")) ? "granted" : "prompt";
-      if (name === "mcp:RealMLS") return (await settings.get("mlsProxyUrl")) ? "granted" : "prompt";
+      if (name === "mcp:RealMLS") return (await settings.get("mlsAuth")) || (await settings.get("mlsProxyUrl")) ? "granted" : "prompt";
       if (name === "mcp:Parallel Search") return (await settings.get("aiKey")) ? "granted" : "prompt";
       return "granted";
     },
@@ -34,7 +34,7 @@ export function createRuntime() {
       case "downloads":
         return downloads;
       case "mcp":
-        return (await settings.get("mlsProxyUrl")) || (await settings.get("aiKey")) ? mcp : null;
+        return (await settings.get("mlsAuth")) || (await settings.get("mlsProxyUrl")) || (await settings.get("aiKey")) ? mcp : null;
       case "permissions":
         return permissions;
       case "sample":

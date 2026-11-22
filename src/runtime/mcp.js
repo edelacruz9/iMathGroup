@@ -1,7 +1,10 @@
 // Stand-in for the two MCP servers the Studio was built against:
-//   "RealMLS"         -> the agent's own Cloudflare Worker proxy (worker/), which holds their Spark key
+//   "RealMLS"         -> the team MLS relay (worker/relay/), signed in with the agent's own Flexmls
+//                        login; or, as a fallback, the agent's own Spark proxy (worker/), which holds their Spark key
 //   "Parallel Search" -> Anthropic's server-side web_search / web_fetch tools, on the agent's own key
 // callTool resolves to { payload } like the Claude runtime does.
+import { MLS_RELAY_URL } from "../config.js";
+
 const MLS = "RealMLS";
 const WEB = "Parallel Search";
 export const MLS_TOOLS = [
@@ -20,10 +23,73 @@ const WEB_TOOLS = {
 };
 
 export function createMcp(settings, sample) {
+  // Relay path: the agent signed in with their own Flexmls login (Connect my MLS).
+  async function refreshMlsAuth(auth) {
+    let res = null;
+    if (auth && auth.refresh_token) {
+      res = await fetch(`${MLS_RELAY_URL.replace(/\/$/, "")}/auth/refresh`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ refresh_token: auth.refresh_token, client_id: auth.client_id }),
+      }).catch(() => null);
+    }
+    const body = res && (await res.json().catch(() => null));
+    if (!res || !res.ok || !body || !body.access_token) {
+      await settings.set("mlsAuth", null);
+      throw { code: "needs_reauth", message: "Your MLS sign in expired. Click Connect my MLS in Connections." };
+    }
+    const next = {
+      access_token: body.access_token,
+      refresh_token: body.refresh_token || auth.refresh_token,
+      client_id: auth.client_id,
+      expires_at: Date.now() + (Number(body.expires_in) || 3600) * 1000,
+    };
+    await settings.set("mlsAuth", next);
+    return next;
+  }
+
+  async function callMlsRelay(tool, args, signal, auth) {
+    const send = async (token) => {
+      try {
+        return await fetch(`${MLS_RELAY_URL.replace(/\/$/, "")}/tool/${encodeURIComponent(tool)}`, {
+          method: "POST",
+          headers: { "content-type": "application/json", authorization: `Bearer ${token}` },
+          body: JSON.stringify(args || {}),
+          signal,
+        });
+      } catch (err) {
+        if (signal?.aborted) throw { code: "cancelled" };
+        throw { code: "unsupported", message: "Could not reach the MLS relay.", retryable: true };
+      }
+    };
+    if (auth.expires_at && Date.now() > auth.expires_at - 60000 && auth.refresh_token) {
+      try { auth = await refreshMlsAuth(auth); } catch {}
+    }
+    let res = await send(auth.access_token);
+    if (res.status === 401) {
+      auth = await refreshMlsAuth(auth); // throws needs_reauth when the refresh fails
+      res = await send(auth.access_token);
+    }
+    const body = await res.json().catch(() => ({}));
+    if (res.status === 401) throw { code: "needs_reauth", message: body.error || "Your MLS sign in expired. Click Connect my MLS in Connections." };
+    if (res.status === 429) throw { code: "rate_limited", retryable: true, retryAfterMs: 2000 };
+    if (!res.ok) throw { code: body.code || "error", message: body.error || `MLS relay error ${res.status}`, retryable: res.status >= 500 };
+    return body.content ? { payload: body.payload, content: body.content } : { payload: body.payload };
+  }
+
   async function callMls(tool, args, signal) {
+    if (MLS_RELAY_URL) {
+      const auth = await settings.get("mlsAuth");
+      if (auth && auth.access_token) return callMlsRelay(tool, args, signal, auth);
+    }
     const base = await settings.get("mlsProxyUrl");
     const passcode = await settings.get("mlsPasscode");
-    if (!base) throw { code: "server_not_connected", message: "Add your MLS proxy in Connections." };
+    if (!base) {
+      throw {
+        code: "server_not_connected",
+        message: MLS_RELAY_URL ? "Click Connect my MLS in Connections and sign in with your Flexmls login." : "Add your MLS proxy in Connections.",
+      };
+    }
     let res;
     try {
       res = await fetch(`${base.replace(/\/$/, "")}/tool/${encodeURIComponent(tool)}`, {
@@ -74,7 +140,7 @@ export function createMcp(settings, sample) {
       throw { code: "server_not_found", message: `${server} / ${tool} is not available in this build.` };
     },
     async listTools() {
-      const hasMls = !!(await settings.get("mlsProxyUrl"));
+      const hasMls = !!((MLS_RELAY_URL && (await settings.get("mlsAuth"))) || (await settings.get("mlsProxyUrl")));
       const hasAi = !!(await settings.get("aiKey"));
       return {
         servers: [
