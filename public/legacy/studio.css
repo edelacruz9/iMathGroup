@@ -19,6 +19,9 @@
 .th-sw i{display:block;width:14px;height:14px;border-radius:3px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.15)}
 .theme-bar select{padding:7px 10px;border:1.5px solid var(--line);border-radius:8px;font:600 13px/1.2 "Open Sans",sans-serif;background:var(--chip,#fff);color:inherit;max-width:100%}
 .theme-bar .th-lbl{cursor:pointer}
+.pal-group{grid-column:1/-1;font:800 10.5px/1 Montserrat,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--muted,#5d6873);margin:8px 0 0}
+.pal-group:first-child{margin-top:0}
+.pal-ghead{grid-column:1/-1;font:800 12px/1 Montserrat,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--muted,#5d6873);margin:12px 0 0}
 .pal-guide{margin:34px 0 10px}
 .pal-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
 .pal-card{background:var(--surface,#fff);border:1px solid var(--line);border-radius:12px;padding:12px;min-width:0}

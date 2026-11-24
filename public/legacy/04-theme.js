@@ -29,9 +29,27 @@
     P("magenta", "Hot Magenta", "Fearless and fun. Built for Reels and Stories.", { primary: "#701a75", dark: "#4a044e", ink: "#4a044e", accent: "#ec4899", accentInk: "#be185d", light: "#fdf2f8" }, [["Plum", "#701A75"], ["Hot Pink", "#EC4899"], ["Bubblegum", "#F9A8D4"], ["Blush White", "#FDF2F8"], ["Dark Plum", "#4A044E"]]),
     P("electric", "Electric Blue", "High energy trust. The classic navy turned up.", { primary: "#1d4ed8", dark: "#1e3a8a", ink: "#1e3a8a", accent: "#22d3ee", accentInk: "#0e7490", light: "#ecfeff" }, [["Royal Blue", "#1D4ED8"], ["Electric Cyan", "#22D3EE"], ["Sky", "#93C5FD"], ["Ice", "#ECFEFF"], ["Navy Ink", "#1E3A8A"]]),
     P("lime", "Neon Lime", "Modern and electric. New builds and first time buyers.", { primary: "#1c1f23", dark: "#0b0d0f", ink: "#1c1f23", accent: "#84cc16", accentInk: "#4d7c0f", light: "#f7fee7" }, [["Charcoal", "#1C1F23"], ["Neon Lime", "#84CC16"], ["Chartreuse", "#BEF264"], ["Mint White", "#F7FEE7"], ["Ink Black", "#0B0D0F"]]),
+    P("spring", "Spring Bloom", "Fresh greens and blossom pink. Spring market kickoff.", { primary: "#166534", dark: "#14532d", ink: "#14532d", accent: "#f472b6", accentInk: "#be185d", light: "#f0fdf4" }, [["Leaf Green", "#166534"], ["Blossom", "#F472B6"], ["Fresh Green", "#4ADE80"], ["Petal White", "#F0FDF4"], ["Deep Garden", "#14532D"]]),
+    P("summer", "Summer Splash", "Sunny teal and gold. Open houses and pool season.", { primary: "#0e7490", dark: "#155e75", ink: "#155e75", accent: "#facc15", accentInk: "#a16207", light: "#fffbeb" }, [["Ocean Teal", "#0E7490"], ["Sunshine", "#FACC15"], ["Coral", "#FB7185"], ["Sand", "#FFFBEB"], ["Deep Sea", "#155E75"]]),
+    P("autumn", "Autumn Harvest", "Maroon and amber. Cozy fall markets.", { primary: "#7f1d1d", dark: "#450a0a", ink: "#450a0a", accent: "#d97706", accentInk: "#92400e", light: "#fef3c7" }, [["Maroon", "#7F1D1D"], ["Amber", "#D97706"], ["Harvest Gold", "#FBBF24"], ["Wheat", "#FEF3C7"], ["Espresso", "#450A0A"]]),
+    P("winter", "Winter Frost", "Icy blue and slate. Crisp winter listings.", { primary: "#334155", dark: "#0f172a", ink: "#0f172a", accent: "#7dd3fc", accentInk: "#0369a1", light: "#f0f9ff" }, [["Slate", "#334155"], ["Ice Blue", "#7DD3FC"], ["Silver", "#CBD5E1"], ["Snow", "#F0F9FF"], ["Midnight", "#0F172A"]]),
+    P("newyear", "New Year Sparkle", "Black tie and gold. New year, new home.", { primary: "#18181b", dark: "#09090b", ink: "#18181b", accent: "#eab308", accentInk: "#854d0e", light: "#fafaf9" }, [["Tuxedo Black", "#18181B"], ["Gold", "#EAB308"], ["Champagne", "#F5E1A4"], ["Silver", "#D4D4D8"], ["Midnight", "#09090B"]]),
+    P("valentine", "Valentine", "Rose red and soft pink. Love where you live.", { primary: "#be123c", dark: "#881337", ink: "#881337", accent: "#fda4af", accentInk: "#9f1239", light: "#fff1f2" }, [["Rose Red", "#BE123C"], ["Soft Pink", "#FDA4AF"], ["Cherry", "#E11D48"], ["Cream Blush", "#FFF1F2"], ["Deep Rose", "#881337"]]),
+    P("stpatrick", "St. Patrick's Gold", "Emerald and lucky gold. March fun.", { primary: "#047857", dark: "#064e3b", ink: "#064e3b", accent: "#fbbf24", accentInk: "#92400e", light: "#ecfdf5" }, [["Emerald", "#047857"], ["Lucky Gold", "#FBBF24"], ["Shamrock", "#34D399"], ["Mint Cream", "#ECFDF5"], ["Deep Clover", "#064E3B"]]),
+    P("easter", "Easter Pastels", "Soft lavender and pastels. Easter and spring family events.", { primary: "#6b21a8", dark: "#3b0764", ink: "#3b0764", accent: "#f9a8d4", accentInk: "#be185d", light: "#fdf4ff" }, [["Spring Purple", "#6B21A8"], ["Pastel Pink", "#F9A8D4"], ["Robin Egg", "#99F6E4"], ["Butter", "#FEF08A"], ["Lilac White", "#FDF4FF"]]),
+    P("july4", "Fourth of July", "Bold red, white and blue fireworks. For flag logos and the VA line use Patriotic.", { primary: "#1e40af", dark: "#172554", ink: "#172554", accent: "#dc2626", accentInk: "#991b1b", light: "#f8fafc" }, [["Liberty Blue", "#1E40AF"], ["Firework Red", "#DC2626"], ["Star White", "#FFFFFF"], ["Sky", "#BFDBFE"], ["Navy Night", "#172554"]]),
+    P("halloween", "Halloween", "Pumpkin and witch purple. Spooky season fun.", { primary: "#3b1d54", dark: "#1e0f2e", ink: "#2a1540", accent: "#ff8c1a", accentInk: "#c2410c", light: "#fdf6ec" }, [["Witch Purple", "#3B1D54"], ["Pumpkin", "#FF8C1A"], ["Slime Green", "#84CC16"], ["Ghost White", "#FDF6EC"], ["Midnight Black", "#1E0F2E"]]),
+    P("thanksgiving", "Thanksgiving", "Chestnut and cranberry. Gratitude and gather.", { primary: "#6b3a1f", dark: "#3e2212", ink: "#3e2212", accent: "#ad2831", accentInk: "#7f1d1d", light: "#faf3e8" }, [["Chestnut", "#6B3A1F"], ["Cranberry", "#AD2831"], ["Pumpkin Pie", "#E08E45"], ["Cream", "#FAF3E8"], ["Cocoa", "#3E2212"]]),
+    P("christmas", "Christmas", "Evergreen, red and gold. December cards and posts.", { primary: "#0f5132", dark: "#06281a", ink: "#06281a", accent: "#c1121f", accentInk: "#8c0d17", light: "#f8f5ee" }, [["Evergreen", "#0F5132"], ["Holiday Red", "#C1121F"], ["Gold", "#D4AF37"], ["Snow Cream", "#F8F5EE"], ["Pine Night", "#06281A"]]),
     P("patriotic", "Patriotic", "Veterans, service members and military families only.", { primary: "#0a3161", dark: "#061a33", ink: "#0a2348", accent: "#b31942", accentInk: "#8c1236", light: "#f4efe4" }, [["Old Glory Blue", "#0A3161"], ["Old Glory Red", "#B31942"], ["White", "#FFFFFF"], ["Deep Navy", "#061A33"], ["Parchment", "#F4EFE4"]], { patriotic: true })
   ];
   const BY = {}; PALETTES.forEach(p => BY[p.id] = p);
+  const GROUPS = {};
+  [["Brand and styles", ["standard", "coastal", "blush", "sage", "copper", "midnight", "forest", "coral"]],
+   ["Bold and bright", ["violet", "tangerine", "magenta", "electric", "lime"]],
+   ["Seasons", ["spring", "summer", "autumn", "winter"]],
+   ["Holidays", ["newyear", "valentine", "stpatrick", "easter", "july4", "halloween", "thanksgiving", "christmas"]],
+   ["Veteran marketing", ["patriotic"]]].forEach(([g, ids]) => ids.forEach(id => GROUPS[id] = g));
   const VA = "Not affiliated with or endorsed by the U.S. Department of Veterans Affairs.";
   const store = {
     get(k) { try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } },
@@ -246,7 +264,7 @@
   }
   const api = {
     install, register, mapColor, mapText, mapRGB, fixDom, attach, VA,
-    PALETTES: PALETTES.map(p => ({ id: p.id, name: p.name, vibe: p.vibe, swatches: p.swatches, patriotic: !!p.patriotic })),
+    PALETTES: PALETTES.map(p => ({ id: p.id, name: p.name, vibe: p.vibe, swatches: p.swatches, patriotic: !!p.patriotic, group: GROUPS[p.id] || "Brand and styles" })),
     paletteName: id => (BY[id] || BY.standard).name,
     get on() { return PAT; },            // Patriotic is active (VA disclaimer, flag logos)
     get active() { return ACTIVE; },     // any palette other than iMath Classic
