@@ -18,7 +18,7 @@ The same code runs inside Claude, where agents use their Claude plan and the Rea
 
 ## The standalone CMA and Investor Report
 
-The CMA is no longer a Studio tab. It is its own private artifact, built from the same code:
+Since Nov 24 2026 the CMA is back as a Studio tab (the web studio reaches the MLS through the relay now). The standalone page remains, built from the same code, for anyone who only needs the CMA:
 
 1. Run `npm run build:cma`. It writes `dist-claude/cma.html` (embeds `public/roster.json` like the Studio build).
 2. Publish it to the CMA artifact (`https://claude.ai/artifact/CtN9R77xwnGYFznxz9p95x`) with the same capabilities as the Studio (RealMLS, Parallel Search, sample, downloads).
